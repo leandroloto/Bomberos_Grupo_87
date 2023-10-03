@@ -22,10 +22,10 @@ public class SiniestroData {
         
     }
     
-    public Siniestro buscarSiniestros(int cod){
-        Siniestro siniestro = null;
+   // public Siniestro buscarSiniestros(int cod){
+     //   Siniestro siniestro = null;
         
         
-    }
+  //  }
     
 }
