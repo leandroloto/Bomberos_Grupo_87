@@ -7,14 +7,11 @@ package bomberos_grupo_87.Entidades;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author psg_7
- */
+
 public class Siniestro {
   
     private int codSiniestro;
-    private String tipo;
+    private String especialidad;
     private LocalDate fecha_siniestro;
     private int coord_X;
     private int coord_Y;
@@ -23,8 +20,10 @@ public class Siniestro {
     private int puntuacion;
     private int codBrig;
 
-    public Siniestro( String tipo, LocalDate fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrig) {
-        this.tipo = tipo;
+
+    public Siniestro( int CodBrigada, String especialidad, LocalDate fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrig) {
+        this.codSiniestro = codSiniestro;
+        this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
         this.coord_Y = coord_Y;
@@ -32,6 +31,21 @@ public class Siniestro {
         this.fecha_resol = fecha_resol;
         this.puntuacion = puntuacion;
         this.codBrig = codBrig;
+    }
+    
+    public Siniestro (String especialidad, LocalDate fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrig) {
+        this.especialidad = especialidad;
+        this.fecha_siniestro = fecha_siniestro;
+        this.coord_X = coord_X;
+        this.coord_Y = coord_Y;
+        this.detalles = detalles;
+        this.fecha_resol = fecha_resol;
+        this.puntuacion = puntuacion;
+        this.codBrig = codBrig;
+    }
+    
+    public Siniestro (){
+        
     }
 
     public int getCodSiniestro() {
@@ -42,12 +56,12 @@ public class Siniestro {
         this.codSiniestro = codSiniestro;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getEspecialidad() {
+        return especialidad;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     public LocalDate getFecha_siniestro() {
