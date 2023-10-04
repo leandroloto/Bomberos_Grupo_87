@@ -56,7 +56,7 @@ public class CuartelData {
     //Se modifica datos del Cuartel
     public void modificarCuartel(Cuartel cuartel){
         
-        String sql="UPDATE cuartel SET nombre_cuartel=?, direccion=?, coord_X=?, coord_Y=?, telefono=?, correo=?";
+        String sql="UPDATE cuartel SET nombre_cuartel=?, direccion=?, coord_X=?, coord_Y=?, telefono=?, correo=? WHERE codCuartel=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, cuartel.getNombre_cuartel());
@@ -65,13 +65,14 @@ public class CuartelData {
             ps.setInt(4, cuartel.getCoord_Y());
             ps.setString(5, cuartel.getTelefono());
             ps.setString(6, cuartel.getCorreo());
+            ps.setInt(7, cuartel.getCodCuartel());
             int resultado=ps.executeUpdate();
             if(resultado>0){
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos del Cuartel");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'cuartel'");
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'cuartel' "+ex.getMessage());
         }
     }
     
@@ -121,14 +122,16 @@ public class CuartelData {
         
     }
     
+    //Devuelve la lista de cuarteles
     public List<Cuartel> listaDeCuarteles(){
         List<Cuartel> listaCuartel = new ArrayList<>();
-        Cuartel cuartel=new Cuartel();
+        
         String sql = "SELECT * FROM cuartel";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
+                Cuartel cuartel=new Cuartel();
                 cuartel.setCodCuartel(rs.getInt("codCuartel"));
                 cuartel.setNombre_cuartel(rs.getString("nombre_cuartel"));
                 cuartel.setDireccion(rs.getString("direccion"));
@@ -175,8 +178,9 @@ public class CuartelData {
     //Calcula distancia entre dos coordenadas
     public double distanciaEntreCoord(int x1,int y1,int x2,int y2){
         
-        double distancia = Math.sqrt(Math.pow((x1-y1),2) + Math.pow((x2 - y2), 2));
-        
+        double distan = Math.sqrt(Math.pow((x1-y1),2) + Math.pow((x2 - y2), 2));
+        //Calculo para que se modifique el formato a 2 decimales
+        double distancia=Math.round(distan * Math.pow(10, 2)) / Math.pow(10, 2);
         return distancia;
     }
     
@@ -194,11 +198,5 @@ public class CuartelData {
         }
         return listaCercana;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
