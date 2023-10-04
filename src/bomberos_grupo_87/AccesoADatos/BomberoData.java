@@ -1,13 +1,13 @@
 package bomberos_grupo_87.AccesoADatos;
 
 import bomberos_grupo_87.Entidades.Bombero;
+import bomberos_grupo_87.Entidades.Brigada;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -98,7 +98,11 @@ public class BomberoData {
              bombero.setCodBombero(cod);
              bombero.setDni(rs.getInt("dni"));
              bombero.setNombre_ape(rs.getString("nombre_ape"));
-             bombero.setFecha_nac(LocalDate.MIN);
+             bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+             bombero.setGrupo_sang(rs.getString("grupo_sang"));
+             bombero.setCelular(rs.getString("celular"));
+             bombero.setBrigada(Integer.valueOf(rs.getString("codBrigada"));
+             bombero.setEstado(rs.getBoolean("estado"));
          }
      }  catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al conectarse con la base de datos"+ ex.getMessage());
