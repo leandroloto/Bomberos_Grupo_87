@@ -11,17 +11,30 @@ public class Bombero {
     private LocalDate fecha_nac;
     private String grupo_sang;
     private String celular;
-    private Brigada codBrigada;
+    private Brigada brigada;
     private boolean estado;
 
-    public Bombero(int codBombero, int dni, String nombre_ape, LocalDate fecha_nac, String grupo_sang, String celular, Brigada codBrigada, boolean estado) {
+    public Bombero() {
+    }
+
+    public Bombero(int dni, String nombre_ape, LocalDate fecha_nac, String grupo_sang, String celular, Brigada brigada, boolean estado) {
+        this.dni = dni;
+        this.nombre_ape = nombre_ape;
+        this.fecha_nac = fecha_nac;
+        this.grupo_sang = grupo_sang;
+        this.celular = celular;
+        this.brigada = brigada;
+        this.estado = estado;
+    }
+
+    public Bombero(int codBombero, int dni, String nombre_ape, LocalDate fecha_nac, String grupo_sang, String celular, Brigada brigada, boolean estado) {
         this.codBombero = codBombero;
         this.dni = dni;
         this.nombre_ape = nombre_ape;
         this.fecha_nac = fecha_nac;
         this.grupo_sang = grupo_sang;
         this.celular = celular;
-        this.codBrigada = codBrigada;
+        this.brigada = brigada;
         this.estado = estado;
     }
 
@@ -73,12 +86,12 @@ public class Bombero {
         this.celular = celular;
     }
 
-    public Brigada getCodBrigada() {
-        return codBrigada;
+    public Brigada getBrigada() {
+        return brigada;
     }
 
-    public void setCodBrigada(Brigada codBrigada) {
-        this.codBrigada = codBrigada;
+    public void setBrigada(Brigada brigada) {
+        this.brigada = brigada;
     }
 
     public boolean isEstado() {
@@ -89,9 +102,11 @@ public class Bombero {
         this.estado = estado;
     }
 
+   
+
     @Override
     public String toString() {
-        return "DNI: "+ dni + "- Nombre y Apellido: "+ nombre_ape + ", Grupo Sanguineo: " + grupo_sang + ", Brigada:" + codBrigada;
+        return "DNI: "+ dni + "- Nombre y Apellido: "+ nombre_ape + ", Grupo Sanguineo: " + grupo_sang + ", Brigada:" + brigada;
     }
    
     

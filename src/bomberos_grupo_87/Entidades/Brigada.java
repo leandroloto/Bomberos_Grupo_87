@@ -6,28 +6,27 @@ public class Brigada {
     
     private int codBrigada;
     private String nombre_br;
-    private String especialidad;
+    private Especialidad especialidad;
     private boolean libre;
-    private Cuartel codCuartel;
+    private Cuartel cuartel;
 
-    public Brigada(int codBrigada, String nombre_br, String especialidad, boolean libre, Cuartel codCuartel) {
+    public Brigada(int codBrigada, String nombre_br, Especialidad especialidad, boolean libre, Cuartel cuartel) {
         this.codBrigada = codBrigada;
         this.nombre_br = nombre_br;
         this.especialidad = especialidad;
         this.libre = libre;
-        this.codCuartel = codCuartel;
+        this.cuartel = cuartel;
     }
-    
-    public Brigada( String nombre_br, String especialidad, boolean libre, Cuartel codCuartel) {
+
+    public Brigada(String nombre_br, Especialidad especialidad, boolean libre, Cuartel cuartel) {
         this.nombre_br = nombre_br;
         this.especialidad = especialidad;
         this.libre = libre;
-        this.codCuartel = codCuartel;
+        this.cuartel = cuartel;
     }
 
     public Brigada() {
     }
-    
 
     public int getCodBrigada() {
         return codBrigada;
@@ -45,11 +44,11 @@ public class Brigada {
         this.nombre_br = nombre_br;
     }
 
-    public String getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
 
@@ -61,13 +60,15 @@ public class Brigada {
         this.libre = libre;
     }
 
-    public Cuartel getCodCuartel() {
-        return codCuartel;
+    public Cuartel getCuartel() {
+        return cuartel;
     }
 
-    public void setCodCuartel(Cuartel codCuartel) {
-        this.codCuartel = codCuartel;
+    public void setCuartel(Cuartel cuartel) {
+        this.cuartel = cuartel;
     }
+
+   
 
     @Override
     public String toString() {

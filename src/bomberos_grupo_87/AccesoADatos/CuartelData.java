@@ -3,6 +3,7 @@ package bomberos_grupo_87.AccesoADatos;
 
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
+import bomberos_grupo_87.Entidades.Especialidad;
 import bomberos_grupo_87.Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -162,9 +163,9 @@ public class CuartelData {
                 Brigada brigada=new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setEspecialidad(Especialidad.valueOf(rs.getString("especialidad")));
                 brigada.setLibre(rs.getBoolean("libre"));
-                brigada.setCodCuartel(this.buscarCuartel(codCuartel));
+                brigada.setCuartel(this.buscarCuartel(codCuartel));
                 listaBrigCuartel.add(brigada);
             }
             
