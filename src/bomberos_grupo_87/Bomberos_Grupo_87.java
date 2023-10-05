@@ -32,7 +32,7 @@ public class Bomberos_Grupo_87 {
         CuartelData CD = new CuartelData();
         Brigada brig = new Brigada(1, "Brigada Bravo", Especialidad.Incendios, true, c1,true);
         
-//        BrigadaData BD = new BrigadaData();
+        BrigadaData BD = new BrigadaData();
 //        BD.crearBrigada(brig);
         
         //CD.crearCuartel(c1);
@@ -57,14 +57,14 @@ public class Bomberos_Grupo_87 {
 //            System.out.println(sini);
 //            SD.crearSiniestro(sini);
             
-            Bombero bombero1 = new Bombero( 9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878", brig, true);
-            BomberoData BD = new BomberoData();
-            BD.nuevoBombero(bombero1);
+            //Bombero bombero1 = new Bombero(4, 9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878", true);
+            //BomberoData BD = new BomberoData();
+            //BD.nuevoBombero(bombero1);
             //BD.modificarBombero(bombero1);
-            //System.out.println(BD.buscarBomberoPorCod(1));
-            BD.eliminarBombero(4);
+            //System.out.println(BD.buscarBomberoPorCod(9874687));
+            //BD.eliminarBombero(4);
 
-        
+        System.out.println(BD.buscar(4));
     }
     
 }
