@@ -5,9 +5,14 @@
  */
 package bomberos_grupo_87;
 
+import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.AccesoADatos.SiniestroData;
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
+import bomberos_grupo_87.Entidades.Especialidad;
+import bomberos_grupo_87.Entidades.Siniestro;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -20,8 +25,12 @@ public class Bomberos_Grupo_87 {
      */
     public static void main(String[] args) {
         
-        Cuartel c1 = new Cuartel(4,"Cuartel BS.AS.", "9 de Julio 233", 321, -22, "011-42775851", "bomberosargentina@bomberosar.com");
+        Cuartel c1 = new Cuartel(1,"Cuartel BS.AS.", "9 de Julio 233", 321, -22, "011-42775851", "bomberosargentina@bomberosar.com");
         CuartelData CD = new CuartelData();
+        Brigada brig = new Brigada(1, "Brigada Bravo", Especialidad.Incendios, true, c1,true);
+        
+//        BrigadaData BD = new BrigadaData();
+//        BD.crearBrigada(brig);
         
         //CD.crearCuartel(c1);
         //CD.modificarCuartel(c1);
@@ -32,13 +41,20 @@ public class Bomberos_Grupo_87 {
 //            System.out.println(cua);
 //        }
         
-        for (Brigada brigada : CD.listarBrigadasDelCuartel(3)) {
-            System.out.println(brigada);
-        }
+//        for (Brigada brigada : CD.listarBrigadasDelCuartel(3)) {
+//            System.out.println(brigada);
+//        }
+//        
+//        //                                      X1 - Y1 / X2 - Y2
+//        double resultado=CD.distanciaEntreCoord(32, -12, 22, -42);
+//        System.out.println(resultado);
         
-        //                                      X1 - Y1 / X2 - Y2
-        double resultado=CD.distanciaEntreCoord(32, -12, 22, -42);
-        System.out.println(resultado);
+            Siniestro sini = new Siniestro(Especialidad.Incendios, LocalDateTime.of(2023, 10, 05, 16, 17, 10, 10), -10, 2540, "Incendio en una casa, Cordoba 233", brig, true, true);
+            SiniestroData SD = new SiniestroData();
+            System.out.println(sini);
+            SD.crearSiniestro(sini);
+            
+            
 
         
     }

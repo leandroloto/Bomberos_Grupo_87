@@ -5,7 +5,6 @@
  */
 package bomberos_grupo_87.Entidades;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -40,25 +39,24 @@ public class Siniestro {
 
     }
     
-    public Siniestro( Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDateTime fecha_resol, int puntuacion, Brigada brigada, boolean estado, boolean enCurso) {
+    public Siniestro( Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado, boolean enCurso) {
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
         this.coord_Y = coord_Y;
         this.detalles = detalles;
-        this.fecha_resol = fecha_resol;
-        this.puntuacion = puntuacion;
         this.brigada = brigada;
         this.estado = estado;
         this.enCurso = enCurso;
     }
 
-    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, boolean estado) {
+    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado) {
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
         this.coord_Y = coord_Y;
         this.detalles = detalles;
+        this.brigada = brigada;
         this.estado = estado;
     }
     
