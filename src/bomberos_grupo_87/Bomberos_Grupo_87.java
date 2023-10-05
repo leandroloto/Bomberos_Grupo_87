@@ -5,13 +5,16 @@
  */
 package bomberos_grupo_87;
 
+import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
 import bomberos_grupo_87.AccesoADatos.SiniestroData;
+import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Especialidad;
 import bomberos_grupo_87.Entidades.Siniestro;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -49,12 +52,17 @@ public class Bomberos_Grupo_87 {
 //        double resultado=CD.distanciaEntreCoord(32, -12, 22, -42);
 //        System.out.println(resultado);
         
-            Siniestro sini = new Siniestro(Especialidad.Incendios, LocalDateTime.of(2023, 10, 05, 16, 17, 10, 10), -10, 2540, "Incendio en una casa, Cordoba 233", brig, true, true);
-            SiniestroData SD = new SiniestroData();
-            System.out.println(sini);
-            SD.crearSiniestro(sini);
+//            Siniestro sini = new Siniestro(Especialidad.Incendios, LocalDateTime.of(2023, 10, 05, 16, 17, 10, 10), -10, 2540, "Incendio en una casa, Cordoba 233", brig, true, true);
+//            SiniestroData SD = new SiniestroData();
+//            System.out.println(sini);
+//            SD.crearSiniestro(sini);
             
-            
+            Bombero bombero1 = new Bombero( 9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878", brig, true);
+            BomberoData BD = new BomberoData();
+            BD.nuevoBombero(bombero1);
+            //BD.modificarBombero(bombero1);
+            //System.out.println(BD.buscarBomberoPorCod(1));
+            BD.eliminarBombero(4);
 
         
     }

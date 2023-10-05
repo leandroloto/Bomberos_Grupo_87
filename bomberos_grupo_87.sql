@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2023 a las 00:56:03
+-- Tiempo de generación: 05-10-2023 a las 23:21:00
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -51,8 +51,19 @@ CREATE TABLE `brigada` (
   `nombre_br` varchar(20) NOT NULL,
   `especialidad` varchar(30) NOT NULL,
   `libre` tinyint(1) NOT NULL,
-  `codCuartel` int(11) NOT NULL
+  `codCuartel` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `brigada`
+--
+
+INSERT INTO `brigada` (`codBrigada`, `nombre_br`, `especialidad`, `libre`, `codCuartel`, `estado`) VALUES
+(1, 'Brigada A', 'Incendios', 1, 3, 0),
+(2, 'Brigada B', 'RescateAccTrafico', 1, 2, 0),
+(3, 'Brigada C', 'SalvamentoDerrumbe', 1, 1, 0),
+(4, 'Brigada Bravo', 'Incendios', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -67,8 +78,19 @@ CREATE TABLE `cuartel` (
   `coord_X` int(11) NOT NULL,
   `coord_Y` int(11) NOT NULL,
   `telefono` varchar(15) NOT NULL,
-  `correo` varchar(30) NOT NULL
+  `correo` varchar(30) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cuartel`
+--
+
+INSERT INTO `cuartel` (`codCuartel`, `nombre_cuartel`, `direccion`, `coord_X`, `coord_Y`, `telefono`, `correo`, `estado`) VALUES
+(1, 'Cuartel A', '123 Calle Principal', 37, -122, '123-456-7890', 'cuartela@example.com', 0),
+(2, 'Cuartel B', '456 Calle Secundaria', 40, -74, '987-654-3210', 'cuartelb@example.com', 0),
+(3, 'Cuartel C', '789 Calle Terciaria', 51, -1, '555-123-4567', 'cuartelc@example.com', 0),
+(4, 'Cuartel BS.AS.', '9 de Julio 233', 321, -22, '011-42775851', 'bomberosargentina@bomberosar.c', 0);
 
 -- --------------------------------------------------------
 
@@ -79,14 +101,24 @@ CREATE TABLE `cuartel` (
 CREATE TABLE `siniestro` (
   `codSiniestro` int(11) NOT NULL,
   `tipo` varchar(20) NOT NULL,
-  `fecha_siniestro` date NOT NULL,
+  `fecha_siniestro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `coord_X` int(11) NOT NULL,
   `coord_Y` int(11) NOT NULL,
   `detalles` text NOT NULL,
-  `fecha_resol` date NOT NULL,
+  `fecha_resol` timestamp NULL DEFAULT NULL,
   `puntuacion` int(11) NOT NULL,
-  `codBrigada` int(11) NOT NULL
+  `codBrigada` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `enCurso` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `siniestro`
+--
+
+INSERT INTO `siniestro` (`codSiniestro`, `tipo`, `fecha_siniestro`, `coord_X`, `coord_Y`, `detalles`, `fecha_resol`, `puntuacion`, `codBrigada`, `estado`, `enCurso`) VALUES
+(1, 'Incendio', '2023-10-05 20:48:11', 23, 22, 'Se inicio un incendio', NULL, 0, 1, 1, 1),
+(2, 'Incendios', '2023-10-05 19:17:10', -10, 2540, 'Incendio en una casa, Cordoba 233', NULL, 0, 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -134,19 +166,19 @@ ALTER TABLE `bombero`
 -- AUTO_INCREMENT de la tabla `brigada`
 --
 ALTER TABLE `brigada`
-  MODIFY `codBrigada` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codBrigada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cuartel`
 --
 ALTER TABLE `cuartel`
-  MODIFY `codCuartel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codCuartel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `siniestro`
 --
 ALTER TABLE `siniestro`
-  MODIFY `codSiniestro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codSiniestro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
