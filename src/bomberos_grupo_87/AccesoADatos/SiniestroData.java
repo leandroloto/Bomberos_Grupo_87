@@ -61,12 +61,23 @@ public class SiniestroData {
         
     }
     
-    public List<Siniestro> listarSiniestros(){
-    List<Siniestro> listaSiniestro = new ArrayList<>();
-    String sql= "SELECT * FROM especialidad WHERE siniestro = ?";
-    Siniestro especialidad = new Siniestro();
-    
-    return null;
+    public void eliminarSiniestro(int codSiniestro){
+        
+        String sql = "UPDATE siniestro SET estado = false WHERE codSiniestro = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codSiniestro);
+            int resultado= ps.executeUpdate();
+            if(resultado>0){
+                JOptionPane.showMessageDialog(null, "Se dio de baja el Siniestro");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se puede dar de baja el Siniestro");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'Siniestro'");
+            
+        }
     
     } 
     
