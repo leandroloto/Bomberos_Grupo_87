@@ -103,6 +103,8 @@ public class BomberoData {
              bombero.setCelular(rs.getString("celular"));
              bombero.setBrigada(bombero.getBrigada());
              bombero.setEstado(rs.getBoolean("estado"));
+         }else{
+             JOptionPane.showMessageDialog(null,"No existen bomeros con el DNI ingresado");
          }
          ps.close();
          
