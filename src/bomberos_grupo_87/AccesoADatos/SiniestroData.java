@@ -61,6 +61,30 @@ public class SiniestroData {
         
     }
     
+     public void modificarSiniestro (Siniestro siniestro){
+        
+        String sql="UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalles=?, Brigada=?, estado=?, enCurso=? WHERE codSiniestro=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, siniestro.getEspecialidad().toString());
+            ps.setTimestamp(2, Timestamp.valueOf(siniestro.getFecha_siniestro()));
+            ps.setInt(3, siniestro.getCoord_X());
+            ps.setInt(4, siniestro.getCoord_Y());
+            ps.setString(5, siniestro.getDetalles());
+            ps.setInt(6, siniestro.getBrigada().getCodBrigada());
+            ps.setBoolean(7, siniestro.isEstado());
+            ps.setBoolean(8, siniestro.isEnCurso());
+            int resultado=ps.executeUpdate();
+            if(resultado>0){
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos del Siniestro");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'Siniestro' "+ex.getMessage());
+        }
+    }
+    
+     
     public void eliminarSiniestro(int codSiniestro){
         
         String sql = "UPDATE siniestro SET estado = false WHERE codSiniestro = ? ";
