@@ -6,22 +6,26 @@
 package bomberos_grupo_87.Entidades;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class Siniestro {
   
     private int codSiniestro;
-    private String especialidad;
-    private LocalDate fecha_siniestro;
+    private Especialidad especialidad;
+    private LocalDateTime fecha_siniestro;
     private int coord_X;
     private int coord_Y;
     private String detalles;
-    private LocalDate fecha_resol;
+    private LocalDateTime fecha_resol;
     private int puntuacion;
-    private int codBrig;
+    private Brigada brigada;
+    private boolean estado;
+    private boolean enCurso;
+  
 
 
-    public Siniestro( int CodBrigada, String especialidad, LocalDate fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrig) {
+    public Siniestro( int codSiniestro, Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDateTime fecha_resol, int puntuacion, Brigada brigada, boolean estado, boolean enCurso) {
         this.codSiniestro = codSiniestro;
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
@@ -30,10 +34,13 @@ public class Siniestro {
         this.detalles = detalles;
         this.fecha_resol = fecha_resol;
         this.puntuacion = puntuacion;
-        this.codBrig = codBrig;
+        this.brigada = brigada;
+        this.estado = estado;
+        this.enCurso = enCurso;
+
     }
     
-    public Siniestro (String especialidad, LocalDate fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrig) {
+    public Siniestro( Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDateTime fecha_resol, int puntuacion, Brigada brigada, boolean estado, boolean enCurso) {
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
@@ -41,11 +48,30 @@ public class Siniestro {
         this.detalles = detalles;
         this.fecha_resol = fecha_resol;
         this.puntuacion = puntuacion;
-        this.codBrig = codBrig;
+        this.brigada = brigada;
+        this.estado = estado;
+        this.enCurso = enCurso;
+    }
+
+    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, boolean estado) {
+        this.especialidad = especialidad;
+        this.fecha_siniestro = fecha_siniestro;
+        this.coord_X = coord_X;
+        this.coord_Y = coord_Y;
+        this.detalles = detalles;
+        this.estado = estado;
     }
     
     public Siniestro (){
         
+    }
+
+    public boolean isEnCurso() {
+        return enCurso;
+    }
+
+    public void setEnCurso(boolean enCurso) {
+        this.enCurso = enCurso;
     }
 
     public int getCodSiniestro() {
@@ -56,19 +82,19 @@ public class Siniestro {
         this.codSiniestro = codSiniestro;
     }
 
-    public String getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
 
-    public LocalDate getFecha_siniestro() {
+    public LocalDateTime getFecha_siniestro() {
         return fecha_siniestro;
     }
 
-    public void setFecha_siniestro(LocalDate fecha_siniestro) {
+    public void setFecha_siniestro(LocalDateTime fecha_siniestro) {
         this.fecha_siniestro = fecha_siniestro;
     }
 
@@ -96,11 +122,11 @@ public class Siniestro {
         this.detalles = detalles;
     }
 
-    public LocalDate getFecha_resol() {
+    public LocalDateTime getFecha_resol() {
         return fecha_resol;
     }
 
-    public void setFecha_resol(LocalDate fecha_resol) {
+    public void setFecha_resol(LocalDateTime fecha_resol) {
         this.fecha_resol = fecha_resol;
     }
 
@@ -112,13 +138,28 @@ public class Siniestro {
         this.puntuacion = puntuacion;
     }
 
-    public int getCodBrig() {
-        return codBrig;
+    public Brigada getBrigada() {
+        return brigada;
     }
 
-    public void setCodBrig(int codBrig) {
-        this.codBrig = codBrig;
+    public void setBrigada(Brigada brigada) {
+        this.brigada = brigada;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Siniestro{" + "codSiniestro=" + codSiniestro + ", especialidad=" + especialidad + ", fecha_siniestro=" + fecha_siniestro + ", coord_X=" + coord_X + ", coord_Y=" + coord_Y + ", detalles=" + detalles + ", fecha_resol=" + fecha_resol + ", puntuacion=" + puntuacion + ", brigada=" + brigada + ", estado=" + estado + ", enCurso=" + enCurso + '}';
+    }
+
     
+
     
 }

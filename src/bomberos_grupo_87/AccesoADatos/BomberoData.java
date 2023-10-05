@@ -101,7 +101,7 @@ public class BomberoData {
              bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
              bombero.setGrupo_sang(rs.getString("grupo_sang"));
              bombero.setCelular(rs.getString("celular"));
-             bombero.setBrigada(Integer.valueOf(rs.getString("codBrigada"));
+             bombero.setBrigada(bombero.getBrigada());
              bombero.setEstado(rs.getBoolean("estado"));
          }
      }  catch (SQLException ex) {
