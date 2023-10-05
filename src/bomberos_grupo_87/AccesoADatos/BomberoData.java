@@ -47,7 +47,7 @@ public class BomberoData {
 
     }
 
-    public void eliminarBombero(int cod) throws SQLException {
+    public void eliminarBombero(int cod) {
         String sql = "UPDATE bombero SET estado=0 WHERE codBombero=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -84,19 +84,19 @@ public class BomberoData {
         }
 
     }
-    public void buscarBomberoPorCod(int cod){
-     String sql = "SELECT dni, nombre_ape, fecha_nac, grupo_sang, celular, codBrigada, estado "
-             + "FROM bombero WHERE codBombero=?";
+    public Bombero buscarBomberoPorCod(int dni){
+     String sql = "SELECT codBombero, nombre_ape, fecha_nac, grupo_sang, celular, codBrigada, estado "
+             + "FROM bombero WHERE dni=?";
      Bombero bombero = null;
      try{
          PreparedStatement ps = con.prepareStatement(sql);
-         ps.setInt(1, cod);
+         ps.setInt(1,dni);
          ResultSet rs = ps.executeQuery();
          
          if(rs.next()){
              bombero = new Bombero();
-             bombero.setCodBombero(cod);
-             bombero.setDni(rs.getInt("dni"));
+             bombero.setCodBombero(rs.getInt("codBombero"));
+             bombero.setDni(rs.getInt(dni));
              bombero.setNombre_ape(rs.getString("nombre_ape"));
              bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
              bombero.setGrupo_sang(rs.getString("grupo_sang"));
@@ -104,8 +104,11 @@ public class BomberoData {
              bombero.setBrigada(bombero.getBrigada());
              bombero.setEstado(rs.getBoolean("estado"));
          }
+         ps.close();
+         
      }  catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al conectarse con la base de datos"+ ex.getMessage());
         }
+     return bombero;
     }
 }
