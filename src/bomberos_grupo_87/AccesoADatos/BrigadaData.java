@@ -5,7 +5,13 @@
  */
 package bomberos_grupo_87.AccesoADatos;
 
+import bomberos_grupo_87.Entidades.Brigada;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,5 +24,31 @@ public class BrigadaData {
         con = Conexion.getConexion();
         
     }
+    
+    public void crearBrigada(Brigada brigada){
+        
+        String sql = "INSERT INTO brigada(nombre_br, especialidad, libre, codCuartel,estado) VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, brigada.getNombre_br());
+            ps.setString(2, brigada.getEspecialidad().toString());
+            ps.setBoolean(3, brigada.isLibre());
+            ps.setInt(4, brigada.getCuartel().getCodCuartel());
+            ps.setBoolean(5, brigada.isLibre());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                brigada.setCodBrigada(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se creo una nueva Brigada.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "No se puede ingresar a la tabla "+ex.getMessage());
+            
+        }
+        
+    }
+    
     
 }
