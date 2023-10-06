@@ -5,6 +5,8 @@
  */
 package bomberos_grupo_87.AccesoADatos;
 
+import bomberos_grupo_87.Entidades.Brigada;
+import bomberos_grupo_87.Entidades.Especialidad;
 import bomberos_grupo_87.Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -87,7 +90,7 @@ public class SiniestroData {
      
     public void eliminarSiniestro(int codSiniestro){
         
-        String sql = "UPDATE siniestro SET estado = false WHERE codSiniestro = ? ";
+        String sql = "UPDATE siniestro SET estado = false WHERE codSiniestro = ? AND estado = true";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codSiniestro);
@@ -95,7 +98,7 @@ public class SiniestroData {
             if(resultado>0){
                 JOptionPane.showMessageDialog(null, "Se dio de baja el Siniestro");
             }else{
-                JOptionPane.showMessageDialog(null, "No se puede dar de baja el Siniestro");
+                JOptionPane.showMessageDialog(null, "No se encuentra el siniestro");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -104,5 +107,36 @@ public class SiniestroData {
         }
     
     } 
-    
+   public Siniestro buscarSiniestro(int codSiniestro){
+        Siniestro siniestro=new Siniestro();
+        Brigada BD = new Brigada();
+
+        String sql="SELECT * FROM siniestro WHERE codSiniestro = ? AND estado = true";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codSiniestro);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                
+                siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
+                siniestro.setEspecialidad(Especialidad.valueOf(rs.getString("tipo")));
+                siniestro.setFecha_siniestro(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
+                siniestro.setCoord_X(rs.getInt("coord_X"));
+                siniestro.setCoord_Y(rs.getInt("coord_Y"));
+                siniestro.setDetalles(rs.getString("detalles"));
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
+                siniestro.setPuntuacion(rs.getInt("puntuación"));
+                //siniestro.setBrigada(rs.getInt("codBrigada"));
+                siniestro.setEstado(rs.getBoolean("estado"));
+                
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'siniestro'");
+        }
+        return siniestro;
+        
+    } 
+   
+   
 }
