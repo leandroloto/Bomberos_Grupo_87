@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2023 a las 23:21:00
+-- Tiempo de generación: 06-10-2023 a las 23:43:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,9 +36,19 @@ CREATE TABLE `bombero` (
   `fecha_nac` date NOT NULL,
   `grupo_sang` varchar(3) NOT NULL,
   `celular` varchar(15) NOT NULL,
-  `codBrigada` int(11) NOT NULL,
+  `codBrigada` int(11) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `bombero`
+--
+
+INSERT INTO `bombero` (`codBombero`, `dni`, `nombre_ape`, `fecha_nac`, `grupo_sang`, `celular`, `codBrigada`, `estado`) VALUES
+(1, 32165487, 'Ricardo Lopez', '1990-11-05', 'B+', '01524587', 1, 1),
+(2, 12354687, 'Ana Maria Juarez', '1999-12-15', 'O-', '038445878', 1, 1),
+(4, 9874687, 'Lourdes Maria Juarez', '1999-12-15', 'O-', '038445878', 1, 0),
+(8, 123123, 'ejemplo ejemplo', '1999-01-22', 'A+', '123123', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -60,9 +70,9 @@ CREATE TABLE `brigada` (
 --
 
 INSERT INTO `brigada` (`codBrigada`, `nombre_br`, `especialidad`, `libre`, `codCuartel`, `estado`) VALUES
-(1, 'Brigada A', 'Incendios', 1, 3, 0),
-(2, 'Brigada B', 'RescateAccTrafico', 1, 2, 0),
-(3, 'Brigada C', 'SalvamentoDerrumbe', 1, 1, 0),
+(1, 'Brigada A', 'Incendios', 1, 3, 1),
+(2, 'Brigada B', 'RescateAccTrafico', 1, 2, 1),
+(3, 'Brigada C', 'SalvamentoDerrumbe', 1, 1, 1),
 (4, 'Brigada Bravo', 'Incendios', 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -90,7 +100,7 @@ INSERT INTO `cuartel` (`codCuartel`, `nombre_cuartel`, `direccion`, `coord_X`, `
 (1, 'Cuartel A', '123 Calle Principal', 37, -122, '123-456-7890', 'cuartela@example.com', 0),
 (2, 'Cuartel B', '456 Calle Secundaria', 40, -74, '987-654-3210', 'cuartelb@example.com', 0),
 (3, 'Cuartel C', '789 Calle Terciaria', 51, -1, '555-123-4567', 'cuartelc@example.com', 0),
-(4, 'Cuartel BS.AS.', '9 de Julio 233', 321, -22, '011-42775851', 'bomberosargentina@bomberosar.c', 0);
+(4, 'Cuartel BSAS', '9 de Julio 233', 321, -22, '011-42775851', 'bomberosargentina@bomberosar.c', 0);
 
 -- --------------------------------------------------------
 
@@ -160,7 +170,7 @@ ALTER TABLE `siniestro`
 -- AUTO_INCREMENT de la tabla `bombero`
 --
 ALTER TABLE `bombero`
-  MODIFY `codBombero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codBombero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `brigada`
