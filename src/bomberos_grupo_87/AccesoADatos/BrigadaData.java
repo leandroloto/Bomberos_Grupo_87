@@ -6,6 +6,7 @@
 package bomberos_grupo_87.AccesoADatos;
 
 import bomberos_grupo_87.Entidades.Brigada;
+import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Especialidad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class BrigadaData {
     private Connection con = null;
+    private CuartelData CD = new CuartelData();
     
     public BrigadaData(){
         con = Conexion.getConexion();
@@ -50,25 +52,24 @@ public class BrigadaData {
         }
     }
     
-    public Brigada buscar(int codBrigada){
-        Brigada brigada = new Brigada();
-        CuartelData CD = new CuartelData();
+    public Brigada buscarBrigada(int codBrigada){
+        Brigada brigada =null;
             String sql = "SELECT * FROM brigada WHERE codBrigada=? AND estado=true";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codBrigada);
             ResultSet rs =ps.executeQuery();
             if(rs.next()){
+                brigada= new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setEspecialidad(Especialidad.valueOf(rs.getString("especialidad")));
                 brigada.setLibre(rs.getBoolean("libre"));
-                brigada.setCuartel(CD.buscarCuartel(rs.getInt("codCuartel")));
+                Cuartel cuart = CD.buscarCuartel(rs.getInt("codCuartel"));
+                brigada.setCuartel(cuart);
                 brigada.setEstado(rs.getBoolean("estado"));
             }
-            
             ps.close();
-            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se puede ingresar a la tabla "+ex.getMessage());
         }

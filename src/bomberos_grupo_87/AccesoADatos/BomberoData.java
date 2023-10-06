@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class BomberoData {
 
     private Connection con = null;
+    private BrigadaData BrigData = new BrigadaData();
 
     public BomberoData() {
         con = Conexion.getConexion();
@@ -85,8 +86,7 @@ public class BomberoData {
 
     }
     public Bombero buscarBomberoPorCod(int dni){
-     String sql = "SELECT codBombero, nombre_ape, fecha_nac, grupo_sang, celular, codBrigada, estado "
-             + "FROM bombero WHERE dni=?";
+     String sql = "SELECT * FROM bombero WHERE dni=?";
      Bombero bombero = null;
      try{
          PreparedStatement ps = con.prepareStatement(sql);
@@ -96,12 +96,13 @@ public class BomberoData {
          if(rs.next()){
              bombero = new Bombero();
              bombero.setCodBombero(rs.getInt("codBombero"));
-             bombero.setDni(rs.getInt(dni));
+             bombero.setDni(rs.getInt("dni"));
              bombero.setNombre_ape(rs.getString("nombre_ape"));
              bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
              bombero.setGrupo_sang(rs.getString("grupo_sang"));
              bombero.setCelular(rs.getString("celular"));
-             bombero.setBrigada(bombero.getBrigada());
+             Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
+             bombero.setBrigada(brig);
              bombero.setEstado(rs.getBoolean("estado"));
          }else{
              JOptionPane.showMessageDialog(null,"No existen bomeros con el DNI ingresado");

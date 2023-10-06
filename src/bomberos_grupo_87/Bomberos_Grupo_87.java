@@ -38,7 +38,7 @@ public class Bomberos_Grupo_87 {
         //CD.crearCuartel(c1);
         //CD.modificarCuartel(c1);
         //CD.eliminarCuartel(0);
-        //System.out.println(CD.buscarCuartel(2));
+        //System.out.println(CD.buscarCuartel(4));
         
 //        for (Cuartel cua : CD.listaDeCuarteles()) {
 //            System.out.println(cua);
@@ -57,14 +57,13 @@ public class Bomberos_Grupo_87 {
 //            System.out.println(sini);
 //            SD.crearSiniestro(sini);
             
-            //Bombero bombero1 = new Bombero(4, 9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878", true);
-            //BomberoData BD = new BomberoData();
+            //Bombero bombero1 = new Bombero(1, 9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878", true);
+            BomberoData BombD = new BomberoData();
             //BD.nuevoBombero(bombero1);
             //BD.modificarBombero(bombero1);
-            //System.out.println(BD.buscarBomberoPorCod(9874687));
             //BD.eliminarBombero(4);
-
-        System.out.println(BD.buscar(4));
+            System.out.println(BD.buscarBrigada(1));
+            System.out.println(BombD.buscarBomberoPorCod(9874687));
     }
     
 }
