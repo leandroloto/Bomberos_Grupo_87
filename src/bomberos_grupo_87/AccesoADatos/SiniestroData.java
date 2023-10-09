@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,10 +29,12 @@ import javax.swing.JOptionPane;
 public class SiniestroData {
     
     private Connection con = null;
+    BrigadaData BD = new BrigadaData();
     
     public SiniestroData (){
         
         con = Conexion.getConexion();
+        
         
     }
     
@@ -87,7 +88,6 @@ public class SiniestroData {
         }
     }
     
-     
     public void eliminarSiniestro(int codSiniestro){
         
         String sql = "UPDATE siniestro SET estado = false WHERE codSiniestro = ? AND estado = true";
@@ -109,13 +109,13 @@ public class SiniestroData {
     } 
    public Siniestro buscarSiniestro(int codSiniestro){
         Siniestro siniestro=new Siniestro();
-        Brigada BD = new Brigada();
 
         String sql="SELECT * FROM siniestro WHERE codSiniestro = ? AND estado = true";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codSiniestro);
             ResultSet rs=ps.executeQuery();
+            Brigada brigada = new Brigada();
             if(rs.next()){
                 
                 siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
@@ -126,8 +126,9 @@ public class SiniestroData {
                 siniestro.setDetalles(rs.getString("detalles"));
                 siniestro.setFecha_resol(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
                 siniestro.setPuntuacion(rs.getInt("puntuación"));
-                //siniestro.setBrigada(rs.getInt("codBrigada"));
+                siniestro.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
                 siniestro.setEstado(rs.getBoolean("estado"));
+                siniestro.setEnCurso(rs.getBoolean("enCurso"));
                 
             }
             ps.close();
@@ -138,5 +139,68 @@ public class SiniestroData {
         
     } 
    
-   
+  public List <Siniestro> listaDeSiniestros(){
+      List<Siniestro>listaDeSiniestros = new ArrayList<>();
+      String Sql = "SELECT * FROM siniestro";
+        try {
+            PreparedStatement ps= con.prepareStatement(Sql);
+            ResultSet rs = ps.executeQuery();
+            Brigada brigada = new Brigada();
+            while (rs.next()){
+                Siniestro siniestro = new Siniestro();
+                siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
+                siniestro.setEspecialidad(Especialidad.valueOf(rs.getString("tipo")));
+                siniestro.setFecha_siniestro(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
+                siniestro.setCoord_X(rs.getInt("coord_X"));
+                siniestro.setCoord_Y(rs.getInt("coord_Y"));
+                siniestro.setDetalles(rs.getString("detalles"));
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_resol").toLocalDateTime());
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                siniestro.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
+                siniestro.setEstado(rs.getBoolean("estado"));
+                siniestro.setEnCurso(rs.getBoolean("enCurso"));
+                       
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SiniestroData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      return listaDeSiniestros;
+  }
+  
+  public List <Siniestro> listaDeSiniestrosDeAyerYHoy(){
+      List <Siniestro> listaDeSiniestrosDeAyerYHoy = new ArrayList<>();
+      String Sql = "SELECT * FROM `siniestro` WHERE CURRENT_DATE() = DATE(fecha_siniestro)";
+        try {
+            PreparedStatement ps= con.prepareStatement(Sql);
+            ResultSet rs = ps.executeQuery();
+            Brigada brigada = new Brigada();
+            while (rs.next()){
+                Siniestro siniestro = new Siniestro();
+                siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
+                siniestro.setEspecialidad(Especialidad.valueOf(rs.getString("tipo")));
+                siniestro.setFecha_siniestro(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
+                siniestro.setCoord_X(rs.getInt("coord_X"));
+                siniestro.setCoord_Y(rs.getInt("coord_Y"));
+                siniestro.setDetalles(rs.getString("detalles"));
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_resol").toLocalDateTime());
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                siniestro.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
+                siniestro.setEstado(rs.getBoolean("estado"));
+                siniestro.setEnCurso(rs.getBoolean("enCurso"));
+                       
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SiniestroData.class.getName()).log(Level.SEVERE, null, ex);
+           
+            
+        }
+      return listaDeSiniestrosDeAyerYHoy;
+  }
+    
+  
 }
+
