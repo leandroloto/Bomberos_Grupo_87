@@ -10,6 +10,8 @@ package bomberos_grupo_87.Entidades;
  * @author Discar
  */
 public class Cuartel {
+
+   
     
     private int codCuartel;
     private String nombre_cuartel;
