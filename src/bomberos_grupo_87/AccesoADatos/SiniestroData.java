@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class SiniestroData {
     
     private Connection con = null;
-    BrigadaData BD = new BrigadaData();
+    private BrigadaData BD = new BrigadaData();
     
     public SiniestroData (){
         
@@ -115,9 +115,8 @@ public class SiniestroData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codSiniestro);
             ResultSet rs=ps.executeQuery();
-            Brigada brigada = new Brigada();
             if(rs.next()){
-                
+                Brigada brigada;
                 siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
                 siniestro.setEspecialidad(Especialidad.valueOf(rs.getString("tipo")));
                 siniestro.setFecha_siniestro(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
@@ -125,11 +124,11 @@ public class SiniestroData {
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalles"));
                 siniestro.setFecha_resol(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
-                siniestro.setPuntuacion(rs.getInt("puntuación"));
-                siniestro.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                brigada=BD.buscarBrigada(rs.getInt("codBrigada"));
+                siniestro.setBrigada(brigada);
                 siniestro.setEstado(rs.getBoolean("estado"));
                 siniestro.setEnCurso(rs.getBoolean("enCurso"));
-                
             }
             ps.close();
         } catch (SQLException ex) {
@@ -164,7 +163,7 @@ public class SiniestroData {
             ps.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(SiniestroData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'siniestro'");
         }
       return listaDeSiniestros;
   }
@@ -194,7 +193,7 @@ public class SiniestroData {
             ps.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(SiniestroData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla 'siniestro'");
            
             
         }

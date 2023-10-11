@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 public class BrigadaData {
 
     private Connection con = null;
-    private CuartelData CD = new CuartelData();
+    CuartelData CD = new CuartelData();
 
     public BrigadaData() {
         con = Conexion.getConexion();
@@ -58,8 +58,7 @@ public class BrigadaData {
     }
 
     public void modificarBrigada(Brigada brigada) {
-        String sql = "UPDATE brigada SET nombre_br = ?, especialidad = ?, libre =?, codCuartel =?"
-                + "WHERE codBrigada = ? and estado = 1";
+        String sql = "UPDATE brigada SET nombre_br = ?, especialidad = ?, libre =?, codCuartel =? WHERE codBrigada = ? and estado = 1";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -123,22 +122,21 @@ public class BrigadaData {
     }
 
     public List<Brigada> brigadaLibre() {
-        
-
         String sql = "SELECT * FROM brigada WHERE libre = 1";
         ArrayList<Brigada> brigadas = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 Brigada br = new Brigada();
                 br.setCodBrigada(rs.getInt("codBrigada"));
                 br.setNombre_br(rs.getString("nombre_br"));
                 br.setLibre(rs.getBoolean("libre"));
                 br.setEstado(rs.getBoolean("estado"));
                 br.setEspecialidad(Especialidad.valueOf(rs.getString("especialidad")));
-                br.setCuartel(CD.buscarCuartel(rs.getInt("codCuartel")));
-
+                Cuartel cuar=CD.buscarCuartel(rs.getInt("codCuartel"));
+                br.setCuartel(cuar);
+                brigadas.add(br);
             }
             ps.close();
         } catch (SQLException ex) {
@@ -164,7 +162,7 @@ public class BrigadaData {
                 br.setEstado(rs.getBoolean("estado"));
                 br.setEspecialidad(Especialidad.valueOf(rs.getString("especialidad")));
                 br.setCuartel(CD.buscarCuartel(rs.getInt("codCuartel")));
-
+                brigadas.add(br);
             }
             ps.close();
         } catch (SQLException ex) {
