@@ -85,8 +85,8 @@ public class BomberoData {
         }
 
     }
-    public Bombero buscarBomberoPorCod(int dni){
-     String sql = "SELECT * FROM bombero WHERE dni=?";
+    public Bombero buscarBomberoPorDNI(int dni){
+     String sql = "SELECT * FROM bombero WHERE dni=? AND estado=true";
      Bombero bombero = null;
      try{
          PreparedStatement ps = con.prepareStatement(sql);

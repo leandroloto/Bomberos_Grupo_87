@@ -28,29 +28,27 @@ public class Bomberos_Grupo_87 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Cuartel c1 = new Cuartel(1, "Cuartel TUCUMAN", "Laprida 442", 3881, -22, "3814777777", "bomberosargentinatuc@bomberosar.com", true);
         CuartelData CD = new CuartelData();
-        
-        Brigada brig = new Brigada(5, "Brigada Alfa", Especialidad.RescateAccTrafico, true, c1,true);
+
+        Brigada brig = new Brigada(5, "Brigada Alfa", Especialidad.RescateAccTrafico, true, c1, true);
         BrigadaData BD = new BrigadaData();
-        
-        Bombero bombero1 = new Bombero(9874687, "Lourdes Maria Juarez", LocalDate.of(1999, 12, 15), "O-", "038445878",brig , true);
+
+        Bombero bombero1 = new Bombero(10, 9995687, "Jose Lopez", LocalDate.of(1979, 11, 02), "B-", "0789789", brig, true);
         BomberoData BombD = new BomberoData();
-        
-        Siniestro sini = new Siniestro(Especialidad.Incendios, LocalDateTime.of(2023, 10, 05, 16, 17, 10, 10), -10, 2540, "Incendio en una casa, Cordoba 233", brig, true, true);
+
+        Siniestro sini = new Siniestro(1, Especialidad.RescateMontaña, LocalDateTime.of(2023, 10, 12, 12, 54, 01), 150, -751, "Se perdio una familia, Sierras de cordoba", brig, true, true);
         SiniestroData SD = new SiniestroData();
-            
-        
+
+        //TEST CUARTELDATA
         //CD.crearCuartel(c1); //OK
         //CD.modificarCuartel(c1); //OK
         //CD.eliminarCuartel(7); //OK
         //System.out.println(CD.buscarCuartel(5)); //OK
-        
 //        for (Cuartel cua : CD.listaDeCuarteles()) {
 //            System.out.println(cua);
 //        }
-        
 //        for (Brigada brigada : CD.listarBrigadasDelCuartel(1)) { 
 //            System.out.println(brigada);
 //        }
@@ -58,13 +56,14 @@ public class Bomberos_Grupo_87 {
 //        //                                      X1 - Y1 / X2 - Y2
 //        double resultado=CD.distanciaEntreCoord(732, -1855, 732, -6555);
 //        System.out.println(resultado + "KM de distancia");
-        
 //        for (Map.Entry<Double, Cuartel> en : CD.listaCuartCercaDeSiniestro(1).entrySet()) {
 //            Object Double = en.getKey();
 //            Object Cuartel = en.getValue();
 //            System.out.println(en.getKey()+"KM con "+en.getValue());
 //        } 
-        
+
+
+        //TEST BRIGADADATA
         //BD.crearBrigada(brig);  //OK
         //BD.modificarBrigada(brig);  //OK
         //System.out.println(BD.buscarBrigada(1));
@@ -73,25 +72,29 @@ public class Bomberos_Grupo_87 {
 //        for (Brigada brigada : BD.brigadaLibre()) {
 //            System.out.println(brigada);
 //        }
+//        for (Brigada brigada : BD.brigadaAsignada()) {
+//            System.out.println(brigada);
+//        }
+
+
+        //TEST BOMBERO
+        //BombD.nuevoBombero(bombero1);
+        //BombD.modificarBombero(bombero1);
+        //System.out.println(BombD.buscarBomberoPorDNI(12354687));
+        //BombD.eliminarBombero(10);
         
-        for (Brigada brigada : BD.brigadaAsignada()) {
-            System.out.println(brigada);
-        }
         
-        
-        
-        
-//            SD.crearSiniestro(sini);
-            
-            
-            //BD.nuevoBombero(bombero1);
-            //BD.modificarBombero(bombero1);
-//            //BD.eliminarBombero(4);
-//            System.out.println(BD.buscarBrigada(1));
-//            System.out.println(BombD.buscarBomberoPorCod(9874687));
-            //System.out.println(SD.buscarSiniestro(2));
-            
-            
+        //TEST SINIESTRO
+        //SD.crearSiniestro(sini);
+        //SD.modificarSiniestro(sini);
+        //System.out.println(SD.buscarSiniestro(4));
+//            for (Siniestro listaDeSiniestro : SD.listaDeSiniestros()) {
+//                System.out.println(listaDeSiniestro);
+//        }
+//        for (Siniestro listaDeSiniestro : SD.listaDeSiniestrosDeAyerYHoy()) {
+//            System.out.println(listaDeSiniestro);
+//        }
+
     }
-    
+
 }

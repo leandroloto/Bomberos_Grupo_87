@@ -7,9 +7,8 @@ package bomberos_grupo_87.Entidades;
 
 import java.time.LocalDateTime;
 
-
 public class Siniestro {
-  
+
     private int codSiniestro;
     private Especialidad especialidad;
     private LocalDateTime fecha_siniestro;
@@ -21,10 +20,8 @@ public class Siniestro {
     private Brigada brigada;
     private boolean estado;
     private boolean enCurso;
-  
 
-
-    public Siniestro( int codSiniestro, Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDateTime fecha_resol, int puntuacion, Brigada brigada, boolean estado, boolean enCurso) {
+    public Siniestro(int codSiniestro, Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, LocalDateTime fecha_resol, int puntuacion, Brigada brigada, boolean estado, boolean enCurso) {
         this.codSiniestro = codSiniestro;
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
@@ -38,8 +35,8 @@ public class Siniestro {
         this.enCurso = enCurso;
 
     }
-    
-    public Siniestro( Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado, boolean enCurso) {
+
+    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado, boolean enCurso) {
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
@@ -50,7 +47,8 @@ public class Siniestro {
         this.enCurso = enCurso;
     }
 
-    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado) {
+    public Siniestro(int codSiniestro, Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado, boolean enCurso) {
+        this.codSiniestro = codSiniestro;
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
@@ -58,10 +56,11 @@ public class Siniestro {
         this.detalles = detalles;
         this.brigada = brigada;
         this.estado = estado;
+        this.enCurso = enCurso;
     }
-    
-    public Siniestro (){
-        
+
+    public Siniestro() {
+
     }
 
     public boolean isEnCurso() {
@@ -157,7 +156,4 @@ public class Siniestro {
         return "Siniestro{" + "codSiniestro=" + codSiniestro + ", especialidad=" + especialidad + ", fecha_siniestro=" + fecha_siniestro + ", coord_X=" + coord_X + ", coord_Y=" + coord_Y + ", detalles=" + detalles + ", fecha_resol=" + fecha_resol + ", puntuacion=" + puntuacion + ", brigada=" + brigada + ", estado=" + estado + ", enCurso=" + enCurso + '}';
     }
 
-    
-
-    
 }
