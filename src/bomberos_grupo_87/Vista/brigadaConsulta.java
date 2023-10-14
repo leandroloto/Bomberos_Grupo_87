@@ -5,6 +5,8 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Cuartel;
 import javax.swing.table.DefaultTableModel;
 import sun.awt.DefaultMouseInfoPeer;
 
@@ -26,6 +28,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
     public brigadaConsulta() {
         initComponents();
         modeloTabla();
+        iniciarCombo();
     }
 
     /**
@@ -45,6 +48,8 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         tablaBrigadas = new javax.swing.JTable();
         asignadasB = new javax.swing.JRadioButton();
         libresB = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        ComboCuartel = new javax.swing.JComboBox<>();
 
         jRadioButton2.setText("jRadioButton2");
 
@@ -72,13 +77,16 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         libresB.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         libresB.setText("BRIGADAS LIBRES");
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel2.setText("BRIGADAS DEL CUARTEL: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -86,22 +94,33 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(asignadasB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(libresB)
-                .addGap(100, 100, 100))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(asignadasB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(libresB)
+                        .addGap(100, 100, 100))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignadasB)
                     .addComponent(libresB))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -121,9 +140,11 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Cuartel> ComboCuartel;
     private javax.swing.JRadioButton asignadasB;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -136,6 +157,13 @@ public void modeloTabla(){
     modelo.addColumn("Especialidad");
     modelo.addColumn("Cuartel");
     tablaBrigadas.setModel(modelo);
+}
+
+public void iniciarCombo(){
+    CuartelData cuar = new CuartelData();
+    for (Cuartel cuartel : cuar.listaDeCuarteles()) {
+        ComboCuartel.addItem(cuartel);
+    }
 }
 
 }
