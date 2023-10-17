@@ -28,26 +28,26 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jLgestionCuarteles = new javax.swing.JLabel();
+        jLseleccioneCuartelAEliminar = new javax.swing.JLabel();
+        jTFmotivosEliminacion = new javax.swing.JTextField();
+        jLmotivoEliminacion = new javax.swing.JLabel();
+        jCBSeleccioneCartelAEliminar = new javax.swing.JComboBox<>();
+        jBeliminarCuartel = new javax.swing.JButton();
+        jLeliminarCuartel = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("GESTIÓN DE CUARTELES");
+        jLgestionCuarteles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLgestionCuarteles.setText("GESTIÓN DE CUARTELES");
 
-        jLabel2.setText("Seleccione el cuartel que desea eliminar:");
+        jLseleccioneCuartelAEliminar.setText("Seleccione el cuartel que desea eliminar:");
 
-        jLabel3.setText("Motivos de la eliminación:");
+        jLmotivoEliminacion.setText("Motivos de la eliminación:");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("Eliminar Cuartel");
+        jBeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBeliminarCuartel.setText("Eliminar Cuartel");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Eliminar Cuartel/es:");
+        jLeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLeliminarCuartel.setText("Eliminar Cuartel:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,47 +57,47 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(jLeliminarCuartel)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(jLmotivoEliminacion)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2))
+                                .addComponent(jTFmotivosEliminacion))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
+                                .addComponent(jLseleccioneCuartelAEliminar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(41, 41, 41))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(jButton2)))
+                        .addComponent(jBeliminarCuartel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLgestionCuarteles)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLgestionCuarteles)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel11)
+                .addComponent(jLeliminarCuartel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLseleccioneCuartelAEliminar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLmotivoEliminacion)
+                    .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -107,12 +107,12 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jBeliminarCuartel;
+    private javax.swing.JComboBox<String> jCBSeleccioneCartelAEliminar;
+    private javax.swing.JLabel jLeliminarCuartel;
+    private javax.swing.JLabel jLgestionCuarteles;
+    private javax.swing.JLabel jLmotivoEliminacion;
+    private javax.swing.JLabel jLseleccioneCuartelAEliminar;
+    private javax.swing.JTextField jTFmotivosEliminacion;
     // End of variables declaration//GEN-END:variables
 }
