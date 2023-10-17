@@ -5,7 +5,9 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import javax.swing.table.DefaultTableModel;
 import sun.awt.DefaultMouseInfoPeer;
@@ -28,7 +30,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
     public brigadaConsulta() {
         initComponents();
         modeloTabla();
-        iniciarCombo();
+        
     }
 
     /**
@@ -48,8 +50,11 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         tablaBrigadas = new javax.swing.JTable();
         asignadasB = new javax.swing.JRadioButton();
         libresB = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        ComboCuartel = new javax.swing.JComboBox<>();
+        jComboBrigadas = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jRadioButton2.setText("jRadioButton2");
 
@@ -73,55 +78,91 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
 
         asignadasB.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         asignadasB.setText("BRIGADAS ASIGNADAS");
+        asignadasB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignadasBActionPerformed(evt);
+            }
+        });
 
         libresB.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         libresB.setText("BRIGADAS LIBRES");
+        libresB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                libresBActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel2.setText("BRIGADAS DEL CUARTEL: ");
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2.setText("Bomberos de la Brigada: ");
+
+        jComboBrigadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Brigada" }));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 210, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(210, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(asignadasB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(libresB)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(asignadasB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(libresB)
-                        .addGap(100, 100, 100))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignadasB)
                     .addComponent(libresB))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,26 +173,66 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void asignadasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignadasBActionPerformed
+        // TODO add your handling code here:
+        if(asignadasB.isSelected()){
+         
+         borrarTabla();
+         
+         cargarBrigadaAsignada();
+     
+     }else if (libresB.isSelected()){ 
+         
+         borrarTabla();
+         
+         cargarBrigadaLibres();
+         
+     }
+        
+    }//GEN-LAST:event_asignadasBActionPerformed
+
+    private void libresBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libresBActionPerformed
+        // TODO add your handling code here:
+        if(asignadasB.isSelected()){
+         
+         borrarTabla();
+         
+         cargarBrigadaAsignada();
+     
+     }else if (libresB.isSelected()){ 
+         
+         borrarTabla();
+         
+         cargarBrigadaLibres();
+         
+     }
+    }//GEN-LAST:event_libresBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Cuartel> ComboCuartel;
     private javax.swing.JRadioButton asignadasB;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jComboBrigadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton libresB;
     private javax.swing.JTable tablaBrigadas;
     // End of variables declaration//GEN-END:variables
-public void modeloTabla(){
+    public void modeloTabla(){
     modelo.addColumn("Codigo Brigada");
     modelo.addColumn("Nombre de Brigada");
     modelo.addColumn("Especialidad");
@@ -159,11 +240,32 @@ public void modeloTabla(){
     tablaBrigadas.setModel(modelo);
 }
 
-public void iniciarCombo(){
-    CuartelData cuar = new CuartelData();
-    for (Cuartel cuartel : cuar.listaDeCuarteles()) {
-        ComboCuartel.addItem(cuartel);
+    public void borrarTabla(){
+   int x = tablaBrigadas.getRowCount()-1;
+    for (int i = 0; i >= 0; i--) {
+        modelo.removeRow(i);
     }
-}
+    }
+
+    public void cargarBrigadaAsignada(){
+        BrigadaData bri = new BrigadaData();
+        for (Brigada brigada : bri.brigadaAsignada()) {
+            modelo.addColumn(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
+        }
+    }
+    
+    public void cargarBrigadaLibres(){
+        BrigadaData bri = new BrigadaData();
+        for (Brigada brigada : bri.brigadaLibre()) {
+            modelo.addColumn(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
+        }
+    }
+    
+    public void cargarCombo(){
+        BrigadaData bri = new BrigadaData();
+//        for (Object object : bri.) {
+//            
+//        }
+    }
 
 }
