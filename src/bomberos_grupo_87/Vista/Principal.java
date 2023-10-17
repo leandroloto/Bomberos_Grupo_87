@@ -44,7 +44,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        jmNuevoCuartel = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -96,40 +96,58 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("RECURSOS HUMANOS");
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bombero (1).png"))); // NOI18N
         jMenu6.setText("BOMBEROS");
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
         jMenuItem11.setText("NUEVO");
         jMenu6.add(jMenuItem11);
 
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
         jMenuItem18.setText("CONSULTA");
         jMenu6.add(jMenuItem18);
 
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
         jMenuItem19.setText("GESTION");
         jMenu6.add(jMenuItem19);
 
         jMenu1.add(jMenu6);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brigada (1).png"))); // NOI18N
         jMenu7.setText("BRIGADAS");
 
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
         jMenuItem12.setText("NUEVO");
         jMenu7.add(jMenuItem12);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
         jMenuItem13.setText("CONSULTA");
         jMenu7.add(jMenuItem13);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
         jMenuItem14.setText("GESTION");
         jMenu7.add(jMenuItem14);
 
         jMenu1.add(jMenu7);
 
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuartel (1).png"))); // NOI18N
         jMenu8.setText("CUARTELES");
+        jMenu8.setToolTipText("");
 
-        jMenuItem15.setText("NUEVO");
-        jMenu8.add(jMenuItem15);
+        jmNuevoCuartel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+        jmNuevoCuartel.setText("NUEVO");
+        jmNuevoCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmNuevoCuartelActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jmNuevoCuartel);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
         jMenuItem16.setText("CONSULTA");
         jMenu8.add(jMenuItem16);
 
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
         jMenuItem17.setText("GESTION");
         jMenu8.add(jMenuItem17);
 
@@ -139,11 +157,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu2.setText("ADMIN SINIESTROS");
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/siniestro.png"))); // NOI18N
         jMenu4.setText("SINIESTROS");
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
         jMenuItem7.setText("NUEVO");
         jMenu4.add(jMenuItem7);
 
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
         jMenuItem9.setText("CONSULTAS");
         jMenu4.add(jMenuItem9);
 
@@ -173,6 +194,13 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmNuevoCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNuevoCuartelActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        //FormularioCuartel cuartel = new FormularioCuartel();
+    }//GEN-LAST:event_jmNuevoCuartelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,7 +252,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
@@ -234,6 +261,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jmNuevoCuartel;
     private javax.swing.JMenu menuSalir;
     // End of variables declaration//GEN-END:variables
 }
