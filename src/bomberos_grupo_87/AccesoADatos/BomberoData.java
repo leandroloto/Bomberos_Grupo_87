@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -65,7 +67,7 @@ public class BomberoData {
 
     public void modificarBombero(Bombero bombero) {
 
-        String sql = "UPDATE bombero SET dni=?, nombre_ape = ?, fecha_nac = ?, grupo_sang = ?, celular = ?"
+        String sql = "UPDATE bombero SET dni=?, nombre_ape = ?, fecha_nac = ?, grupo_sang = ?, celular = ?, codBrigada =?"
                 + "WHERE codBombero = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -74,7 +76,8 @@ public class BomberoData {
             ps.setDate(3,Date.valueOf(bombero.getFecha_nac()));
             ps.setString(4,bombero.getGrupo_sang());
             ps.setString(5,bombero.getCelular());
-            ps.setInt(6, bombero.getCodBombero());
+            ps.setInt(6, bombero.getBrigada().getCodBrigada());
+            ps.setInt(7, bombero.getCodBombero());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null,"se modifico bombero");
@@ -113,5 +116,32 @@ public class BomberoData {
             JOptionPane.showMessageDialog(null,"Error al conectarse con la base de datos"+ ex.getMessage());
         }
      return bombero;
+    }
+    public List<Bombero> listarBombero(){
+        String sql = "SELECT * FROM bombero WHERE estado = 1";
+        ArrayList<Bombero> bomberos = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Bombero bo = new Bombero();
+                bo.setCodBombero(rs.getInt("codBombero"));
+                bo.setNombre_ape(rs.getString("nombre_ape"));
+                bo.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+                bo.setGrupo_sang(rs.getString("grupo_sang"));
+                bo.setCelular(rs.getString("celular"));
+                Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
+                bo.setBrigada(brig);
+                bo.setEstado(rs.getBoolean("estado"));
+                bomberos.add(bo);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al conectarse con la base de datos"+ ex.getMessage());
+        }
+        
+      return bomberos;  
     }
 }
