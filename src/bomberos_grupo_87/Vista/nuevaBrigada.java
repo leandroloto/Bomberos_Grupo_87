@@ -257,12 +257,9 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
     }
     
     public void iniciarComboCuartel(){
-        
         for (Cuartel cuart : CD.listaDeCuarteles()) {
             ComboCuartel.addItem(cuart);
         }
-        
-        
     }
 
 }

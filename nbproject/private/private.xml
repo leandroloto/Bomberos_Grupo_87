@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Discar/Documents/NetBeansProjects/Bomberos_Grupo_87/src/bomberos_grupo_87/Bomberos_Grupo_87.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/AccesoADatos/BrigadaData.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/Vista/gestionBrigada.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/Bomberos_Grupo_87.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/Vista/brigadaConsulta.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/Vista/nuevaBrigada.java</file>
+            <file>file:/C:/Users/LEANS/Documents/GitHub/Bomberos_Grupo_87/src/bomberos_grupo_87/Entidades/Brigada.java</file>
         </group>
     </open-files>
 </project-private>

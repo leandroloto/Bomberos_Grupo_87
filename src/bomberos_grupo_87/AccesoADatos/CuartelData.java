@@ -130,7 +130,7 @@ public class CuartelData {
     public List<Cuartel> listaDeCuarteles() {
         List<Cuartel> listaCuartel = new ArrayList<>();
 
-        String sql = "SELECT * FROM cuartel WHERE estado=true;";
+        String sql = "SELECT * FROM cuartel WHERE estado=true";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
