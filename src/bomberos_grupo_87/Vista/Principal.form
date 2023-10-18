@@ -32,29 +32,38 @@
                 <Property name="text" type="java.lang.String" value="BOMBEROS"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+                <MenuItem class="javax.swing.JMenuItem" name="jmBomberoNuevo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/nuevo (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="NUEVO"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmBomberoNuevoActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem18">
+                <MenuItem class="javax.swing.JMenuItem" name="jmBomberoConsulta">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/consulta (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="CONSULTA"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmBomberoConsultaActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem19">
+                <MenuItem class="javax.swing.JMenuItem" name="jmBomberoGestion">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/gestion (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="GESTION"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmBomberoGestionActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

@@ -36,9 +36,9 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
+        jmBomberoNuevo = new javax.swing.JMenuItem();
+        jmBomberoConsulta = new javax.swing.JMenuItem();
+        jmBomberoGestion = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         nuevaBrigada = new javax.swing.JMenuItem();
         consultaBrigada = new javax.swing.JMenuItem();
@@ -99,17 +99,32 @@ public class Principal extends javax.swing.JFrame {
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bombero (1).png"))); // NOI18N
         jMenu6.setText("BOMBEROS");
 
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        jMenuItem11.setText("NUEVO");
-        jMenu6.add(jMenuItem11);
+        jmBomberoNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+        jmBomberoNuevo.setText("NUEVO");
+        jmBomberoNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBomberoNuevoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmBomberoNuevo);
 
-        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jMenuItem18.setText("CONSULTA");
-        jMenu6.add(jMenuItem18);
+        jmBomberoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+        jmBomberoConsulta.setText("CONSULTA");
+        jmBomberoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBomberoConsultaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmBomberoConsulta);
 
-        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jMenuItem19.setText("GESTION");
-        jMenu6.add(jMenuItem19);
+        jmBomberoGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+        jmBomberoGestion.setText("GESTION");
+        jmBomberoGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBomberoGestionActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmBomberoGestion);
 
         jMenu1.add(jMenu6);
 
@@ -248,6 +263,36 @@ public class Principal extends javax.swing.JFrame {
         gestion.moveToFront();
     }//GEN-LAST:event_gestionBrigadaActionPerformed
 
+    private void jmBomberoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBomberoNuevoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        NuevoBombero nb = new NuevoBombero();
+        nb.setVisible(true);
+        escritorio.add(nb);
+        nb.moveToFront();
+    }//GEN-LAST:event_jmBomberoNuevoActionPerformed
+
+    private void jmBomberoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBomberoConsultaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ConsultaBombero cb = new ConsultaBombero();
+        cb.setVisible(true);
+        escritorio.add(cb);
+        cb.moveToFront();
+    }//GEN-LAST:event_jmBomberoConsultaActionPerformed
+
+    private void jmBomberoGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBomberoGestionActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionBombero gb = new GestionBombero();
+        gb.setVisible(true);
+        escritorio.add(gb);
+        gb.moveToFront();
+    }//GEN-LAST:event_jmBomberoGestionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,16 +341,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jmBomberoConsulta;
+    private javax.swing.JMenuItem jmBomberoGestion;
+    private javax.swing.JMenuItem jmBomberoNuevo;
     private javax.swing.JMenuItem jmNuevoCuartel;
     private javax.swing.JMenu menuSalir;
     private javax.swing.JMenuItem nuevaBrigada;
