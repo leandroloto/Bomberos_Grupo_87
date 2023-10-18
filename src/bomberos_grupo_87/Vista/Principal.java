@@ -40,9 +40,9 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        nuevaBrigada = new javax.swing.JMenuItem();
+        consultaBrigada = new javax.swing.JMenuItem();
+        gestionBrigada = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jmNuevoCuartel = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
@@ -116,17 +116,32 @@ public class Principal extends javax.swing.JFrame {
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brigada (1).png"))); // NOI18N
         jMenu7.setText("BRIGADAS");
 
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        jMenuItem12.setText("NUEVO");
-        jMenu7.add(jMenuItem12);
+        nuevaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+        nuevaBrigada.setText("NUEVO");
+        nuevaBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaBrigadaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(nuevaBrigada);
 
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jMenuItem13.setText("CONSULTA");
-        jMenu7.add(jMenuItem13);
+        consultaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+        consultaBrigada.setText("CONSULTA");
+        consultaBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaBrigadaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(consultaBrigada);
 
-        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jMenuItem14.setText("GESTION");
-        jMenu7.add(jMenuItem14);
+        gestionBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+        gestionBrigada.setText("GESTION");
+        gestionBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionBrigadaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(gestionBrigada);
 
         jMenu1.add(jMenu7);
 
@@ -202,6 +217,37 @@ public class Principal extends javax.swing.JFrame {
         //FormularioCuartel cuartel = new FormularioCuartel();
     }//GEN-LAST:event_jmNuevoCuartelActionPerformed
 
+    private void nuevaBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaBrigadaActionPerformed
+        // TODO add your handling code here:
+       escritorio.removeAll();
+       escritorio.repaint();
+       nuevaBrigada nueva = new nuevaBrigada();
+       nueva.setVisible(true);
+       escritorio.add(nueva);
+       nueva.moveToFront();
+    }//GEN-LAST:event_nuevaBrigadaActionPerformed
+
+    private void consultaBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBrigadaActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        brigadaConsulta consulta = new brigadaConsulta();
+        consulta.setVisible(true);
+        escritorio.add(consulta);
+        consulta.moveToFront();
+    }//GEN-LAST:event_consultaBrigadaActionPerformed
+
+    private void gestionBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionBrigadaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        gestionBrigada gestion = new gestionBrigada();
+        gestion.setVisible(true);
+        escritorio.add(gestion);
+        gestion.moveToFront();
+    }//GEN-LAST:event_gestionBrigadaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,7 +284,9 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem consultaBrigada;
     private javax.swing.JPanel escritorio;
+    private javax.swing.JMenuItem gestionBrigada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -249,9 +297,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
@@ -263,5 +308,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jmNuevoCuartel;
     private javax.swing.JMenu menuSalir;
+    private javax.swing.JMenuItem nuevaBrigada;
     // End of variables declaration//GEN-END:variables
 }

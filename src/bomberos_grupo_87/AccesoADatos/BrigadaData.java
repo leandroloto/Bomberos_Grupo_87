@@ -28,6 +28,7 @@ public class BrigadaData {
 
     private Connection con = null;
     CuartelData CD = new CuartelData();
+    BrigadaData BD = new BrigadaData();
 
     public BrigadaData() {
         con = Conexion.getConexion();
@@ -187,11 +188,13 @@ public class BrigadaData {
                 bomb.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
                 bomb.setGrupo_sang(rs.getString("grupo_sang"));
                 bomb.setCelular(rs.getString("celular"));
+                bomb.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
+                bomb.setEstado(rs.getBoolean("estado"));
                 listaBombero.add(bomb);
             }
-
+            ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos" + ex.getMessage());
         }
         return listaBombero;
     }
