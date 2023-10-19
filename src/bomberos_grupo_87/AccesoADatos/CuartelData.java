@@ -31,16 +31,17 @@ public class CuartelData {
 
     //Crear un nuevo Cuartel
     public void crearCuartel(Cuartel cuartel) {
-        String sql = "INSERT INTO cuartel(nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, estado) VALUES(?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO cuartel(codCuartel, nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, estado) VALUES(?, ?, ?, ?, ?, ?, ?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, cuartel.getNombre_cuartel());
-            ps.setString(2, cuartel.getDireccion());
-            ps.setInt(3, cuartel.getCoord_X());
-            ps.setInt(4, cuartel.getCoord_Y());
-            ps.setString(5, cuartel.getTelefono());
-            ps.setString(6, cuartel.getCorreo());
-            ps.setBoolean(7, true);
+            ps.setInt(1, cuartel.getCodCuartel());
+            ps.setString(2, cuartel.getNombre_cuartel());
+            ps.setString(3, cuartel.getDireccion());
+            ps.setInt(4, cuartel.getCoord_X());
+            ps.setInt(5, cuartel.getCoord_Y());
+            ps.setString(6, cuartel.getTelefono());
+            ps.setString(7, cuartel.getCorreo());
+            ps.setBoolean(8, true);
             ps.executeQuery();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {

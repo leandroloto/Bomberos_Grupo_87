@@ -43,6 +43,10 @@ public class Cuartel {
         this.correo = correo;
         this.estado = estado;
     }
+
+    public Cuartel(String nombre_cuartel, int codCuartel, String direccion, int coord_x, int coord_y, String telefono, String correo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 
