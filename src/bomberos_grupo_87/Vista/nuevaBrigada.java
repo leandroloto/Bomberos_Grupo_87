@@ -5,9 +5,12 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Especialidad;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +18,16 @@ import bomberos_grupo_87.Entidades.Especialidad;
  */
 public class nuevaBrigada extends javax.swing.JInternalFrame {
     CuartelData CD = new CuartelData();
+    BrigadaData BrigData = new BrigadaData();
 
     /**
      * Creates new form nuevaBrigada
      */
     public nuevaBrigada() {
         initComponents();
-        iniciarComboEsp();
         iniciarComboCuartel();
+        iniciarComboEsp();
+        
     }
 
     /**
@@ -119,6 +124,8 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
 
         ComboEsp.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
 
+        ComboCuartel.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,6 +220,19 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
 
     private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
         // TODO add your handling code here:
+        
+        int codB = Integer.valueOf(TextCodigo.getText());
+        Brigada brig = BrigData.buscarBrigada(codB);
+        if(brig==null){
+            borrarCampos();
+        }else{
+            TextNombre.setText(brig.getNombre_br());
+            ComboEsp.setSelectedItem(brig.getEspecialidad());
+            Cuartel cuar = brig.getCuartel();
+            JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
+            ComboCuartel.setSelectedItem(cuar);
+            
+        }
     }//GEN-LAST:event_ButtonBuscarActionPerformed
 
     private void ButtonModifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonModifiActionPerformed
@@ -221,10 +241,17 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
 
     private void ButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNuevoActionPerformed
         // TODO add your handling code here:
-        
+        Brigada brig = new Brigada();
         String nombreBrig=TextNombre.getText();
         Especialidad esp =(Especialidad) ComboEsp.getSelectedItem();
-        //Cuartel 
+        Cuartel cuart =(Cuartel) ComboCuartel.getSelectedItem();
+        brig.setNombre_br(nombreBrig);
+        brig.setEspecialidad(esp);
+        brig.setCuartel(cuart);
+        brig.setEstado(true);
+        brig.setLibre(true);
+        BrigData.crearBrigada(brig);
+        borrarCampos();
         
     }//GEN-LAST:event_ButtonNuevoActionPerformed
 
@@ -260,6 +287,12 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         for (Cuartel cuart : CD.listaDeCuarteles()) {
             ComboCuartel.addItem(cuart);
         }
+    }
+    
+    public void borrarCampos(){
+        TextCodigo.setText("");
+        TextNombre.setText("");
+        
     }
 
 }
