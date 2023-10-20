@@ -7,6 +7,7 @@ package bomberos_grupo_87.Vista;
 
 import bomberos_grupo_87.AccesoADatos.CuartelData;
 import bomberos_grupo_87.Entidades.Cuartel;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -205,22 +206,23 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFCoordXActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        // TODO add your handling code here:
-        /*
-        private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        
+        // TODO add your handling code here:        
         try{
-        AlumnoData aluData = new AlumnoData();
-        Alumno nuevo = aluData.buscarAlumnoPorDni(Integer.parseInt(jTDni.getText()));
-        jTApellido.setText(nuevo.getApellido());
-        jTNombre.setText(nuevo.getNombre());
-        jCheckBoxEstado.setSelected(nuevo.isEstado());
-        jDateFechaN.setDate(Date.valueOf(nuevo.getFechaNacimiento()));
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo los NUMEROS correctos.");
+        CuartelData cuartData = new CuartelData();
+        Cuartel nuevo = cuartData.buscarCuartel(Integer.parseInt(JTFCodCuartel.getText()));
+
+        jTFnombreNuevoCuartel.setText(nuevo.getNombre_cuartel());
+        jTFDireccion.setText(nuevo.getDireccion());
+        //jTFCoordX.
+        //Coord_X(rs.getInt("coord_X"));
+        //jTFCoordY.setCoord_Y(rs.getInt("coord_Y"));
+        jTFTel.setText(nuevo.getTelefono());
+        jTFCorreo.setText(nuevo.getCorreo());
+            }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo la INFORMACIón correcta");
             limpiarCampos();
         }
-        */
+ 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
