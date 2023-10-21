@@ -114,6 +114,11 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         });
 
         ButtonSalir.setText("SALIR");
+        ButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalirActionPerformed(evt);
+            }
+        });
 
         ButtonNuevo.setText("NUEVO");
         ButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -229,14 +234,29 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
             TextNombre.setText(brig.getNombre_br());
             ComboEsp.setSelectedItem(brig.getEspecialidad());
             Cuartel cuar = brig.getCuartel();
-            JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
-            ComboCuartel.setSelectedItem(cuar);
+            //JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
+            ComboCuartel.setSelectedItem(cuar.getNombre_cuartel());
             
         }
     }//GEN-LAST:event_ButtonBuscarActionPerformed
 
     private void ButtonModifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonModifiActionPerformed
         // TODO add your handling code here:
+        int codB = Integer.valueOf(TextCodigo.getText());
+        Brigada brig = BrigData.buscarBrigada(codB);
+        brig.setNombre_br(TextNombre.getText());
+        brig.setEspecialidad((Especialidad)ComboEsp.getSelectedItem());
+        String nameCuar =(String) ComboCuartel.getSelectedItem().toString();
+        Cuartel cuar= new Cuartel();
+        for (Cuartel cuartele : CD.listaDeCuarteles()) {
+            if(nameCuar.equals(cuartele.getNombre_cuartel())){
+                cuar=cuartele;
+            }
+        }        
+        brig.setCuartel(cuar);
+        BrigData.modificarBrigada(brig);
+        borrarCampos();
+            
     }//GEN-LAST:event_ButtonModifiActionPerformed
 
     private void ButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNuevoActionPerformed
@@ -244,16 +264,32 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         Brigada brig = new Brigada();
         String nombreBrig=TextNombre.getText();
         Especialidad esp =(Especialidad) ComboEsp.getSelectedItem();
-        Cuartel cuart =(Cuartel) ComboCuartel.getSelectedItem();
+        String nameCuar =(String) ComboCuartel.getSelectedItem().toString();
+        Cuartel cuar= new Cuartel();
+        for (Cuartel cuartele : CD.listaDeCuarteles()) {
+            if(nameCuar.equals(cuartele.getNombre_cuartel())){
+                cuar=cuartele;
+            }
+        }        
+        brig.setCuartel(cuar);
         brig.setNombre_br(nombreBrig);
         brig.setEspecialidad(esp);
-        brig.setCuartel(cuart);
         brig.setEstado(true);
         brig.setLibre(true);
-        BrigData.crearBrigada(brig);
+        try{
+            BrigData.crearBrigada(brig);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Porfavor seleccione un Cuartel Existente.");
+        }
+        
         borrarCampos();
         
     }//GEN-LAST:event_ButtonNuevoActionPerformed
+
+    private void ButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_ButtonSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -261,7 +297,7 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
     private javax.swing.JButton ButtonModifi;
     private javax.swing.JButton ButtonNuevo;
     private javax.swing.JButton ButtonSalir;
-    private javax.swing.JComboBox<Cuartel> ComboCuartel;
+    private javax.swing.JComboBox<String> ComboCuartel;
     private javax.swing.JComboBox<Especialidad> ComboEsp;
     private javax.swing.JTextField TextCodigo;
     private javax.swing.JTextField TextNombre;
@@ -285,7 +321,7 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
     
     public void iniciarComboCuartel(){
         for (Cuartel cuart : CD.listaDeCuarteles()) {
-            ComboCuartel.addItem(cuart);
+            ComboCuartel.addItem(cuart.getNombre_cuartel());
         }
     }
     
