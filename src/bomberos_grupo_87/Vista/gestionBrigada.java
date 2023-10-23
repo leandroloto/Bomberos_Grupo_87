@@ -128,25 +128,21 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(8, 8, 8)))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ComboCuartel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 4, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(195, 195, 195)
-                                .addComponent(ButtonAsignar)
-                                .addGap(46, 46, 46)
-                                .addComponent(ButtonEliminar)
-                                .addGap(45, 45, 45)
-                                .addComponent(ButtonSalir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(172, 172, 172)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, 0)))
+                        .addGap(195, 195, 195)
+                        .addComponent(ButtonAsignar)
+                        .addGap(46, 46, 46)
+                        .addComponent(ButtonEliminar)
+                        .addGap(45, 45, 45)
+                        .addComponent(ButtonSalir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,9 +163,8 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonAsignar)
-                        .addComponent(ButtonEliminar))
+                    .addComponent(ButtonAsignar)
+                    .addComponent(ButtonEliminar)
                     .addComponent(ButtonSalir))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -250,12 +245,19 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre de Brigada");
         modelo.addColumn("Especialidad");
         modelo.addColumn("Cuartel");
+        modelo.addColumn("Libre");
         TableBrigada.setModel(modelo);
     }
     
     public void cargarTabla(){
+        String libre;
         for (Brigada brig : BD.listarBrigadas()) {
-            modelo.addRow(new Object[]{brig.getCodBrigada(),brig.getNombre_br(),brig.getEspecialidad(),brig.getCuartel().getNombre_cuartel()});
+            if(brig.isLibre()==true){
+                libre="SI";
+            }else{
+                libre="NO";
+            }
+            modelo.addRow(new Object[]{brig.getCodBrigada(),brig.getNombre_br(),brig.getEspecialidad(),brig.getCuartel().getNombre_cuartel(),libre});
         }
     }
     
