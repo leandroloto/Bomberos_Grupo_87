@@ -6,9 +6,7 @@
 package bomberos_grupo_87.Vista;
 
 import bomberos_grupo_87.AccesoADatos.BomberoData;
-import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.Entidades.Bombero;
-import bomberos_grupo_87.Entidades.Brigada;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;

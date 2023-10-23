@@ -5,6 +5,7 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.Entidades.Brigada;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -21,6 +22,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
      */
     public GestionBombero() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -271,6 +273,8 @@ public void limpiarCampos(){
     
 }
 public void cargarCombo(){
-    
+    BrigadaData bd = new BrigadaData();
+    for(Brigada brigada:bd.listarBrigadas())
+        jcbBrigada.addItem(brigada);
 }
 }
