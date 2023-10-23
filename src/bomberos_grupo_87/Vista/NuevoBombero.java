@@ -159,18 +159,30 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         try{
+            if(jtNombre_ap.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ingrese el Nombre y Apellido");
+            }else if(jtDni.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ingrese el numero de DNI");
+            }else if(jtCelular.getText().isEmpty() || jtGrup_sang.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Todos los Campos deben estar Completos");
+            }else if (jcbActivo.isSelected() == false){
+                JOptionPane.showMessageDialog(null, "El Bombero debe estar Activo");
+            }else{
             String nombre = jtNombre_ap.getText();
             int dni = Integer.valueOf(jtDni.getText());
             String celular= jtCelular.getText();
             String GpS = jtGrup_sang.getText();
             LocalDate fn = jdFecha_nac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             boolean estado = jcbActivo.isSelected();
-            BrigadaData bd = new BrigadaData();
-            Brigada codBrigada=bd.buscarBrigada(0);
             
-            Bombero bombero = new Bombero(dni,nombre,fn,GpS,celular,codBrigada,estado);
+            
+            
+            Bombero bombero = new Bombero(dni,nombre,fn,GpS,celular,estado);
             BomberoData bomD = new BomberoData();
             bomD.nuevoBombero(bombero);
+            limpiarCampos();
+            }
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "ERROR. Verifique que los datos sean correctos"
                     + " en TODOS los campos.");

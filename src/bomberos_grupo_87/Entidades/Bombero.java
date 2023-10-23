@@ -27,6 +27,17 @@ public class Bombero {
         this.estado = estado;
     }
 
+    public Bombero(int dni, String nombre_ape, LocalDate fecha_nac, String grupo_sang, String celular, boolean estado) {
+        this.dni = dni;
+        this.nombre_ape = nombre_ape;
+        this.fecha_nac = fecha_nac;
+        this.grupo_sang = grupo_sang;
+        this.celular = celular;
+        this.estado = estado;
+    }
+    
+    
+
     public Bombero(int codBombero, int dni, String nombre_ape, LocalDate fecha_nac, String grupo_sang, String celular, Brigada brigada, boolean estado) {
         this.codBombero = codBombero;
         this.dni = dni;
