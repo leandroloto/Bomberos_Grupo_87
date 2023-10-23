@@ -6,11 +6,9 @@
 package bomberos_grupo_87.Vista;
 
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
-import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
-import bomberos_grupo_87.Entidades.Cuartel;
 import javax.swing.table.DefaultTableModel;
-import sun.awt.DefaultMouseInfoPeer;
 
 /**
  *
@@ -18,8 +16,15 @@ import sun.awt.DefaultMouseInfoPeer;
  */
 public class brigadaConsulta extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel(){
-        
-        public boolean isCelleditable(int f, int c){
+        @Override
+        public boolean isCellEditable(int f, int c){
+            return false;
+        }
+    }; 
+    
+    private DefaultTableModel modelo2 = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int f, int c){
             return false;
         }
     }; 
@@ -30,6 +35,8 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
     public brigadaConsulta() {
         initComponents();
         modeloTabla();
+        modeloTabla2();
+        cargarCombo();
         
     }
 
@@ -42,7 +49,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttong = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,7 +60,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBrigadas = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaBomberos = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
@@ -92,9 +99,13 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setText("Bomberos de la Brigada: ");
 
-        jComboBrigadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Brigada" }));
+        jComboBrigadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBrigadasActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBomberos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -105,16 +116,16 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaBomberos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 210, Short.MAX_VALUE)
+                .addGap(0, 226, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,10 +139,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -199,6 +207,9 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
 
     private void libresBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libresBActionPerformed
         // TODO add your handling code here:
+        buttong.add(libresB);
+        buttong.add(asignadasB);
+        
         if(asignadasB.isSelected()){
          
          borrarTabla();
@@ -214,19 +225,32 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
      }
     }//GEN-LAST:event_libresBActionPerformed
 
+    private void jComboBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBrigadasActionPerformed
+        // TODO add your handling code here:
+        borrarTabla2();
+        Bombero bombero = new Bombero();
+        BrigadaData BD = new BrigadaData();
+        Brigada brig = new Brigada();
+        brig =(Brigada) jComboBrigadas.getSelectedItem();
+        int codBom= brig.getCodBrigada();
+        for (Bombero bomb : BD.listarBomberosPorBrigada(codBom)) {
+            modelo2.addRow(new Object[]{bomb.getCodBombero(),bomb.getNombre_ape(),bomb.getDni(),bomb.getFecha_nac(),bomb.getGrupo_sang()});
+        }
+    }//GEN-LAST:event_jComboBrigadasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton asignadasB;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBrigadas;
+    private javax.swing.ButtonGroup buttong;
+    private javax.swing.JComboBox<Brigada> jComboBrigadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton libresB;
+    private javax.swing.JTable tablaBomberos;
     private javax.swing.JTable tablaBrigadas;
     // End of variables declaration//GEN-END:variables
     public void modeloTabla(){
@@ -236,33 +260,57 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
     modelo.addColumn("Cuartel");
     tablaBrigadas.setModel(modelo);
 }
+    
+    public void modeloTabla2(){
+        modelo2.addColumn("Codigo Bombero");
+        modelo2.addColumn("Nombre y Apellido");
+        modelo2.addColumn("DNI");
+        modelo2.addColumn("Fecha de Nacimiento");
+        modelo2.addColumn("Grupo Sanguíneo");
+        tablaBomberos.setModel(modelo2);    
+    }
 
     public void borrarTabla(){
    int x = tablaBrigadas.getRowCount()-1;
-    for (int i = 0; i >= 0; i--) {
+    for (int i = x; i >= 0; i--) {
         modelo.removeRow(i);
+    }
+    }
+    
+    public void borrarTabla2(){
+   int x = tablaBomberos.getRowCount()-1;
+    for (int i = x; i >= 0; i--) {
+        modelo2.removeRow(i);
     }
     }
 
     public void cargarBrigadaAsignada(){
         BrigadaData bri = new BrigadaData();
         for (Brigada brigada : bri.brigadaAsignada()) {
-            modelo.addColumn(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
+            modelo.addRow(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
         }
     }
     
     public void cargarBrigadaLibres(){
         BrigadaData bri = new BrigadaData();
         for (Brigada brigada : bri.brigadaLibre()) {
-            modelo.addColumn(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
+            modelo.addRow(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad(), brigada.getCuartel().getNombre_cuartel()});
+        }
+    }
+    
+    public void cargarListaBrigadas(int codBri){
+        BrigadaData bri = new BrigadaData();
+        bri.listarBomberosPorBrigada(codBri);
+        for (Bombero bombero : bri.listarBomberosPorBrigada(codBri)) {
+            modelo2.addRow(new Object[]{});
         }
     }
     
     public void cargarCombo(){
         BrigadaData bri = new BrigadaData();
-//        for (Object object : bri.) {
-//            
-//        }
+        for (Brigada briga : bri.listarBrigadas()) {
+            jComboBrigadas.addItem(briga);
+        }
     }
 
 }

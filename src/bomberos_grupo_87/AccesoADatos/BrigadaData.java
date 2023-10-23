@@ -16,8 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -122,6 +120,32 @@ public class BrigadaData {
         }
         return brigada;
     }
+    
+    public List<Brigada> listarBrigadas() {
+        String sql = "SELECT * FROM brigada WHERE estado = 1";
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Brigada br = new Brigada();
+                br.setCodBrigada(rs.getInt("codBrigada"));
+                br.setNombre_br(rs.getString("nombre_br"));
+                br.setLibre(rs.getBoolean("libre"));
+                br.setEstado(rs.getBoolean("estado"));
+                br.setEspecialidad(Especialidad.valueOf(rs.getString("especialidad")));
+                Cuartel cuar = CD.buscarCuartel(rs.getInt("codCuartel"));
+                br.setCuartel(cuar);
+                brigadas.add(br);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos" + ex.getMessage());
+        }
+
+        return brigadas;
+    }
+    
 
     public List<Brigada> brigadaLibre() {
         String sql = "SELECT * FROM brigada WHERE libre = 1";
@@ -150,7 +174,7 @@ public class BrigadaData {
 
     public List<Brigada> brigadaAsignada() {
 
-        String sql = "SELECT * FROM brigada WHERE libre = 0";
+        String sql = "SELECT * FROM brigada WHERE libre = 0 AND estado = 1";
         ArrayList<Brigada> brigadas = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
