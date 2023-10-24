@@ -5,17 +5,22 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
+import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author gabriel925
  */
 public class GestionBombero extends javax.swing.JInternalFrame {
+    BomberoData bd = new BomberoData();
 
     /**
      * Creates new form GestionBombero
@@ -74,6 +79,11 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jLabel2.setText("DNI :");
 
         jbBuscar.setText("BUSCAR");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CODIGO DE BOMBERO :");
@@ -99,6 +109,11 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jcbActivo.setText("ACTIVO");
 
         jbEliminar.setText("ELIMINAR");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("GUARDAR");
 
@@ -136,7 +151,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                             .addComponent(jSeparator1)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtDni))
@@ -237,6 +252,47 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+        int dni = Integer.valueOf(jtDni.getText());
+        
+            Bombero bv = bd.buscarBomberoPorDNI(dni);
+            jtCodBombero.setText(bv.getCodBombero()+"");
+            jtNomAp.setText(bv.getNombre_ape());
+            jdFechNa.setDate(Date.valueOf(bv.getFecha_nac()));
+            jtGrupSang.setText(bv.getGrupo_sang());
+            jtCel.setText(bv.getCelular());
+            jcbActivo.setSelected(bv.isEstado());
+            
+        
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Ingrese un DNI Correcto");
+            limpiarCampos();
+        }
+        
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+        if(jtDni.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese un numro de dni");
+        }else{
+            try{
+                int dni = Integer.valueOf(jtDni.getText());
+                Bombero bv = bd.buscarBomberoPorDNI(dni);
+                if(jtCodBombero.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "busque al bombero a eliminar");
+                }else
+                bd.eliminarBombero(bv.getCodBombero());
+                limpiarCampos();
+            }catch (Exception ex ){
+                JOptionPane.showMessageDialog(null, "DNI incorrecto");
+                jtDni.setText("");
+            }
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -270,6 +326,7 @@ public void limpiarCampos(){
     jtGrupSang.setText("");
     jdFechNa.repaint();
     jcbActivo.setSelected(false);
+    
     
 }
 public void cargarCombo(){

@@ -104,8 +104,8 @@ public class BomberoData {
              bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
              bombero.setGrupo_sang(rs.getString("grupo_sang"));
              bombero.setCelular(rs.getString("celular"));
-             Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
-             bombero.setBrigada(brig);
+            // Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
+            // bombero.setBrigada(brig);
              bombero.setEstado(rs.getBoolean("estado"));
          }else{
              JOptionPane.showMessageDialog(null,"No existen bomeros con el DNI ingresado");
