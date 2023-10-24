@@ -39,7 +39,7 @@ public class SiniestroData {
 
     public void crearSiniestro(Siniestro siniestro) {
 
-        String SQL = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalles, codBrigada, estado, enCurso) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalles,  estado, enCurso) VALUES(?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, siniestro.getEspecialidad().toString());
@@ -47,9 +47,8 @@ public class SiniestroData {
             ps.setInt(3, siniestro.getCoord_X());
             ps.setInt(4, siniestro.getCoord_Y());
             ps.setString(5, siniestro.getDetalles());
-            ps.setInt(6, siniestro.getBrigada().getCodBrigada());
-            ps.setBoolean(7, siniestro.isEstado());
-            ps.setBoolean(8, siniestro.isEnCurso());
+            ps.setBoolean(6, siniestro.isEstado());
+            ps.setBoolean(7, siniestro.isEnCurso());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             while (rs.next()) {

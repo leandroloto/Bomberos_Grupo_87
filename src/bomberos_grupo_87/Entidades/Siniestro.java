@@ -36,13 +36,12 @@ public class Siniestro {
 
     }
 
-    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, Brigada brigada, boolean estado, boolean enCurso) {
+    public Siniestro(Especialidad especialidad, LocalDateTime fecha_siniestro, int coord_X, int coord_Y, String detalles, boolean estado, boolean enCurso) {
         this.especialidad = especialidad;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_X = coord_X;
         this.coord_Y = coord_Y;
         this.detalles = detalles;
-        this.brigada = brigada;
         this.estado = estado;
         this.enCurso = enCurso;
     }
