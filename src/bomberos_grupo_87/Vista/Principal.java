@@ -5,6 +5,8 @@
  */
 package bomberos_grupo_87.Vista;
 
+import java.awt.Color;
+
 /**
  *
  * @author Discar
@@ -45,8 +47,8 @@ public class Principal extends javax.swing.JFrame {
         gestionBrigada = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jmNuevoCuartel = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
+        jConsultaCuarteles = new javax.swing.JMenuItem();
+        jGestionCuarteles = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -173,13 +175,23 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu8.add(jmNuevoCuartel);
 
-        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jMenuItem16.setText("CONSULTA");
-        jMenu8.add(jMenuItem16);
+        jConsultaCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+        jConsultaCuarteles.setText("CONSULTA");
+        jConsultaCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultaCuartelesActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jConsultaCuarteles);
 
-        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jMenuItem17.setText("GESTION");
-        jMenu8.add(jMenuItem17);
+        jGestionCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+        jGestionCuarteles.setText("GESTION");
+        jGestionCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGestionCuartelesActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jGestionCuarteles);
 
         jMenu1.add(jMenu8);
 
@@ -229,7 +241,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        //FormularioCuartel cuartel = new FormularioCuartel();
+        nuevoCuartel NC = new nuevoCuartel();
+        NC.setVisible(true);
+        NC.getContentPane().setBackground(new Color (153, 153, 153));
+        escritorio.add(NC);
+        NC.moveToFront();
     }//GEN-LAST:event_jmNuevoCuartelActionPerformed
 
     private void nuevaBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaBrigadaActionPerformed
@@ -293,6 +309,28 @@ public class Principal extends javax.swing.JFrame {
         gb.moveToFront();
     }//GEN-LAST:event_jmBomberoGestionActionPerformed
 
+    private void jConsultaCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaCuartelesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        consultaCuarteles CCs = new consultaCuarteles();
+        CCs.setVisible(true);
+        CCs.getContentPane().setBackground(new Color (153, 153, 153));
+        escritorio.add(CCs);
+        CCs.moveToFront();
+    }//GEN-LAST:event_jConsultaCuartelesActionPerformed
+
+    private void jGestionCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCuartelesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        gestionCuarteles GC = new gestionCuarteles();
+        GC.setVisible(true);
+        GC.getContentPane().setBackground(new Color (153, 153, 153));
+        escritorio.add(GC);
+        GC.moveToFront();
+    }//GEN-LAST:event_jGestionCuartelesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -332,6 +370,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultaBrigada;
     private javax.swing.JPanel escritorio;
     private javax.swing.JMenuItem gestionBrigada;
+    private javax.swing.JMenuItem jConsultaCuarteles;
+    private javax.swing.JMenuItem jGestionCuarteles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -341,8 +381,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;

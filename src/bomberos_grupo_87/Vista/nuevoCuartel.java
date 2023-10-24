@@ -51,16 +51,21 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         jbBuscar = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jLnuevoCuartel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLnuevoCuartel.setText("NUEVO CUARTEL");
 
+        jLnombreCuartel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLnombreCuartel.setText("Nombre del nuevo Cuartel:");
 
+        jLcodigoCuartel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLcodigoCuartel.setText("Código Cuartel:");
 
+        jLDireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLDireccion.setText("Dirección:");
 
+        jLCoordX.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLCoordX.setText("Coordenadas X:");
 
         jTFCoordX.addActionListener(new java.awt.event.ActionListener() {
@@ -69,13 +74,16 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jLCoordY.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLCoordY.setText("Coordenadas Y:");
 
+        jLTel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLTel.setText("Teléfono:");
 
+        jLCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLCorreo.setText("Correo:");
 
-        jbNuevoCuartel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbNuevoCuartel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jbNuevoCuartel.setText("Crear Nuevo Cuartel");
         jbNuevoCuartel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +91,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +99,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jbModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbModificar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +107,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbSalir.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,10 +115,35 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLCorreo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTFCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(jLCoordY)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -129,37 +162,19 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                         .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLTel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLCorreo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(jLCoordY)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jbNuevoCuartel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbNuevoCuartel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +189,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                     .addComponent(jLcodigoCuartel)
                     .addComponent(JTFCodCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 22, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLDireccion)
                     .addComponent(jTFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,7 +205,9 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                     .addComponent(jLCorreo)
                     .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLTel))
-                .addGap(56, 56, 56)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +239,27 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo la INFORMACIón correcta");
             limpiarCampos();
         }
- 
+ /*
+         if(TextCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor ingrese sólo números para el Código de Cuartel");
+        }else{
+
+        int codB = Integer.valueOf(TextCodigo.getText());
+
+        Brigada brig = BrigData.buscarBrigada(codB);
+        if (brig == null) {
+            borrarCampos();
+        } else {
+            TextNombre.setText(brig.getNombre_br());
+            ComboEsp.setSelectedItem(brig.getEspecialidad());
+            Cuartel cuar = brig.getCuartel();
+            //JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
+            ComboCuartel.setSelectedItem(cuar.getNombre_cuartel());
+
+        }
+        }
+    } 
+        */
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -276,6 +313,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLCorreo;
     private javax.swing.JLabel jLDireccion;
     private javax.swing.JLabel jLTel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLcodigoCuartel;
     private javax.swing.JLabel jLnombreCuartel;
     private javax.swing.JLabel jLnuevoCuartel;
