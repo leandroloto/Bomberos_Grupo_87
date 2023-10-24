@@ -276,6 +276,13 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             borrarCampos();
         } else {
             jTFnombreNuevoCuartel.setText(cuartel.getNombre_cuartel());
+            jTFDireccion.setText(cuartel.getDireccion());
+            jTFCoordX.setText(cuartel.getCoord_X()+"");
+            jTFCoordY.setText(cuartel.getCoord_Y()+"");
+            jTFTel.setText(cuartel.getTelefono());
+            jTFCorreo.setText(cuartel.getCorreo());
+            jCheckBoxEstado.setSelected(cuartel.isEstado());
+            
         }
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
@@ -287,15 +294,19 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         }else{
         int codCuartel = Integer.valueOf(JTFCodCuartel.getText());
         Cuartel cuartel = CD.buscarCuartel(codCuartel);
-        cuartel.setCodCuartel(codCuartel);
-      /*  cuartel.setNombre_cuartel("");
-        cuartel.setDireccion("");
-        cuartel.setCoord_X((""));
-        cuartel.setCoord_Y((""));
-        cuartel.setTelefono("");
-        cuartel.setCorreo("");
-        cuartel.setEstado((""));
-        */
+        cuartel.setNombre_cuartel(jTFnombreNuevoCuartel.getText());
+        cuartel.setDireccion(jTFDireccion.getText());
+        cuartel.setCoord_X((Integer.valueOf(jTFCoordX.getText())));
+        cuartel.setCoord_Y((Integer.valueOf(jTFCoordY.getText())));
+        cuartel.setTelefono(jTFTel.getText());
+        cuartel.setCorreo(jTFCorreo.getText());
+        cuartel.setEstado((jCheckBoxEstado.isSelected()));
+        
+       
+        CuartelData cuartlData = new CuartelData();
+        cuartlData.modificarCuartel(cuartel);
+        limpiarCampos();
+        
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
@@ -304,14 +315,12 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         try{
             if(jTFnombreNuevoCuartel.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ingrese un Nombre para el Nuevo Cuartel");
-            }else if(JTFCodCuartel.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Ingrese un número para el Código de Cuartel");
             }else if(jTFDireccion.getText().isEmpty() || jTFTel.getText().isEmpty()||jTFCorreo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Todos los Campos deben estar Completos");
             }else if (jCheckBoxEstado.isSelected() == false){
-                JOptionPane.showMessageDialog(null, "El Bombero debe estar Activo");
+                JOptionPane.showMessageDialog(null, "El Cuartel debe estar Activo");
+            }else{
         String nombre_cuartel = jTFnombreNuevoCuartel.getText();
-        int codCuartel = Integer.parseInt(JTFCodCuartel.getText());
         String direccion = jTFDireccion.getText();
         int coord_x = Integer.parseInt(jTFCoordX.getText());
         int coord_y = Integer.parseInt(jTFCoordY.getText());
@@ -319,17 +328,18 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         String correo = jTFCorreo.getText();
         boolean estado = jCheckBoxEstado.isSelected();
         
-            Cuartel cuart = new Cuartel (nombre_cuartel, codCuartel, direccion, coord_x, coord_y, telefono, correo, estado);
-            CuartelData cuartData = new CuartelData();
-            cuartData.crearCuartel(cuart);
-            limpiarCampos();
+        Cuartel cuart = new Cuartel (nombre_cuartel, direccion, coord_x, coord_y, telefono, correo, estado);
+        CuartelData cuartData = new CuartelData();
+        cuartData.crearCuartel(cuart);
+        limpiarCampos();
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "ERROR. Verifique que los datos sean correctos"
                     + " en TODOS los campos.");
-        
-        }            
-        
+       
+        limpiarCampos();
+        }
+      
     }//GEN-LAST:event_jbNuevoCuartelActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -392,6 +402,8 @@ private void limpiarCampos() {
         jTFCoordY.setText("");
         jTFTel.setText("");
         jTFCorreo.setText("");
+        jCheckBoxEstado.setSelected(false);
+
         
     }
 
