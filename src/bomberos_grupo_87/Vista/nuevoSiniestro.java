@@ -94,6 +94,11 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         jLabel6.setText("DETALLES: ");
 
         ButtonBuscar.setText("BUSCAR");
+        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBuscarActionPerformed(evt);
+            }
+        });
 
         FechaHora.setDateFormatString("dd-MMM-yyyy HH:mm:ss");
 
@@ -180,24 +185,25 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
                             .addGroup(Panel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(Panel1Layout.createSequentialGroup()
                                         .addComponent(LabelEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(31, 31, 31)
                                         .addComponent(jLabel12))
                                     .addComponent(ButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(Panel1Layout.createSequentialGroup()
                                         .addComponent(LabelCuartelKM, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel11))
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(LabelEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(Panel1Layout.createSequentialGroup()
                                         .addComponent(ButtonModifi, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ButtonSalir)))
-                                .addGap(18, 18, 18)
-                                .addComponent(LabelEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(68, 68, 68)
+                                        .addComponent(ButtonSalir)
+                                        .addGap(119, 119, 119)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -221,16 +227,15 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(168, 168, 168))))
             .addGroup(Panel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(281, 281, 281))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel1Layout.setVerticalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,12 +278,12 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11)
                     .addComponent(LabelCuartelKM, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(32, 32, 32)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonModifi)
                     .addComponent(ButtonNuevo)
                     .addComponent(ButtonSalir))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -333,6 +338,19 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         borrarCampos();
         
     }//GEN-LAST:event_ButtonModifiActionPerformed
+
+    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
+        // TODO add your handling code here:
+        int codSini = Integer.valueOf(TextCodSini.getText());
+        Siniestro sini=SD.buscarSiniestro(codSini);
+        
+        ComboEsp.setSelectedItem(sini.getEspecialidad());
+        //Calendar fecha = sini.getFecha_siniestro()
+        //FechaHora.setCalendar(sini.getFecha_siniestro().toLocalTime(),sini.getFecha_siniestro().toLocalDate());
+        FechaHora.setName("name");
+        
+        
+    }//GEN-LAST:event_ButtonBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
