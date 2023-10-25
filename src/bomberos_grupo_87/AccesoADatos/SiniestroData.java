@@ -116,7 +116,7 @@ public class SiniestroData {
             ps.setInt(1, codSiniestro);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Brigada brigada;
+                Brigada brigada=null;
                 siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
                 siniestro.setEspecialidad(Especialidad.valueOf(rs.getString("tipo")));
                 siniestro.setFecha_siniestro(rs.getTimestamp("fecha_siniestro").toLocalDateTime());

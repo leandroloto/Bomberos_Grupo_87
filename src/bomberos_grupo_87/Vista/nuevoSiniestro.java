@@ -5,12 +5,14 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.CuartelData;
 import bomberos_grupo_87.AccesoADatos.SiniestroData;
 import bomberos_grupo_87.Entidades.Especialidad;
 import bomberos_grupo_87.Entidades.Siniestro;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,7 @@ import javax.swing.JOptionPane;
 public class nuevoSiniestro extends javax.swing.JInternalFrame {
     //private CuartelData CD = new CuartelData();
     private SiniestroData SD = new SiniestroData();
+    private CuartelData CD = new CuartelData();
     
 
     /**
@@ -347,8 +350,30 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         ComboEsp.setSelectedItem(sini.getEspecialidad());
         //Calendar fecha = sini.getFecha_siniestro()
         //FechaHora.setCalendar(sini.getFecha_siniestro().toLocalTime(),sini.getFecha_siniestro().toLocalDate());
-        FechaHora.setName("name");
-        
+        Calendar ahora = Calendar.getInstance();
+        ahora.clear();
+        ahora.set(Calendar.YEAR, sini.getFecha_siniestro().getYear());
+        ahora.set(Calendar.MONTH, sini.getFecha_siniestro().getMonthValue()-1); //-1 Por que los meses son 0 a 11;
+        ahora.set(Calendar.DAY_OF_MONTH, sini.getFecha_siniestro().getDayOfMonth());
+        ahora.set(Calendar.HOUR_OF_DAY, sini.getFecha_siniestro().getHour());
+        ahora.set(Calendar.MINUTE, sini.getFecha_siniestro().getMinute());
+        ahora.set(Calendar.SECOND, sini.getFecha_siniestro().getSecond());
+        FechaHora.setCalendar(ahora);
+        TextCoordX.setText(String.valueOf(sini.getCoord_X()));
+        TextCoordY.setText(String.valueOf(sini.getCoord_Y()));
+        TextDetalles.setText(sini.getDetalles());
+        if(sini.isEnCurso()==true){
+            LabelEnCurso.setText("SI");
+        }else{
+            LabelEnCurso.setText("NO");
+        }
+        if(sini.getBrigada()==null){
+            LabelCuartelKM.setText("NINGUNO");
+            LabelEspecialidad.setText("NINGUNA");
+        }else{
+            LabelCuartelKM.setText(CD.listaCuartCercaDeSiniestro(sini.getCodSiniestro()).firstKey()+"KM");
+            LabelEspecialidad.setText(sini.getBrigada().getEspecialidad().toString());
+        }
         
     }//GEN-LAST:event_ButtonBuscarActionPerformed
 
