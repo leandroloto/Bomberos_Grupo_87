@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class BomberoData {
@@ -67,8 +65,8 @@ public class BomberoData {
 
     public void modificarBombero(Bombero bombero) {
 
-        String sql = "UPDATE bombero SET dni=?, nombre_ape = ?, fecha_nac = ?, grupo_sang = ?, celular = ?, codBrigada =?"
-                + "WHERE codBombero = ?";
+        String sql = "UPDATE bombero SET dni=?, nombre_ape = ?, fecha_nac = ?, grupo_sang = ?, celular = ?, codBrigada = ?"
+                + " WHERE codBombero = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,bombero.getDni());
@@ -80,11 +78,13 @@ public class BomberoData {
             ps.setInt(7, bombero.getCodBombero());
             int exito = ps.executeUpdate();
             if(exito == 1){
-                JOptionPane.showMessageDialog(null,"se modifico bombero");
+                JOptionPane.showMessageDialog(null,"se modifico el bombero");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se ha modificado el Bombero");
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(BomberoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al acceder a la base de Datos"+ ex.getMessage());
         }
 
     }

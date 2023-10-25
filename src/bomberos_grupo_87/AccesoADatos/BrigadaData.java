@@ -114,6 +114,7 @@ public class BrigadaData {
                 brigada.setEstado(rs.getBoolean("estado"));
             }else
                 JOptionPane.showMessageDialog(null, "No existe una BRIGADA con ese Codigo.");
+            
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se puede ingresar a la tabla " + ex.getMessage());
