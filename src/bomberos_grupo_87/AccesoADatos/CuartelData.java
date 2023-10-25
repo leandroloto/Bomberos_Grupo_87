@@ -80,7 +80,7 @@ public class CuartelData {
 
     //Se da de baja al cuartel ingresado
     public void eliminarCuartel(int codCuartel) {
-
+        
         String sql = "UPDATE cuartel SET estado = false WHERE codCuartel=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);

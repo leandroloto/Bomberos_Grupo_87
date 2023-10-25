@@ -5,18 +5,26 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Cuartel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author psg_7
  */
 public class gestionCuarteles extends javax.swing.JInternalFrame {
+    private CuartelData cd = new CuartelData();
+    private Cuartel cuartelActual = null;
 
     /**
      * Creates new form gestionCuarteles
      */
     public gestionCuarteles() {
         initComponents();
+        iniciarComboCuartel();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +44,7 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         jBeliminarCuartel = new javax.swing.JButton();
         jLeliminarCuartel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Salir = new javax.swing.JButton();
 
         jLgestionCuarteles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLgestionCuarteles.setText("GESTIÓN DE CUARTELES");
@@ -46,13 +55,32 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         jLmotivoEliminacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLmotivoEliminacion.setText("Motivos de la eliminación:");
 
+        jCBSeleccioneCartelAEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBSeleccioneCartelAEliminarActionPerformed(evt);
+            }
+        });
+
         jBeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jBeliminarCuartel.setText("Eliminar Cuartel");
+        jBeliminarCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarCuartelActionPerformed(evt);
+            }
+        });
 
         jLeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLeliminarCuartel.setText("Eliminar Cuartel:");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
+
+        Salir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,29 +90,33 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLeliminarCuartel)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLseleccioneCuartelAEliminar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(20, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLmotivoEliminacion)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jBeliminarCuartel)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLmotivoEliminacion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLeliminarCuartel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLseleccioneCuartelAEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jBeliminarCuartel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLgestionCuarteles)
-                .addGap(163, 163, 163))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLgestionCuarteles)
+                        .addGap(163, 163, 163))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(182, 182, 182))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,30 +125,54 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addComponent(jLgestionCuarteles)
                 .addGap(28, 28, 28)
                 .addComponent(jLeliminarCuartel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLseleccioneCuartelAEliminar)
-                            .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLmotivoEliminacion)
-                            .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
-                        .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(78, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLseleccioneCuartelAEliminar)
+                    .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLmotivoEliminacion)
+                    .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Salir))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBeliminarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarCuartelActionPerformed
+        // TODO add your handling code here:
+        if(cuartelActual!=null){
+            
+            cd.eliminarCuartel(cuartelActual.getCodCuartel());
+            cuartelActual=null;
+            limpiarCampos();
+       
+        }
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el cuartel seleccionado de la lista de cuarteles?");
+     
+        if (confirmar == JOptionPane.OK_OPTION){
+            
+        }
+    }//GEN-LAST:event_jBeliminarCuartelActionPerformed
+
+    private void jCBSeleccioneCartelAEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSeleccioneCartelAEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBSeleccioneCartelAEliminarActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_SalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBeliminarCuartel;
     private javax.swing.JComboBox<String> jCBSeleccioneCartelAEliminar;
@@ -127,4 +183,14 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLseleccioneCuartelAEliminar;
     private javax.swing.JTextField jTFmotivosEliminacion;
     // End of variables declaration//GEN-END:variables
+
+    public void iniciarComboCuartel() {
+        for (Cuartel cuart : cd.listaDeCuarteles()) {
+            jCBSeleccioneCartelAEliminar.addItem(cuart.getNombre_cuartel());
+        }
+    }
+    public void limpiarCampos() {
+        jCBSeleccioneCartelAEliminar.setActionCommand("");
+        jTFmotivosEliminacion.setText("");
+    }
 }
