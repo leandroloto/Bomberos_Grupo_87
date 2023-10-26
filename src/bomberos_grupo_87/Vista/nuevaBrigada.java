@@ -11,7 +11,10 @@ import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Especialidad;
 import java.awt.Event;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -46,37 +49,55 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/brig.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        TextCodigo = new javax.swing.JTextField();
-        TextNombre = new javax.swing.JTextField();
         ButtonBuscar = new javax.swing.JButton();
+        TextCodigo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        TextNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ComboEsp = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        ComboCuartel = new javax.swing.JComboBox<>();
+        ButtonNuevo = new javax.swing.JButton();
         ButtonModifi = new javax.swing.JButton();
         ButtonSalir = new javax.swing.JButton();
-        ButtonNuevo = new javax.swing.JButton();
-        ComboEsp = new javax.swing.JComboBox<>();
-        ComboCuartel = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(550, 450));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText(" NUEVA BRIGADA ");
         jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setOpaque(true);
+
+        ButtonBuscar.setBackground(new java.awt.Color(255, 0, 0));
+        ButtonBuscar.setText("BUSCAR");
+        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBuscarActionPerformed(evt);
+            }
+        });
+
+        TextCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextCodigoKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
@@ -84,11 +105,24 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2.setOpaque(true);
 
+        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNombreActionPerformed(evt);
+            }
+        });
+        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextNombreKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText(" Nombre de Brigada: ");
         jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel3.setOpaque(true);
+
+        ComboEsp.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -102,28 +136,13 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel6.setOpaque(true);
 
-        TextCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TextCodigoKeyTyped(evt);
-            }
-        });
+        ComboCuartel.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
 
-        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+        ButtonNuevo.setBackground(new java.awt.Color(255, 0, 0));
+        ButtonNuevo.setText("NUEVO");
+        ButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNombreActionPerformed(evt);
-            }
-        });
-        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TextNombreKeyTyped(evt);
-            }
-        });
-
-        ButtonBuscar.setBackground(new java.awt.Color(255, 0, 0));
-        ButtonBuscar.setText("BUSCAR");
-        ButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonBuscarActionPerformed(evt);
+                ButtonNuevoActionPerformed(evt);
             }
         });
 
@@ -143,156 +162,122 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
             }
         });
 
-        ButtonNuevo.setBackground(new java.awt.Color(255, 0, 0));
-        ButtonNuevo.setText("NUEVO");
-        ButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonNuevoActionPerformed(evt);
-            }
-        });
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ButtonBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(TextCodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(TextNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ComboEsp, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ComboCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ButtonNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ButtonModifi, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ButtonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        ComboEsp.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-
-        ComboCuartel.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(ButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(ButtonModifi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ComboEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(ButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(ButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonModifi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGap(17, 17, 17)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonBuscar)
                     .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(ComboEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonNuevo)
                     .addComponent(ButtonModifi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSalir))
-                .addGap(33, 33, 33))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextNombreActionPerformed
-
-    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
-        // TODO add your handling code here:
-        if(TextCodigo.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Porfavor ingrese un Codigo existente.");
-        }else{
-
-        int codB = Integer.valueOf(TextCodigo.getText());
-
-        Brigada brig = BrigData.buscarBrigada(codB);
-        if (brig == null) {
-            borrarCampos();
-        } else {
-            TextNombre.setText(brig.getNombre_br());
-            ComboEsp.setSelectedItem(brig.getEspecialidad());
-            Cuartel cuar = brig.getCuartel();
-            //JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
-            ComboCuartel.setSelectedItem(cuar.getNombre_cuartel());
-
-        }
-        }
-    }//GEN-LAST:event_ButtonBuscarActionPerformed
-
-    private void ButtonModifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonModifiActionPerformed
-        // TODO add your handling code here:
-        if(TextCodigo.getText().isEmpty() || TextNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "NO debe dejar CAMPOS VACIOS.");
-        }else{
-        int codB = Integer.valueOf(TextCodigo.getText());
-        Brigada brig = BrigData.buscarBrigada(codB);
-        brig.setNombre_br(TextNombre.getText());
-        brig.setEspecialidad((Especialidad) ComboEsp.getSelectedItem());
-        String nameCuar = (String) ComboCuartel.getSelectedItem().toString();
-        Cuartel cuar = new Cuartel();
-        for (Cuartel cuartele : CD.listaDeCuarteles()) {
-            if (nameCuar.equals(cuartele.getNombre_cuartel())) {
-                cuar = cuartele;
-            }
-        }
-        brig.setCuartel(cuar);
-        BrigData.modificarBrigada(brig);
-        borrarCampos();
-        }
-    }//GEN-LAST:event_ButtonModifiActionPerformed
 
     private void ButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNuevoActionPerformed
         // TODO add your handling code here:
@@ -300,28 +285,28 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         if(TextNombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Porfavor ingrese un NOMBRE a la BRIGADA.");
         }else{
-            
-        String nombreBrig = TextNombre.getText();
-        Especialidad esp = (Especialidad) ComboEsp.getSelectedItem();
-        String nameCuar = (String) ComboCuartel.getSelectedItem().toString();
-        Cuartel cuar = new Cuartel();
-        for (Cuartel cuartele : CD.listaDeCuarteles()) {
-            if (nameCuar.equals(cuartele.getNombre_cuartel())) {
-                cuar = cuartele;
-            }
-        }
-        brig.setCuartel(cuar);
-        brig.setNombre_br(nombreBrig);
-        brig.setEspecialidad(esp);
-        brig.setEstado(true);
-        brig.setLibre(true);
-        try {
-            BrigData.crearBrigada(brig);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Porfavor seleccione un Cuartel Existente.");
-        }
 
-        borrarCampos();
+            String nombreBrig = TextNombre.getText();
+            Especialidad esp = (Especialidad) ComboEsp.getSelectedItem();
+            String nameCuar = (String) ComboCuartel.getSelectedItem().toString();
+            Cuartel cuar = new Cuartel();
+            for (Cuartel cuartele : CD.listaDeCuarteles()) {
+                if (nameCuar.equals(cuartele.getNombre_cuartel())) {
+                    cuar = cuartele;
+                }
+            }
+            brig.setCuartel(cuar);
+            brig.setNombre_br(nombreBrig);
+            brig.setEspecialidad(esp);
+            brig.setEstado(true);
+            brig.setLibre(true);
+            try {
+                BrigData.crearBrigada(brig);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Porfavor seleccione un Cuartel Existente.");
+            }
+
+            borrarCampos();
         }
     }//GEN-LAST:event_ButtonNuevoActionPerformed
 
@@ -330,17 +315,49 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_ButtonSalirActionPerformed
 
-    private void TextCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextCodigoKeyTyped
+    private void ButtonModifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonModifiActionPerformed
         // TODO add your handling code here:
-        //48 58 
-        int key = evt.getKeyChar();
-        boolean num = key >= 48 && key <= 58;
-
-        if (!num) {
-            evt.consume();
+        if(TextCodigo.getText().isEmpty() || TextNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "NO debe dejar CAMPOS VACIOS.");
+        }else{
+            int codB = Integer.valueOf(TextCodigo.getText());
+            Brigada brig = BrigData.buscarBrigada(codB);
+            brig.setNombre_br(TextNombre.getText());
+            brig.setEspecialidad((Especialidad) ComboEsp.getSelectedItem());
+            String nameCuar = (String) ComboCuartel.getSelectedItem().toString();
+            Cuartel cuar = new Cuartel();
+            for (Cuartel cuartele : CD.listaDeCuarteles()) {
+                if (nameCuar.equals(cuartele.getNombre_cuartel())) {
+                    cuar = cuartele;
+                }
+            }
+            brig.setCuartel(cuar);
+            BrigData.modificarBrigada(brig);
+            borrarCampos();
         }
+    }//GEN-LAST:event_ButtonModifiActionPerformed
 
-    }//GEN-LAST:event_TextCodigoKeyTyped
+    private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
+        // TODO add your handling code here:
+        if(TextCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Porfavor ingrese un Codigo existente.");
+        }else{
+
+            int codB = Integer.valueOf(TextCodigo.getText());
+
+            Brigada brig = BrigData.buscarBrigada(codB);
+            if (brig == null) {
+                borrarCampos();
+            } else {
+                TextNombre.setText(brig.getNombre_br());
+                ComboEsp.setSelectedItem(brig.getEspecialidad());
+                Cuartel cuar = brig.getCuartel();
+                //JOptionPane.showMessageDialog(null, cuar.getNombre_cuartel());
+                ComboCuartel.setSelectedItem(cuar.getNombre_cuartel());
+
+            }
+        }
+    }//GEN-LAST:event_ButtonBuscarActionPerformed
 
     private void TextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyTyped
         // TODO add your handling code here:
@@ -355,6 +372,21 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_TextNombreKeyTyped
 
+    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextNombreActionPerformed
+
+    private void TextCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextCodigoKeyTyped
+        // TODO add your handling code here:
+        //48 58
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TextCodigoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonBuscar;
@@ -365,12 +397,12 @@ public class nuevaBrigada extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Especialidad> ComboEsp;
     private javax.swing.JTextField TextCodigo;
     private javax.swing.JTextField TextNombre;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

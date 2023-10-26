@@ -112,8 +112,7 @@ public class BrigadaData {
                 Cuartel cuart = CD.buscarCuartel(rs.getInt("codCuartel"));
                 brigada.setCuartel(cuart);
                 brigada.setEstado(rs.getBoolean("estado"));
-            }else
-                JOptionPane.showMessageDialog(null, "No existe una BRIGADA con ese Codigo.");
+            }
             
             ps.close();
         } catch (SQLException ex) {

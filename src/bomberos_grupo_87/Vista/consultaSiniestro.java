@@ -5,6 +5,11 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.SiniestroData;
+import bomberos_grupo_87.Entidades.Siniestro;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,13 +17,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Discar
  */
 public class consultaSiniestro extends javax.swing.JInternalFrame {
+    private SiniestroData SD = new SiniestroData(); 
     private DefaultTableModel modelo = new DefaultTableModel(){
-        
         @Override
         public boolean isCellEditable(int f, int c){
             return false;
         }
-        
     };
     /**
      * Creates new form consultaSiniestro
@@ -26,6 +30,7 @@ public class consultaSiniestro extends javax.swing.JInternalFrame {
     public consultaSiniestro() {
         initComponents();
         iniciarTabla();
+        cargarTablaComplet();
     }
 
     /**
@@ -37,17 +42,50 @@ public class consultaSiniestro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bomb.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
+        CheckBoxAyerYHoy = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableSiniestro = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        CheckBoxAyerYHoy = new javax.swing.JCheckBox();
 
+        setClosable(true);
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE SINIESTROS");
+        jLabel1.setOpaque(true);
 
+        CheckBoxAyerYHoy.setBackground(new java.awt.Color(255, 255, 255));
+        CheckBoxAyerYHoy.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        CheckBoxAyerYHoy.setText("SOLO AYER Y HOY");
+        CheckBoxAyerYHoy.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CheckBoxAyerYHoy.setBorderPainted(true);
+        CheckBoxAyerYHoy.setBorderPaintedFlat(true);
+        CheckBoxAyerYHoy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxAyerYHoyActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("LISTA DE LOS SINIESTROS");
+        jLabel2.setOpaque(true);
+
+        TableSiniestro.setBackground(new java.awt.Color(0, 0, 0));
+        TableSiniestro.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        TableSiniestro.setForeground(new java.awt.Color(255, 255, 255));
         TableSiniestro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -61,68 +99,79 @@ public class consultaSiniestro extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TableSiniestro);
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2.setText("LISTA DE LOS SINIESTROS");
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(CheckBoxAyerYHoy, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        CheckBoxAyerYHoy.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        CheckBoxAyerYHoy.setText("SOLO AYER Y HOY");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(303, 303, 303)
-                        .addComponent(jLabel2)
-                        .addGap(95, 95, 95)
-                        .addComponent(CheckBoxAyerYHoy))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(290, 290, 290)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(363, 363, 363)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85)
+                                .addComponent(CheckBoxAyerYHoy)))
+                        .addGap(0, 116, Short.MAX_VALUE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(CheckBoxAyerYHoy))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CheckBoxAyerYHoyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxAyerYHoyActionPerformed
+        // TODO add your handling code here:
+        
+        if(CheckBoxAyerYHoy.isSelected()==true){
+            cargarTablaAyerHoy();
+        }else{
+            cargarTablaComplet();
+        }
+        
+    }//GEN-LAST:event_CheckBoxAyerYHoyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxAyerYHoy;
     private javax.swing.JTable TableSiniestro;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
@@ -137,8 +186,55 @@ public class consultaSiniestro extends javax.swing.JInternalFrame {
         modelo.addColumn("Puntuacion");
         modelo.addColumn("Brigada");
         modelo.addColumn("En curso");
+        modelo.addColumn("Finalizada");
         TableSiniestro.setModel(modelo);
-        
     }
 
+    public void cargarTablaComplet(){
+        borrarTabla();
+        for (Siniestro sini : SD.listaDeSiniestros()) {
+            String enCurso;
+            String finali;
+            if(sini.isEnCurso()==true){
+                enCurso="SI";
+            }else{
+                enCurso="NO";
+            }
+            if(sini.isEstado()==true){
+                finali="NO";
+            }else{
+                finali="SI";
+            }
+            modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getDetalles(),sini.getFecha_resol(),sini.getPuntuacion(),sini.getBrigada(),enCurso,finali});
+        }
+    }
+    
+    public void cargarTablaAyerHoy(){
+        borrarTabla();
+        for (Siniestro sini : SD.listaDeSiniestrosDeAyerYHoy()) {
+            String enCurso;
+            String finali;
+            if(sini.isEnCurso()==true){
+                enCurso="SI";
+            }else{
+                enCurso="NO";
+            }
+            if(sini.isEstado()==true){
+                finali="SI";
+            }else{
+                finali="NO";
+            }
+            modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getDetalles(),sini.getFecha_resol(),sini.getPuntuacion(),sini.getBrigada(),enCurso,finali});
+        }
+    }
+    
+    public void borrarTabla(){
+        int x = TableSiniestro.getRowCount()-1;
+        
+        for (int i = x; i >= 0; i--) {
+            modelo.removeRow(i);
+            
+        }
+    }
+    
 }
