@@ -129,6 +129,8 @@ public class SiniestroData {
                 siniestro.setBrigada(brigada);
                 siniestro.setEstado(rs.getBoolean("estado"));
                 siniestro.setEnCurso(rs.getBoolean("enCurso"));
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontro el Siniestro.");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -144,7 +146,7 @@ public class SiniestroData {
         try {
             PreparedStatement ps = con.prepareStatement(Sql);
             ResultSet rs = ps.executeQuery();
-            Brigada brigada = new Brigada();
+            Brigada brigada = null;
             while (rs.next()) {
                 Siniestro siniestro = new Siniestro();
                 siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
@@ -173,7 +175,7 @@ public class SiniestroData {
         try {
             PreparedStatement ps = con.prepareStatement(Sql);
             ResultSet rs = ps.executeQuery();
-            Brigada brigada = new Brigada();
+            Brigada brigada = null;
             while (rs.next()) {
                 Siniestro siniestro = new Siniestro();
                 siniestro.setCodSiniestro(rs.getInt("codSiniestro"));
