@@ -235,17 +235,22 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int filas = TableSiniestros.getSelectedRow();
         Siniestro sini = new Siniestro();
+        try{  
         if(filas != -1){
             int codBrig =(Integer)TableSiniestros.getValueAt(filas, 0); 
             sini=SD.buscarSiniestro(codBrig);
+            
+            
+            
             if(sini.isEnCurso()==true){
                 if(FechaFin.getCalendar()!=null || sini.getFecha_siniestro().getDayOfMonth()<=sini.getFecha_siniestro().getDayOfMonth()){
-                    
+                  
                 LocalDate fyh =(FechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
                 int hh = FechaFin.getJCalendar().getDate().getHours();
                 int mm = FechaFin.getJCalendar().getDate().getMinutes();
                 int ss = FechaFin.getJCalendar().getDate().getSeconds();
                 LocalDateTime fechasini=LocalDateTime.of(fyh.getYear(),fyh.getMonth().getValue(),fyh.getDayOfMonth(),hh,mm,ss);
+                
                 
                 int punt=Integer.valueOf(TextPuntaje.getText());
                 if(punt <= 10 || punt >= 0){
@@ -260,6 +265,8 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                     cargarTabla();
                     borrarCampos();
                     
+                    
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "Usted debe elegir el puntaje entre 0 - 10");
                 }
@@ -270,12 +277,14 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
             }
             
         }else{
-            JOptionPane.showMessageDialog(null, "Usted no ha seleccionado ningun Siniestro");
+            JOptionPane.showMessageDialog(null, "El siniestro debe estar EN CURSO!");
         }
         }else{
             JOptionPane.showMessageDialog(null, "Debe completar los campos y seleccionar un Siniestro!");
         }
-        
+        }catch(NullPointerException ex){
+                    JOptionPane.showMessageDialog(null, "Debe ingresar una fecha!");
+                }
         
     }//GEN-LAST:event_ButtonFinalizarActionPerformed
 
