@@ -219,13 +219,13 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         if(filas!=-1){
             int codBrigada=(Integer) TableBrigada.getValueAt(filas, 0);
             brig = BD.buscarBrigada(codBrigada);
-            BD.eliminarBrigada(codBrigada);
+            
             for (Bombero bombero : BD.listarBomberosPorBrigada(codBrigada)) {
                 Bombero bomb =bomdat.buscarBomberoPorDNI(bombero.getDni());
                 bomb.setBrigada(null);
                 bomdat.modificarBombero(bombero);
             }
-            
+            BD.eliminarBrigada(codBrigada);
             limpiarTabla();
             cargarTabla();
         }else{
