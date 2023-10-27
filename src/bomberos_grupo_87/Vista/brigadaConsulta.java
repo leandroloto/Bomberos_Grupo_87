@@ -76,13 +76,13 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE BRIGADAS");
         jLabel1.setOpaque(true);
 
-        asignadasB.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        asignadasB.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
         asignadasB.setForeground(new java.awt.Color(255, 255, 255));
         asignadasB.setText("BRIGADAS ASIGNADAS");
         asignadasB.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +91,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        libresB.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        libresB.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
         libresB.setForeground(new java.awt.Color(255, 255, 255));
         libresB.setText("BRIGADAS LIBRES");
         libresB.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,7 @@ public class brigadaConsulta extends javax.swing.JInternalFrame {
                     .addComponent(jComboBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

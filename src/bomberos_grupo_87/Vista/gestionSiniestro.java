@@ -111,7 +111,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("DATOS PARA FINALIZAR SINIESTRO:");
@@ -132,14 +132,14 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TableSiniestros);
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SINIESTROS ACTIVOS PENDIENTES");
         jLabel4.setOpaque(true);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE SINIESTROS");
@@ -148,14 +148,14 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         FechaFin.setDateFormatString("dd-MMM-yyyy HH:mm:ss");
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PUNTAJE DE EXITO: ");
         jLabel3.setOpaque(true);
 
         jLabel5.setBackground(new java.awt.Color(255, 153, 0));
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 2, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 2, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("*Se asigna automaticamente la brigada especializada mas cercana*");
         jLabel5.setOpaque(true);

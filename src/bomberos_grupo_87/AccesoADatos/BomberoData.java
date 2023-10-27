@@ -74,7 +74,11 @@ public class BomberoData {
             ps.setDate(3,Date.valueOf(bombero.getFecha_nac()));
             ps.setString(4,bombero.getGrupo_sang());
             ps.setString(5,bombero.getCelular());
+            try{
             ps.setInt(6, bombero.getBrigada().getCodBrigada());
+            }catch(Exception ex){
+                ps.setInt(6, 0);
+            }
             ps.setInt(7, bombero.getCodBombero());
             int exito = ps.executeUpdate();
             if(exito == 1){
@@ -104,8 +108,8 @@ public class BomberoData {
              bombero.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
              bombero.setGrupo_sang(rs.getString("grupo_sang"));
              bombero.setCelular(rs.getString("celular"));
-            // Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
-            // bombero.setBrigada(brig);
+            Brigada brig = BrigData.buscarBrigada(rs.getInt("codBrigada"));
+            bombero.setBrigada(brig);
              bombero.setEstado(rs.getBoolean("estado"));
          }else{
              JOptionPane.showMessageDialog(null,"No existen bomeros con el DNI ingresado");

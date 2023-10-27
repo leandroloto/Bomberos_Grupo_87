@@ -5,8 +5,10 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import java.awt.Graphics;
@@ -22,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class gestionBrigada extends javax.swing.JInternalFrame {
     private BrigadaData BD = new BrigadaData();
     private CuartelData CD = new CuartelData();
+    private BomberoData bomdat = new BomberoData();
     private DefaultTableModel modelo = new DefaultTableModel(){
       @Override
       public boolean isCellEditable(int f, int c){
@@ -75,14 +78,14 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE BRIGADAS");
         jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("BRIGADAS ACTIVAS:");
         jLabel2.setOpaque(true);
@@ -101,7 +104,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TableBrigada);
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("SELECCIONE UN CUARTEL ACTIVO:");
@@ -166,7 +169,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ComboCuartel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +185,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ComboCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonAsignar)
                     .addComponent(ButtonEliminar)
@@ -217,6 +220,12 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
             int codBrigada=(Integer) TableBrigada.getValueAt(filas, 0);
             brig = BD.buscarBrigada(codBrigada);
             BD.eliminarBrigada(codBrigada);
+            for (Bombero bombero : BD.listarBomberosPorBrigada(codBrigada)) {
+                Bombero bomb =bomdat.buscarBomberoPorDNI(bombero.getDni());
+                bomb.setBrigada(null);
+                bomdat.modificarBombero(bombero);
+            }
+            
             limpiarTabla();
             cargarTabla();
         }else{
