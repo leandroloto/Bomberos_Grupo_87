@@ -36,7 +36,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/03CascoTitanNeo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/foto4.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -63,6 +63,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jbGuardar.setBackground(new java.awt.Color(102, 102, 102));
+        jbGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbGuardar.setText("GUARDAR");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,36 +71,44 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbActivo.setBackground(new java.awt.Color(204, 204, 0));
+        jcbActivo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jcbActivo.setText("      Activo");
 
-        jLabel8.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel8.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel8.setText("Estado :");
         jLabel8.setOpaque(true);
 
-        jLabel6.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel6.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel6.setText("Celular :");
         jLabel6.setOpaque(true);
 
-        jLabel5.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel5.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel5.setText("Grupo Sanguineo:");
         jLabel5.setOpaque(true);
 
-        jLabel4.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel4.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel4.setText("Fecha de Nacimiento :");
         jLabel4.setOpaque(true);
 
-        jLabel3.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel3.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel3.setText("DNI :");
         jLabel3.setOpaque(true);
 
-        jLabel2.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel2.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel2.setText("Nombre y Apellido :");
         jLabel2.setOpaque(true);
 
         jtNombre_ap.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
         jLabel1.setText("NUEVO BOMBERO");
         jLabel1.setOpaque(true);
 
@@ -160,7 +169,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtNombre_ap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -44,7 +44,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/03CascoTitanNeo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/foto4.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -74,17 +74,19 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 0));
         setClosable(true);
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPane1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
         jLabel1.setText("GESTION BOMBERO");
         jLabel1.setOpaque(true);
 
-        jLabel2.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel2.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel2.setText("DNI :");
         jLabel2.setOpaque(true);
 
@@ -98,37 +100,47 @@ public class GestionBombero extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel3.setText("CODIGO DE BOMBERO :");
         jLabel3.setOpaque(true);
 
-        jLabel4.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel4.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel4.setText("NOMBRE Y APELLIDO :");
         jLabel4.setOpaque(true);
 
-        jLabel5.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel5.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel5.setText("FECHA DE NACIMIENTO :");
         jLabel5.setOpaque(true);
 
-        jLabel6.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel6.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel6.setText("GRUPO SANGUINEO :");
         jLabel6.setOpaque(true);
 
-        jLabel7.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel7.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel7.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel7.setText("CELULAR :");
         jLabel7.setOpaque(true);
 
-        jLabel8.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel8.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel8.setText("CODIGO BRIGADA :");
         jLabel8.setOpaque(true);
 
-        jLabel9.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel9.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel9.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel9.setText("ESTADO :");
         jLabel9.setOpaque(true);
 
         jtCodBombero.setBackground(new java.awt.Color(102, 102, 102));
 
-        jcbActivo.setBackground(new java.awt.Color(102, 102, 102));
+        jcbActivo.setBackground(new java.awt.Color(204, 204, 0));
+        jcbActivo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jcbActivo.setText("ACTIVO");
         jcbActivo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -184,7 +196,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                             .addComponent(jSeparator1)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                                 .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbBuscar)))
@@ -266,7 +278,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jcbActivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEliminar)
                     .addComponent(jbGuardar))

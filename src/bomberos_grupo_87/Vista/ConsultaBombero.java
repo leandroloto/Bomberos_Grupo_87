@@ -53,7 +53,7 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/03CascoTitanNeo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/foto4.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
@@ -73,8 +73,10 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
         jLabel1.setText("CONSULTA DE BOMBERO");
+        jLabel1.setOpaque(true);
 
         jtBombero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jtBombero.setModel(new javax.swing.table.DefaultTableModel(
@@ -91,6 +93,7 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtBombero);
 
         jcbCuartel.setBackground(new java.awt.Color(153, 153, 153));
+        jcbCuartel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jcbCuartel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbCuartelItemStateChanged(evt);
@@ -102,15 +105,22 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbBrigada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jcbBrigada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbBrigadaActionPerformed(evt);
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel2.setText("CUARTEL :");
+        jLabel2.setOpaque(true);
 
+        jLabel3.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel3.setText("BRIGADA :");
+        jLabel3.setOpaque(true);
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -124,7 +134,7 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(203, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(214, 214, 214))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -136,11 +146,11 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jcbCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcbBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addComponent(jcbBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +165,7 @@ public class ConsultaBombero extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
