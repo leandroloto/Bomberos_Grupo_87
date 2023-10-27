@@ -38,7 +38,7 @@ public class Bomberos_Grupo_87 {
         Bombero bombero1 = new Bombero(10, 9995687, "Jose Lopez", LocalDate.of(1979, 11, 02), "B-", "0789789", brig, true);
         BomberoData BombD = new BomberoData();
 
-        Siniestro sini = new Siniestro(1, Especialidad.RescateMontaña, LocalDateTime.of(2023, 10, 12, 12, 54, 01), 150, -751, "Se perdio una familia, Sierras de cordoba", brig, true, true);
+        Siniestro sini = new Siniestro(1, Especialidad.RescateMontaña, LocalDateTime.of(2023, 10, 12, 12, 54, 01), 150, -751, "Se perdio un gato, SAN MARTIN AL 500", brig, true, true);
         SiniestroData SD = new SiniestroData();
 
         //TEST CUARTELDATA
@@ -86,7 +86,8 @@ public class Bomberos_Grupo_87 {
         
         //TEST SINIESTRO
         //SD.crearSiniestro(sini);
-        //SD.modificarSiniestro(sini);
+        
+        SD.modificarSiniestro(sini);
         //System.out.println(SD.buscarSiniestro(4));
 //            for (Siniestro listaDeSiniestro : SD.listaDeSiniestros()) {
 //                System.out.println(listaDeSiniestro);

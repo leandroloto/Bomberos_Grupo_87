@@ -7,8 +7,12 @@ package bomberos_grupo_87.Vista;
 
 import bomberos_grupo_87.AccesoADatos.SiniestroData;
 import bomberos_grupo_87.Entidades.Siniestro;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,13 +60,33 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         TextPuntaje = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
+        jDesktopPane1.setBackground(new java.awt.Color(153, 153, 255));
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(820, 352));
 
         ButtonAsignar.setText("ASIGNAR BRIGADA");
 
         ButtonFinalizar.setText("FINALIZAR");
+        ButtonFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonFinalizarActionPerformed(evt);
+            }
+        });
 
         ButtonSalir.setText("SALIR");
+        ButtonSalir.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ButtonSalirAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        ButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalirActionPerformed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,6 +103,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TableSiniestros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(TableSiniestros);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,57 +157,53 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                                     .addComponent(TextPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(FechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 25, Short.MAX_VALUE))))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(ButtonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(327, 327, 327))
+                .addGap(328, 328, 328))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(ButtonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(FechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(TextPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGap(45, 45, 45)
-                                .addComponent(ButtonFinalizar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addContainerGap(90, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonAsignar)
-                            .addComponent(ButtonSalir))
-                        .addGap(40, 40, 40))))
+                            .addComponent(TextPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(45, 45, 45)
+                        .addComponent(ButtonFinalizar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonAsignar)
+                    .addComponent(ButtonSalir))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,11 +216,68 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonSalirAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ButtonSalirAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonSalirAncestorAdded
+
+    private void ButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_ButtonSalirActionPerformed
+
+    private void ButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFinalizarActionPerformed
+        // TODO add your handling code here:
+        int filas = TableSiniestros.getSelectedRow();
+        Siniestro sini = new Siniestro();
+        if(filas != -1){
+            int codBrig =(Integer)TableSiniestros.getValueAt(filas, 0); 
+            sini=SD.buscarSiniestro(codBrig);
+            if(sini.isEnCurso()==true){
+                if(FechaFin.getCalendar()!=null || sini.getFecha_siniestro().getDayOfMonth()<=sini.getFecha_siniestro().getDayOfMonth()){
+                    
+                LocalDate fyh =(FechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                int hh = FechaFin.getJCalendar().getDate().getHours();
+                int mm = FechaFin.getJCalendar().getDate().getMinutes();
+                int ss = FechaFin.getJCalendar().getDate().getSeconds();
+                LocalDateTime fechasini=LocalDateTime.of(fyh.getYear(),fyh.getMonth().getValue(),fyh.getDayOfMonth(),hh,mm,ss);
+                
+                int punt=Integer.valueOf(TextPuntaje.getText());
+                if(punt <= 10 || punt >= 0){
+                    sini.setFecha_resol(fechasini);
+                    sini.setPuntuacion(punt);
+                    sini.setEnCurso(false);
+                    sini.setEstado(false);
+                    sini.getBrigada().setLibre(true);
+                    SD.modificarSiniestro(sini);
+                    JOptionPane.showMessageDialog(null, "Se finalizo el siniestro con EXITO!");
+                    borrarTabla();
+                    cargarTabla();
+                    borrarCampos();
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usted debe elegir el puntaje entre 0 - 10");
+                }
+                
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese una fecha correcta y asgine una Brigada!");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Usted no ha seleccionado ningun Siniestro");
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe completar los campos y seleccionar un Siniestro!");
+        }
+        
+        
+    }//GEN-LAST:event_ButtonFinalizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -226,14 +304,21 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         modelo.addColumn("Coordenada Y");
         modelo.addColumn("Brigada");
         modelo.addColumn("Detalle");
+        modelo.addColumn("En curso");
         TableSiniestros.setModel(modelo);
     }
     
     public void cargarTabla(){
         List<Siniestro> activos = new ArrayList<>();
+        String enCurso;
         for (Siniestro sini : SD.listaDeSiniestros()) {
                 if(sini.isEstado()==true){
-                    modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getBrigada(),sini.getDetalles()});
+                    if(sini.isEnCurso()==true){
+                        enCurso="SI";
+                    }else{
+                        enCurso="NO";
+                    }
+                    modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getBrigada(),sini.getDetalles(),enCurso});
                 }
             }
         
@@ -249,6 +334,10 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         }
     }
     
-    
+    public void borrarCampos(){
+        FechaFin.setCalendar(null);
+        TextPuntaje.setText("");
+        
+    }
 
 }

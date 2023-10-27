@@ -220,9 +220,9 @@ public class consultaSiniestro extends javax.swing.JInternalFrame {
                 enCurso="NO";
             }
             if(sini.isEstado()==true){
-                finali="SI";
-            }else{
                 finali="NO";
+            }else{
+                finali="SI";
             }
             modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getDetalles(),sini.getFecha_resol(),sini.getPuntuacion(),sini.getBrigada(),enCurso,finali});
         }

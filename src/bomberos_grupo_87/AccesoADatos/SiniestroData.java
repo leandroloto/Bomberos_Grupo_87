@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -65,7 +66,7 @@ public class SiniestroData {
 
     public void modificarSiniestro(Siniestro siniestro) {
 
-        String sql = "UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalles=?, codBrigada=?, estado=?, enCurso=? WHERE codSiniestro=? AND estado = true";
+        String sql = "UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalles=?, fecha_resol=?, puntuacion=?, codBrigada=?, estado=?, enCurso=? WHERE codSiniestro=? AND estado = true";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, siniestro.getEspecialidad().toString());
@@ -73,10 +74,12 @@ public class SiniestroData {
             ps.setInt(3, siniestro.getCoord_X());
             ps.setInt(4, siniestro.getCoord_Y());
             ps.setString(5, siniestro.getDetalles());
-            ps.setInt(6, siniestro.getBrigada().getCodBrigada());
-            ps.setBoolean(7, siniestro.isEstado());
-            ps.setBoolean(8, siniestro.isEnCurso());
-            ps.setInt(9, siniestro.getCodSiniestro());
+            ps.setTimestamp(6, Timestamp.valueOf(siniestro.getFecha_resol()));
+            ps.setInt(7, siniestro.getPuntuacion());
+            ps.setInt(8, siniestro.getBrigada().getCodBrigada());
+            ps.setBoolean(9, siniestro.isEstado());
+            ps.setBoolean(10, siniestro.isEnCurso());
+            ps.setInt(11, siniestro.getCodSiniestro());
             int resultado = ps.executeUpdate();
             if (resultado > 0) {
                 JOptionPane.showMessageDialog(null, "Se actualizaron los datos del Siniestro");
@@ -123,7 +126,11 @@ public class SiniestroData {
                 siniestro.setCoord_X(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalles"));
-                siniestro.setFecha_resol(rs.getTimestamp("fecha_siniestro").toLocalDateTime());
+                try{
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_resol").toLocalDateTime());
+                }catch(NullPointerException ex){
+                    siniestro.setFecha_resol(null);
+                }
                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 brigada = BD.buscarBrigada(rs.getInt("codBrigada"));
                 siniestro.setBrigada(brigada);
@@ -155,6 +162,12 @@ public class SiniestroData {
                 siniestro.setCoord_X(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalles"));
+                try{
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_resol").toLocalDateTime());
+                }catch(NullPointerException ex){
+                    siniestro.setFecha_resol(null);
+                }
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 brigada = BD.buscarBrigada(rs.getInt("codBrigada"));
                 siniestro.setBrigada(brigada);
                 siniestro.setEstado(rs.getBoolean("estado"));
@@ -184,6 +197,12 @@ public class SiniestroData {
                 siniestro.setCoord_X(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalles"));
+                try{
+                siniestro.setFecha_resol(rs.getTimestamp("fecha_resol").toLocalDateTime());
+                }catch(NullPointerException ex){
+                    siniestro.setFecha_resol(null);
+                }
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 siniestro.setBrigada(BD.buscarBrigada(rs.getInt("codBrigada")));
                 siniestro.setEstado(rs.getBoolean("estado"));
                 siniestro.setEnCurso(rs.getBoolean("enCurso"));
