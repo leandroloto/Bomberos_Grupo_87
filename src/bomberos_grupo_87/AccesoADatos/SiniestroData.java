@@ -74,7 +74,11 @@ public class SiniestroData {
             ps.setInt(3, siniestro.getCoord_X());
             ps.setInt(4, siniestro.getCoord_Y());
             ps.setString(5, siniestro.getDetalles());
+            try{
             ps.setTimestamp(6, Timestamp.valueOf(siniestro.getFecha_resol()));
+            }catch(NullPointerException ex){
+                    ps.setTimestamp(6,null);
+                }
             ps.setInt(7, siniestro.getPuntuacion());
             ps.setInt(8, siniestro.getBrigada().getCodBrigada());
             ps.setBoolean(9, siniestro.isEstado());

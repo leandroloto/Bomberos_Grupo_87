@@ -5,13 +5,21 @@
  */
 package bomberos_grupo_87.Vista;
 
+import bomberos_grupo_87.AccesoADatos.BrigadaData;
+import bomberos_grupo_87.AccesoADatos.CuartelData;
 import bomberos_grupo_87.AccesoADatos.SiniestroData;
+import bomberos_grupo_87.Entidades.Brigada;
+import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Siniestro;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,10 +28,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Discar
  */
 public class gestionSiniestro extends javax.swing.JInternalFrame {
-    private SiniestroData SD = new SiniestroData(); 
-    private DefaultTableModel modelo = new DefaultTableModel(){
+
+    private SiniestroData SD = new SiniestroData();
+    private CuartelData CD = new CuartelData();
+    private BrigadaData BD = new BrigadaData();
+    private DefaultTableModel modelo = new DefaultTableModel() {
         @Override
-        public boolean isCellEditable(int f, int c){
+        public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
@@ -46,7 +57,13 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bomb.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         ButtonAsignar = new javax.swing.JButton();
         ButtonFinalizar = new javax.swing.JButton();
         ButtonSalir = new javax.swing.JButton();
@@ -64,6 +81,11 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(820, 352));
 
         ButtonAsignar.setText("ASIGNAR BRIGADA");
+        ButtonAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAsignarActionPerformed(evt);
+            }
+        });
 
         ButtonFinalizar.setText("FINALIZAR");
         ButtonFinalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,9 +110,12 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("DATOS PARA FINALIZAR SINIESTRO:");
+        jLabel2.setOpaque(true);
 
         TableSiniestros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,21 +131,34 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         TableSiniestros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(TableSiniestros);
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SINIESTROS ACTIVOS PENDIENTES");
+        jLabel4.setOpaque(true);
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE SINIESTROS");
+        jLabel1.setOpaque(true);
 
-        FechaFin.setDateFormatString("dd-MMM-yyyy hh:mm:ss");
+        FechaFin.setDateFormatString("dd-MMM-yyyy HH:mm:ss");
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PUNTAJE DE EXITO: ");
+        jLabel3.setOpaque(true);
 
+        jLabel5.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 2, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Se asigna automaticamente la brigada mas cercana");
+        jLabel5.setText("*Se asigna automaticamente la brigada especializada mas cercana*");
+        jLabel5.setOpaque(true);
 
         jDesktopPane1.setLayer(ButtonAsignar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(ButtonFinalizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -139,8 +177,16 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(ButtonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(171, 171, 171)
+                .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
@@ -157,25 +203,15 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                                     .addComponent(TextPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(FechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 25, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(328, 328, 328))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(ButtonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(ButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel5)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,13 +233,13 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                         .addGap(45, 45, 45)
                         .addComponent(ButtonFinalizar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonAsignar)
                     .addComponent(ButtonSalir))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,7 +252,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,58 +271,125 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int filas = TableSiniestros.getSelectedRow();
         Siniestro sini = new Siniestro();
-        try{  
-        if(filas != -1){
-            int codBrig =(Integer)TableSiniestros.getValueAt(filas, 0); 
-            sini=SD.buscarSiniestro(codBrig);
-            
-            
-            
-            if(sini.isEnCurso()==true){
-                if(FechaFin.getCalendar()!=null || sini.getFecha_siniestro().getDayOfMonth()<=sini.getFecha_siniestro().getDayOfMonth()){
-                  
-                LocalDate fyh =(FechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                int hh = FechaFin.getJCalendar().getDate().getHours();
-                int mm = FechaFin.getJCalendar().getDate().getMinutes();
-                int ss = FechaFin.getJCalendar().getDate().getSeconds();
-                LocalDateTime fechasini=LocalDateTime.of(fyh.getYear(),fyh.getMonth().getValue(),fyh.getDayOfMonth(),hh,mm,ss);
-                
-                
-                int punt=Integer.valueOf(TextPuntaje.getText());
-                if(punt <= 10 || punt >= 0){
-                    sini.setFecha_resol(fechasini);
-                    sini.setPuntuacion(punt);
-                    sini.setEnCurso(false);
-                    sini.setEstado(false);
-                    sini.getBrigada().setLibre(true);
-                    SD.modificarSiniestro(sini);
-                    JOptionPane.showMessageDialog(null, "Se finalizo el siniestro con EXITO!");
-                    borrarTabla();
-                    cargarTabla();
-                    borrarCampos();
-                    
-                    
-                    
-                }else{
-                    JOptionPane.showMessageDialog(null, "Usted debe elegir el puntaje entre 0 - 10");
+        try {
+            if (filas != -1) {
+                int codBrig = (Integer) TableSiniestros.getValueAt(filas, 0);
+                sini = SD.buscarSiniestro(codBrig);
+
+                //boolean uno = sini.getFecha_siniestro().isBefore(sini.getFecha_resol());
+                if (sini.isEnCurso() == true) {
+                    if (FechaFin.getCalendar() != null) {
+                        LocalDate fyh = (FechaFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                        int hh = FechaFin.getJCalendar().getDate().getHours();
+                        int mm = FechaFin.getJCalendar().getDate().getMinutes();
+                        int ss = FechaFin.getJCalendar().getDate().getSeconds();
+                        LocalDateTime fechasini = LocalDateTime.of(fyh.getYear(), fyh.getMonth().getValue(), fyh.getDayOfMonth(), hh, mm, ss);
+
+                        if (sini.getFecha_siniestro().isBefore(fechasini) == true) {
+
+                            int punt = Integer.valueOf(TextPuntaje.getText());
+                            if (punt <= 10 || punt >= 0) {
+                                sini.setFecha_resol(fechasini);
+                                sini.setPuntuacion(punt);
+                                sini.setEnCurso(false);
+                                sini.setEstado(false);
+                                sini.getBrigada().setLibre(true);
+                                SD.modificarSiniestro(sini);
+                                Brigada brig = sini.getBrigada();
+                                BD.modificarBrigada(brig);
+                                JOptionPane.showMessageDialog(null, "Se finalizo el siniestro con EXITO!");
+                                borrarTabla();
+                                cargarTabla();
+                                borrarCampos();
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usted debe elegir el puntaje entre 0 - 10");
+                            }
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar una fecha!.");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "El siniestro debe estar EN CURSO! Asigne una Brigada!");
                 }
-                
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Ingrese una fecha correcta y asgine una Brigada!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe completar los campos Correctamente(Verifique la fecha)!");
             }
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "El siniestro debe estar EN CURSO!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una fecha correcta!");
         }
-        }else{
-            JOptionPane.showMessageDialog(null, "Debe completar los campos y seleccionar un Siniestro!");
-        }
-        }catch(NullPointerException ex){
-                    JOptionPane.showMessageDialog(null, "Debe ingresar una fecha!");
-                }
-        
+
     }//GEN-LAST:event_ButtonFinalizarActionPerformed
+
+    private void ButtonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAsignarActionPerformed
+        // TODO add your handling code here:
+        boolean fin = false;
+
+        int filas = TableSiniestros.getSelectedRow();
+        Siniestro sini = null;
+//        try{  
+        if (filas != -1) {
+            int codBrig = (Integer) TableSiniestros.getValueAt(filas, 0);
+            sini = SD.buscarSiniestro(codBrig);
+
+            if (sini.isEnCurso() == false) {
+
+                for (Map.Entry<Double, Cuartel> obj : CD.listaCuartCercaDeSiniestro(sini.getCodSiniestro()).entrySet()) {
+                    Cuartel cuart = obj.getValue();
+                    for (Brigada brigada : CD.listarBrigadasDelCuartel(cuart.getCodCuartel())) {
+                        if (brigada.getEspecialidad().equals(sini.getEspecialidad()) || brigada.isLibre() == true) {
+                            sini.setBrigada(brigada);
+                            sini.setEnCurso(true);
+                            fin = true;
+                            brigada.setLibre(false);
+                            BD.modificarBrigada(brigada);
+                            borrarTabla();
+                            cargarTabla();
+                            SD.modificarSiniestro(sini);
+                            JOptionPane.showMessageDialog(null, "Se asigno la Brigada: " + brigada.getNombre_br() + " del Cuartel: " + cuart.getNombre_cuartel());
+                            break;
+                        }
+                    }
+                    if (fin == true) {
+                        break;
+                    } else {
+                        for (Brigada brigada : CD.listarBrigadasDelCuartel(cuart.getCodCuartel())) {
+                            if (brigada.isLibre() == true) {
+                                sini.setBrigada(brigada);
+                                sini.setEnCurso(true);
+                                fin = true;
+                                borrarTabla();
+                                cargarTabla();
+                                brigada.setLibre(false);
+                                BD.modificarBrigada(brigada);
+                                SD.modificarSiniestro(sini);
+                                JOptionPane.showMessageDialog(null, "Se asigno la Brigada provisional: " + brigada.getNombre_br() + " del Cuartel: " + cuart.getNombre_cuartel());
+                                JOptionPane.showMessageDialog(null, "Se notificara a la Brigada con esa especialidad mas cercana para apoyar al estar libre.");
+                                break;
+                            }
+                        }
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Porfavor seleccione un Siniestro que no este en Curso");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor seleccione primero un Siniestro.");
+        }
+//        }catch(Exception ex){
+//            JOptionPane.showMessageDialog(null, "Porfavor seleccione primero un Siniestro."+ex.getMessage());
+//        }
+
+        borrarTabla();
+        cargarTabla();
+
+    }//GEN-LAST:event_ButtonAsignarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,7 +408,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void iniciarTabla(){
+    public void iniciarTabla() {
         modelo.addColumn("Codigo Siniestro");
         modelo.addColumn("Tipo");
         modelo.addColumn("Fecha inicio");
@@ -316,37 +419,35 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         modelo.addColumn("En curso");
         TableSiniestros.setModel(modelo);
     }
-    
-    public void cargarTabla(){
-        List<Siniestro> activos = new ArrayList<>();
+
+    public void cargarTabla() {
         String enCurso;
         for (Siniestro sini : SD.listaDeSiniestros()) {
-                if(sini.isEstado()==true){
-                    if(sini.isEnCurso()==true){
-                        enCurso="SI";
-                    }else{
-                        enCurso="NO";
-                    }
-                    modelo.addRow(new Object[]{sini.getCodSiniestro(),sini.getEspecialidad(),sini.getFecha_siniestro(),sini.getCoord_X(),sini.getCoord_Y(),sini.getBrigada(),sini.getDetalles(),enCurso});
+            if (sini.isEstado() == true) {
+                if (sini.isEnCurso() == true) {
+                    enCurso = "SI";
+                } else {
+                    enCurso = "NO";
                 }
+                modelo.addRow(new Object[]{sini.getCodSiniestro(), sini.getEspecialidad(), sini.getFecha_siniestro(), sini.getCoord_X(), sini.getCoord_Y(), sini.getBrigada(), sini.getDetalles(), enCurso});
             }
-        
+        }
 
     }
-    
-    public void borrarTabla(){
-        int x = TableSiniestros.getRowCount()-1;
-        
+
+    public void borrarTabla() {
+        int x = TableSiniestros.getRowCount() - 1;
+
         for (int i = x; i >= 0; i--) {
             modelo.removeRow(i);
-            
+
         }
     }
-    
-    public void borrarCampos(){
+
+    public void borrarCampos() {
         FechaFin.setCalendar(null);
         TextPuntaje.setText("");
-        
+
     }
 
 }
