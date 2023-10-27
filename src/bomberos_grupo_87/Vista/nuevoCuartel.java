@@ -8,8 +8,11 @@ package bomberos_grupo_87.Vista;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
 import bomberos_grupo_87.Entidades.Cuartel;
 import java.awt.Event;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -28,6 +31,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         initComponents();
         evitarPegar(JTFCodCuartel);
         evitarPegar(jTFnombreNuevoCuartel);
+        
     }
 
     /**
@@ -39,6 +43,13 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cuartel foto.png"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLnuevoCuartel = new javax.swing.JLabel();
         jLnombreCuartel = new javax.swing.JLabel();
@@ -65,11 +76,11 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLnuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLnuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLnuevoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLnuevoCuartel.setText("NUEVO CUARTEL");
 
-        jLnombreCuartel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLnombreCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLnombreCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLnombreCuartel.setText("Nombre del nuevo Cuartel:");
 
@@ -79,7 +90,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jLcodigoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLcodigoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLcodigoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLcodigoCuartel.setText("Código Cuartel:");
 
@@ -89,11 +100,11 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jLDireccion.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLDireccion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLDireccion.setForeground(new java.awt.Color(255, 0, 0));
         jLDireccion.setText("Dirección:");
 
-        jLCoordX.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLCoordX.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCoordX.setForeground(new java.awt.Color(255, 0, 0));
         jLCoordX.setText("Coordenadas X:");
 
@@ -103,27 +114,27 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jLCoordY.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLCoordY.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCoordY.setForeground(new java.awt.Color(255, 0, 0));
         jLCoordY.setText("Coordenadas Y:");
 
-        jLTel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLTel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLTel.setForeground(new java.awt.Color(255, 0, 0));
         jLTel.setText("Teléfono:");
 
-        jLestado.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLestado.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLestado.setForeground(new java.awt.Color(255, 0, 0));
         jLestado.setText("Estado:");
 
-        jLCorreo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLCorreo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCorreo.setForeground(new java.awt.Color(255, 0, 0));
         jLCorreo.setText("Correo:");
 
-        jCheckBoxEstado.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jCheckBoxEstado.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jCheckBoxEstado.setForeground(new java.awt.Color(255, 0, 0));
         jCheckBoxEstado.setText("  Activo");
 
-        jbSalir.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        jbSalir.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbSalir.setForeground(new java.awt.Color(255, 0, 0));
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +146,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
 
-        jbNuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        jbNuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbNuevoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jbNuevoCuartel.setText("Crear Nuevo Cuartel");
         jbNuevoCuartel.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +155,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jbBuscar.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        jbBuscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbBuscar.setForeground(new java.awt.Color(255, 0, 0));
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +164,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jbModificar.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        jbModificar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(255, 0, 0));
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,11 +253,11 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jbNuevoCuartel)
-                                .addGap(29, 29, 29)
+                                .addGap(40, 40, 40)
                                 .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
+                                .addGap(35, 35, 35)
                                 .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(33, Short.MAX_VALUE))
+                        .addContainerGap(49, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(217, 217, 217)
                         .addComponent(jLCorreo)
@@ -278,7 +289,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                     .addComponent(jLCoordY)
                     .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCorreo)
@@ -290,23 +301,25 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLestado)
                             .addComponent(jCheckBoxEstado))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
