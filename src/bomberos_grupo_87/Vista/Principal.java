@@ -197,6 +197,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem9);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
         jMenuItem1.setText("GESTION");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

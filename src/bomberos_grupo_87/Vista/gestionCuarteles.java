@@ -14,15 +14,15 @@ import javax.swing.JOptionPane;
  * @author psg_7
  */
 public class gestionCuarteles extends javax.swing.JInternalFrame {
-    private CuartelData cd = new CuartelData();
-    private Cuartel cuartelActual = null;
+        CuartelData cd = new CuartelData();
+
 
     /**
      * Creates new form gestionCuarteles
      */
     public gestionCuarteles() {
         initComponents();
-        iniciarComboCuartel();
+        cargarCombo();
     }
     
 
@@ -36,45 +36,45 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLgestionCuarteles = new javax.swing.JLabel();
-        jLseleccioneCuartelAEliminar = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jTFmotivosEliminacion = new javax.swing.JTextField();
-        jLmotivoEliminacion = new javax.swing.JLabel();
-        jCBSeleccioneCartelAEliminar = new javax.swing.JComboBox<>();
-        jBeliminarCuartel = new javax.swing.JButton();
+        cuartelSeleccionado = new javax.swing.JComboBox<>();
+        jLgestionCuarteles = new javax.swing.JLabel();
         jLeliminarCuartel = new javax.swing.JLabel();
+        jLseleccioneCuartelAEliminar = new javax.swing.JLabel();
+        jLmotivoEliminacion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
+        jBeliminarCuartel = new javax.swing.JButton();
 
-        jLgestionCuarteles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        cuartelSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuartelSeleccionadoActionPerformed(evt);
+            }
+        });
+
+        jLgestionCuarteles.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLgestionCuarteles.setForeground(new java.awt.Color(255, 0, 0));
         jLgestionCuarteles.setText("GESTIÓN DE CUARTELES");
 
-        jLseleccioneCuartelAEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
+        jLeliminarCuartel.setText("Eliminar Cuartel:");
+
+        jLseleccioneCuartelAEliminar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLseleccioneCuartelAEliminar.setForeground(new java.awt.Color(255, 0, 0));
         jLseleccioneCuartelAEliminar.setText("Seleccione el cuartel que desea eliminar:");
 
-        jLmotivoEliminacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLmotivoEliminacion.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLmotivoEliminacion.setForeground(new java.awt.Color(255, 0, 0));
         jLmotivoEliminacion.setText("Motivos de la eliminación:");
-
-        jCBSeleccioneCartelAEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBSeleccioneCartelAEliminarActionPerformed(evt);
-            }
-        });
-
-        jBeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jBeliminarCuartel.setText("Eliminar Cuartel");
-        jBeliminarCuartel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBeliminarCuartelActionPerformed(evt);
-            }
-        });
-
-        jLeliminarCuartel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLeliminarCuartel.setText("Eliminar Cuartel:");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
 
-        Salir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Salir.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 0, 0));
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,88 +82,128 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
             }
         });
 
+        jBeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        jBeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
+        jBeliminarCuartel.setText("Eliminar Cuartel");
+        jBeliminarCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarCuartelActionPerformed(evt);
+            }
+        });
+
+        jDesktopPane1.setLayer(jTFmotivosEliminacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cuartelSeleccionado, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLgestionCuarteles, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLeliminarCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLseleccioneCuartelAEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLmotivoEliminacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(Salir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBeliminarCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLeliminarCuartel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(0, 19, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jLmotivoEliminacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFmotivosEliminacion))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jLseleccioneCuartelAEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cuartelSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40))))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jLgestionCuarteles)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jBeliminarCuartel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLgestionCuarteles)
+                .addGap(27, 27, 27)
+                .addComponent(jLeliminarCuartel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLseleccioneCuartelAEliminar)
+                    .addComponent(cuartelSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLmotivoEliminacion)
+                    .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(Salir)
+                        .addGap(25, 25, 25))))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLmotivoEliminacion)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLeliminarCuartel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLseleccioneCuartelAEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jBeliminarCuartel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLgestionCuarteles)
-                        .addGap(163, 163, 163))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(182, 182, 182))))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLgestionCuarteles)
-                .addGap(28, 28, 28)
-                .addComponent(jLeliminarCuartel)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLseleccioneCuartelAEliminar)
-                    .addComponent(jCBSeleccioneCartelAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLmotivoEliminacion)
-                    .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Salir))
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBeliminarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarCuartelActionPerformed
-        // TODO add your handling code here:
-        if(cuartelActual!=null){
-            
-            cd.eliminarCuartel(cuartelActual.getCodCuartel());
-            cuartelActual=null;
-            limpiarCampos();
+        // TODO add your handling code here  
+        CuartelData ctd = new CuartelData();
+        Cuartel ct = new Cuartel();
        
+        try{
+        ct=(Cuartel)cuartelSeleccionado.getSelectedItem();
+                }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "¿Está seguro que desea eliminar el cuartel seleccionado de la lista de cuarteles?");
         }
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el cuartel seleccionado de la lista de cuarteles?");
      
         if (confirmar == JOptionPane.OK_OPTION){
             
+        ctd.eliminarCuartel(ct.getCodCuartel());
+    
         }
+        cargarCombo();
+        limpiarCampos();
     }//GEN-LAST:event_jBeliminarCuartelActionPerformed
 
-    private void jCBSeleccioneCartelAEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSeleccioneCartelAEliminarActionPerformed
+    private void cuartelSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartelSeleccionadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCBSeleccioneCartelAEliminarActionPerformed
+    }//GEN-LAST:event_cuartelSeleccionadoActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
@@ -174,8 +214,9 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<Cuartel> cuartelSeleccionado;
     private javax.swing.JButton jBeliminarCuartel;
-    private javax.swing.JComboBox<String> jCBSeleccioneCartelAEliminar;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLeliminarCuartel;
     private javax.swing.JLabel jLgestionCuarteles;
@@ -184,13 +225,17 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFmotivosEliminacion;
     // End of variables declaration//GEN-END:variables
 
-    public void iniciarComboCuartel() {
+    private void cargarCombo() {
+        
         for (Cuartel cuart : cd.listaDeCuarteles()) {
-            jCBSeleccioneCartelAEliminar.addItem(cuart.getNombre_cuartel());
+            cuartelSeleccionado.addItem(cuart);
         }
     }
-    public void limpiarCampos() {
-        jCBSeleccioneCartelAEliminar.setActionCommand("");
+        public void limpiarCampos() {
+        cuartelSeleccionado.setActionCommand("");
         jTFmotivosEliminacion.setText("");
     }
+    
+        
 }
+

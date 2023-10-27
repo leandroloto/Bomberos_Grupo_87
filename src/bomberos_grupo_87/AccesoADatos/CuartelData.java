@@ -116,8 +116,6 @@ public class CuartelData {
                 cuartel.setTelefono(rs.getString("telefono"));
                 cuartel.setCorreo(rs.getString("correo"));
                 cuartel.setEstado(rs.getBoolean("estado"));
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro el Cuartel");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -205,6 +203,10 @@ public class CuartelData {
         }
         return listaCercana;
         
+    }
+
+    public Cuartel listaDeCuarteles(Integer valueOf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
