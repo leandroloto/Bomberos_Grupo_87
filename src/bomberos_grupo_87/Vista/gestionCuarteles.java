@@ -64,35 +64,35 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         });
 
         jLgestionCuarteles.setBackground(new java.awt.Color(255, 255, 0));
-        jLgestionCuarteles.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jLgestionCuarteles.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 20)); // NOI18N
         jLgestionCuarteles.setForeground(new java.awt.Color(255, 0, 0));
         jLgestionCuarteles.setText("GESTIÓN DE CUARTELES");
         jLgestionCuarteles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLgestionCuarteles.setOpaque(true);
 
         jLeliminarCuartel.setBackground(new java.awt.Color(255, 255, 0));
-        jLeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLeliminarCuartel.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLeliminarCuartel.setText("Eliminar Cuartel");
         jLeliminarCuartel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLeliminarCuartel.setOpaque(true);
 
         jLseleccioneCuartelAEliminar.setBackground(new java.awt.Color(255, 255, 0));
-        jLseleccioneCuartelAEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLseleccioneCuartelAEliminar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLseleccioneCuartelAEliminar.setForeground(new java.awt.Color(255, 0, 0));
         jLseleccioneCuartelAEliminar.setText("Seleccione el cuartel que desea eliminar:");
         jLseleccioneCuartelAEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLseleccioneCuartelAEliminar.setOpaque(true);
 
         jLmotivoEliminacion.setBackground(new java.awt.Color(255, 255, 0));
-        jLmotivoEliminacion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLmotivoEliminacion.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLmotivoEliminacion.setForeground(new java.awt.Color(255, 0, 0));
         jLmotivoEliminacion.setText("Motivos de la eliminación:");
         jLmotivoEliminacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLmotivoEliminacion.setOpaque(true);
 
         Salir.setBackground(new java.awt.Color(255, 255, 255));
-        Salir.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        Salir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 16)); // NOI18N
         Salir.setForeground(new java.awt.Color(255, 0, 0));
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         });
 
         jBeliminarCuartel.setBackground(new java.awt.Color(255, 255, 255));
-        jBeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jBeliminarCuartel.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 16)); // NOI18N
         jBeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jBeliminarCuartel.setText("Eliminar Cuartel");
         jBeliminarCuartel.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +145,7 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -163,7 +163,7 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLmotivoEliminacion)
                     .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))

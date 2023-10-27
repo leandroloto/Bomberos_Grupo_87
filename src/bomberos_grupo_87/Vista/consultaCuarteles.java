@@ -66,14 +66,14 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("CONSULTA CUARTELES");
         jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Cuarteles:");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -86,7 +86,7 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 0));
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Brigadas del cuartel seleccionado por especialidad:");
         jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -106,7 +106,7 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(JTbrigadasCuartel);
 
         JBsalir.setBackground(new java.awt.Color(255, 255, 255));
-        JBsalir.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        JBsalir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 16)); // NOI18N
         JBsalir.setForeground(new java.awt.Color(255, 0, 0));
         JBsalir.setText("Salir");
         JBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
         });
 
         JBnuevaConsulta.setBackground(new java.awt.Color(255, 255, 255));
-        JBnuevaConsulta.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        JBnuevaConsulta.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 16)); // NOI18N
         JBnuevaConsulta.setForeground(new java.awt.Color(255, 0, 0));
         JBnuevaConsulta.setText("Nueva Consulta");
         JBnuevaConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
                         .addGroup(jDesktopPane1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(97, 97, 97))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +169,11 @@ public class consultaCuarteles extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBnuevaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
