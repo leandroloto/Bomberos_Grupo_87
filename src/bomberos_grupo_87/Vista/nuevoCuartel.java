@@ -17,6 +17,7 @@ import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import java.awt.Color;
 
 /**
  *
@@ -43,14 +44,13 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cuartel foto.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cuartel.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jLnuevoCuartel = new javax.swing.JLabel();
         jLnombreCuartel = new javax.swing.JLabel();
         jTFnombreNuevoCuartel = new javax.swing.JTextField();
@@ -69,20 +69,24 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         jLCorreo = new javax.swing.JLabel();
         jCheckBoxEstado = new javax.swing.JCheckBox();
         jbSalir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jbNuevoCuartel = new javax.swing.JButton();
         jbBuscar = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLnuevoCuartel.setBackground(new java.awt.Color(255, 255, 0));
         jLnuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLnuevoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLnuevoCuartel.setText("NUEVO CUARTEL");
+        jLnuevoCuartel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLnuevoCuartel.setOpaque(true);
 
+        jLnombreCuartel.setBackground(new java.awt.Color(255, 255, 0));
         jLnombreCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLnombreCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLnombreCuartel.setText("Nombre del nuevo Cuartel:");
+        jLnombreCuartel.setOpaque(true);
 
         jTFnombreNuevoCuartel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -90,9 +94,11 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jLcodigoCuartel.setBackground(new java.awt.Color(255, 255, 0));
         jLcodigoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLcodigoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLcodigoCuartel.setText("Código Cuartel:");
+        jLcodigoCuartel.setOpaque(true);
 
         JTFCodCuartel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -100,13 +106,17 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jLDireccion.setBackground(new java.awt.Color(255, 255, 0));
         jLDireccion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLDireccion.setForeground(new java.awt.Color(255, 0, 0));
         jLDireccion.setText("Dirección:");
+        jLDireccion.setOpaque(true);
 
+        jLCoordX.setBackground(new java.awt.Color(255, 255, 0));
         jLCoordX.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCoordX.setForeground(new java.awt.Color(255, 0, 0));
         jLCoordX.setText("Coordenadas X:");
+        jLCoordX.setOpaque(true);
 
         jTFCoordX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,26 +124,36 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jLCoordY.setBackground(new java.awt.Color(255, 255, 0));
         jLCoordY.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCoordY.setForeground(new java.awt.Color(255, 0, 0));
         jLCoordY.setText("Coordenadas Y:");
+        jLCoordY.setOpaque(true);
 
+        jLTel.setBackground(new java.awt.Color(255, 255, 0));
         jLTel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLTel.setForeground(new java.awt.Color(255, 0, 0));
         jLTel.setText("Teléfono:");
+        jLTel.setOpaque(true);
 
+        jLestado.setBackground(new java.awt.Color(255, 255, 0));
         jLestado.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLestado.setForeground(new java.awt.Color(255, 0, 0));
         jLestado.setText("Estado:");
+        jLestado.setOpaque(true);
 
+        jLCorreo.setBackground(new java.awt.Color(255, 255, 0));
         jLCorreo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLCorreo.setForeground(new java.awt.Color(255, 0, 0));
         jLCorreo.setText("Correo:");
+        jLCorreo.setOpaque(true);
 
+        jCheckBoxEstado.setBackground(new java.awt.Color(255, 255, 0));
         jCheckBoxEstado.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jCheckBoxEstado.setForeground(new java.awt.Color(255, 0, 0));
         jCheckBoxEstado.setText("  Activo");
 
+        jbSalir.setBackground(new java.awt.Color(255, 255, 255));
         jbSalir.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbSalir.setForeground(new java.awt.Color(255, 0, 0));
         jbSalir.setText("Salir");
@@ -143,9 +163,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
-
+        jbNuevoCuartel.setBackground(new java.awt.Color(255, 255, 255));
         jbNuevoCuartel.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbNuevoCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jbNuevoCuartel.setText("Crear Nuevo Cuartel");
@@ -155,6 +173,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jbBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbBuscar.setForeground(new java.awt.Color(255, 0, 0));
         jbBuscar.setText("Buscar");
@@ -164,6 +183,7 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             }
         });
 
+        jbModificar.setBackground(new java.awt.Color(255, 255, 255));
         jbModificar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(255, 0, 0));
         jbModificar.setText("Modificar");
@@ -191,7 +211,6 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLCorreo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCheckBoxEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbNuevoCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbModificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -202,68 +221,61 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addComponent(jLDireccion)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTFCorreo))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                    .addComponent(jLnombreCuartel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addGap(128, 128, 128)
-                                            .addComponent(jLnuevoCuartel))
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addComponent(jLcodigoCuartel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(JTFCodCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(43, 43, 43)
-                                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addComponent(jLCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                    .addComponent(jLestado)
-                                                    .addGap(48, 48, 48))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                                    .addComponent(jLTel)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jCheckBoxEstado)
-                                                .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addGap(21, 21, 21)
-                                            .addComponent(jLCoordY)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addGap(75, 75, 75)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jbNuevoCuartel)
-                                .addGap(40, 40, 40)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(49, Short.MAX_VALUE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
                         .addComponent(jLCorreo)
                         .addGap(10, 10, 10)
-                        .addComponent(jTFnombreNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jTFnombreNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jLDireccion)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTFCorreo))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jLnombreCuartel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                    .addGap(128, 128, 128)
+                                    .addComponent(jLnuevoCuartel))
+                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jLcodigoCuartel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JTFCodCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(43, 43, 43)
+                            .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jLCoordX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(7, 7, 7)
+                                    .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(22, 22, 22))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jLTel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                    .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(61, 61, 61))
+                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addComponent(jLestado)
+                                            .addGap(31, 31, 31)
+                                            .addComponent(jCheckBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jbNuevoCuartel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jLCoordY)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(59, 59, 59)
+                                    .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,28 +301,22 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                     .addComponent(jLCoordY)
                     .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCorreo)
                     .addComponent(jTFnombreNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLTel))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLestado)
-                            .addComponent(jCheckBoxEstado))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxEstado)
+                    .addComponent(jLestado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -455,7 +461,6 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLCorreo;
     private javax.swing.JLabel jLDireccion;
     private javax.swing.JLabel jLTel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLcodigoCuartel;
     private javax.swing.JLabel jLestado;
     private javax.swing.JLabel jLnombreCuartel;

@@ -39,21 +39,19 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/03CascoTitanNeo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cuartel.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jTFmotivosEliminacion = new javax.swing.JTextField();
         cuartelSeleccionado = new javax.swing.JComboBox<>();
         jLgestionCuarteles = new javax.swing.JLabel();
         jLeliminarCuartel = new javax.swing.JLabel();
         jLseleccioneCuartelAEliminar = new javax.swing.JLabel();
         jLmotivoEliminacion = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         jBeliminarCuartel = new javax.swing.JButton();
 
@@ -65,24 +63,35 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
             }
         });
 
+        jLgestionCuarteles.setBackground(new java.awt.Color(255, 255, 0));
         jLgestionCuarteles.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLgestionCuarteles.setForeground(new java.awt.Color(255, 0, 0));
         jLgestionCuarteles.setText("GESTIÓN DE CUARTELES");
+        jLgestionCuarteles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLgestionCuarteles.setOpaque(true);
 
+        jLeliminarCuartel.setBackground(new java.awt.Color(255, 255, 0));
         jLeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jLeliminarCuartel.setText("Eliminar Cuartel");
+        jLeliminarCuartel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLeliminarCuartel.setOpaque(true);
 
+        jLseleccioneCuartelAEliminar.setBackground(new java.awt.Color(255, 255, 0));
         jLseleccioneCuartelAEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLseleccioneCuartelAEliminar.setForeground(new java.awt.Color(255, 0, 0));
         jLseleccioneCuartelAEliminar.setText("Seleccione el cuartel que desea eliminar:");
+        jLseleccioneCuartelAEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLseleccioneCuartelAEliminar.setOpaque(true);
 
+        jLmotivoEliminacion.setBackground(new java.awt.Color(255, 255, 0));
         jLmotivoEliminacion.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLmotivoEliminacion.setForeground(new java.awt.Color(255, 0, 0));
         jLmotivoEliminacion.setText("Motivos de la eliminación:");
+        jLmotivoEliminacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLmotivoEliminacion.setOpaque(true);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/estacion-de-bomberos (1).png"))); // NOI18N
-
+        Salir.setBackground(new java.awt.Color(255, 255, 255));
         Salir.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         Salir.setForeground(new java.awt.Color(255, 0, 0));
         Salir.setText("Salir");
@@ -92,6 +101,7 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
             }
         });
 
+        jBeliminarCuartel.setBackground(new java.awt.Color(255, 255, 255));
         jBeliminarCuartel.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jBeliminarCuartel.setForeground(new java.awt.Color(255, 0, 0));
         jBeliminarCuartel.setText("Eliminar Cuartel");
@@ -107,7 +117,6 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLeliminarCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLseleccioneCuartelAEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLmotivoEliminacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Salir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBeliminarCuartel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -115,10 +124,6 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addComponent(jLgestionCuarteles)
@@ -127,20 +132,20 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addGap(57, 57, 57)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLmotivoEliminacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jLseleccioneCuartelAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cuartelSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLeliminarCuartel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLseleccioneCuartelAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cuartelSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -158,13 +163,11 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLmotivoEliminacion)
                     .addComponent(jTFmotivosEliminacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBeliminarCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,7 +221,6 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Cuartel> cuartelSeleccionado;
     private javax.swing.JButton jBeliminarCuartel;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLeliminarCuartel;
     private javax.swing.JLabel jLgestionCuarteles;
     private javax.swing.JLabel jLmotivoEliminacion;
