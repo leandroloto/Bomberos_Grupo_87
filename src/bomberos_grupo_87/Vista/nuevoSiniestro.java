@@ -28,10 +28,10 @@ import javax.swing.KeyStroke;
  * @author Discar
  */
 public class nuevoSiniestro extends javax.swing.JInternalFrame {
+
     //private CuartelData CD = new CuartelData();
     private SiniestroData SD = new SiniestroData();
     private CuartelData CD = new CuartelData();
-    
 
     /**
      * Creates new form nuevoSiniestro
@@ -42,7 +42,7 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         evitarPegar(TextCodSini);
         evitarPegar(TextCoordX);
         evitarPegar(TextCoordY);
-        
+
     }
 
     /**
@@ -160,6 +160,12 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("COORDENADAS Y : ");
         jLabel8.setOpaque(true);
+
+        TextCoordY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextCoordYKeyTyped(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 11)); // NOI18N
@@ -410,113 +416,137 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Siniestro sini;
         //Especialidad:
-        Especialidad esp =(Especialidad) ComboEsp.getSelectedItem();
-        try{
-        LocalDate fyh =(FechaHora.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        int hh = FechaHora.getJCalendar().getDate().getHours();
-        int mm = FechaHora.getJCalendar().getDate().getMinutes();
-        int ss = FechaHora.getJCalendar().getDate().getSeconds();
-        //Fecha y Hora Inicial
-        LocalDateTime fechasini=LocalDateTime.of(fyh.getYear(),fyh.getMonth().getValue(),fyh.getDayOfMonth(),hh,mm,ss);
-        
-        //Coordenadas
-        int coorX=(Integer.valueOf(TextCoordX.getText()));
-        int coorY=(Integer.valueOf(TextCoordY.getText()));
-        //Detalles
-        String detalle = TextDetalles.getText();
-        
-        SD.crearSiniestro(new Siniestro(esp,fechasini,coorX,coorY,detalle,true,false));
-        borrarCampos();
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Porfavor no deje campos vacios.");
+        Especialidad esp = (Especialidad) ComboEsp.getSelectedItem();
+        try {
+            LocalDate fyh = (FechaHora.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            int hh = FechaHora.getJCalendar().getDate().getHours();
+            int mm = FechaHora.getJCalendar().getDate().getMinutes();
+            int ss = FechaHora.getJCalendar().getDate().getSeconds();
+            //Fecha y Hora Inicial
+            LocalDateTime fechasini = LocalDateTime.of(fyh.getYear(), fyh.getMonth().getValue(), fyh.getDayOfMonth(), hh, mm, ss);
+
+            //Coordenadas
+            int coorX = (Integer.valueOf(TextCoordX.getText()));
+            int coorY = (Integer.valueOf(TextCoordY.getText()));
+            //Detalles
+            String detalle = TextDetalles.getText();
+
+            SD.crearSiniestro(new Siniestro(esp, fechasini, coorX, coorY, detalle, true, false));
+            borrarCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Porfavor ingrese los datos CORRECTAMENTE.");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Porfavor verifique la fecha o NO deje campos vacios.");
         }
     }//GEN-LAST:event_ButtonNuevoActionPerformed
 
     private void ButtonModifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonModifiActionPerformed
         // TODO add your handling code here:
-        int codSini = Integer.valueOf(TextCodSini.getText());
-        Siniestro sini=SD.buscarSiniestro(codSini);
-        
-        sini.setEspecialidad((Especialidad)ComboEsp.getSelectedItem());
-        //Calendar a LocalDate*
-        LocalDate fyh =(FechaHora.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        int hh = FechaHora.getJCalendar().getDate().getHours();
-        int mm = FechaHora.getJCalendar().getDate().getMinutes();
-        int ss = FechaHora.getJCalendar().getDate().getSeconds();
-        //Fecha y Hora Inicial
-        LocalDateTime fechasini=LocalDateTime.of(fyh.getYear(),fyh.getMonth().getValue(),fyh.getDayOfMonth(),hh,mm,ss);
-        sini.setFecha_siniestro(fechasini);
-        
-        sini.setCoord_X(Integer.valueOf(TextCoordX.getText()));
-        sini.setCoord_Y(Integer.valueOf(TextCoordY.getText()));
-        sini.setDetalles(TextDetalles.getText());
-        SD.modificarSiniestro(sini);
-        
-        borrarCampos();
-        
+        if (TextCodSini.getText().isEmpty() == false) {
+            try {
+                int codSini = Integer.valueOf(TextCodSini.getText());
+                Siniestro sini = SD.buscarSiniestro(codSini);
+
+                sini.setEspecialidad((Especialidad) ComboEsp.getSelectedItem());
+                //Calendar a LocalDate*
+                LocalDate fyh = (FechaHora.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                int hh = FechaHora.getJCalendar().getDate().getHours();
+                int mm = FechaHora.getJCalendar().getDate().getMinutes();
+                int ss = FechaHora.getJCalendar().getDate().getSeconds();
+                //Fecha y Hora Inicial
+                LocalDateTime fechasini = LocalDateTime.of(fyh.getYear(), fyh.getMonth().getValue(), fyh.getDayOfMonth(), hh, mm, ss);
+                sini.setFecha_siniestro(fechasini);
+
+                sini.setCoord_X(Integer.valueOf(TextCoordX.getText()));
+                sini.setCoord_Y(Integer.valueOf(TextCoordY.getText()));
+                sini.setDetalles(TextDetalles.getText());
+                SD.modificarSiniestro(sini);
+
+                borrarCampos();
+            }catch(NullPointerException ex){
+                JOptionPane.showMessageDialog(null, "Verifique la fecha y no deje campos vacios.");
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Porfavor ingrese los datos correctos en los campos");
+            }
+            }else{
+            JOptionPane.showMessageDialog(null, "Porfavor ingrese primero el Codigo de Siniestro");
+            
+        }
     }//GEN-LAST:event_ButtonModifiActionPerformed
 
     private void ButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscarActionPerformed
         // TODO add your handling code here:
-        if(TextCodSini.getText().isEmpty()){
-        }else{
-            
-        int codSini = Integer.valueOf(TextCodSini.getText());
-        Siniestro sini=SD.buscarSiniestro(codSini);
-        if(sini!=null){
-        ComboEsp.setSelectedItem(sini.getEspecialidad());
-        try{
-        Calendar ahora = Calendar.getInstance();
-        ahora.clear();
-        ahora.set(Calendar.YEAR, sini.getFecha_siniestro().getYear());
-        ahora.set(Calendar.MONTH, sini.getFecha_siniestro().getMonthValue()-1); //-1 Por que los meses son 0 a 11;
-        ahora.set(Calendar.DAY_OF_MONTH, sini.getFecha_siniestro().getDayOfMonth());
-        ahora.set(Calendar.HOUR_OF_DAY, sini.getFecha_siniestro().getHour());
-        ahora.set(Calendar.MINUTE, sini.getFecha_siniestro().getMinute());
-        ahora.set(Calendar.SECOND, sini.getFecha_siniestro().getSecond());
-        FechaHora.setCalendar(ahora);
-        TextCoordX.setText(String.valueOf(sini.getCoord_X()));
-        TextCoordY.setText(String.valueOf(sini.getCoord_Y()));
-        TextDetalles.setText(sini.getDetalles());
-        if(sini.isEnCurso()==true){
-            LabelEnCurso.setText("SI");
-        }else{
-            LabelEnCurso.setText("NO");
-        }
-        if(sini.getBrigada()==null){
-            LabelCuartelKM.setText("NINGUNO");
-            LabelEspecialidad.setText("NINGUNA");
-        }else{
-            LabelCuartelKM.setText(CD.listaCuartCercaDeSiniestro(sini.getCodSiniestro()).firstKey()+"KM");
-            LabelEspecialidad.setText(sini.getBrigada().getEspecialidad().toString());
-        }}
-        catch(NullPointerException ex){
-            borrarCampos();
-        }
-        }
+        if (TextCodSini.getText().isEmpty()) {
+        } else {
+
+            int codSini = Integer.valueOf(TextCodSini.getText());
+            Siniestro sini = SD.buscarSiniestro(codSini);
+            if (sini != null) {
+                ComboEsp.setSelectedItem(sini.getEspecialidad());
+                try {
+                    Calendar ahora = Calendar.getInstance();
+                    ahora.clear();
+                    ahora.set(Calendar.YEAR, sini.getFecha_siniestro().getYear());
+                    ahora.set(Calendar.MONTH, sini.getFecha_siniestro().getMonthValue() - 1); //-1 Por que los meses son 0 a 11;
+                    ahora.set(Calendar.DAY_OF_MONTH, sini.getFecha_siniestro().getDayOfMonth());
+                    ahora.set(Calendar.HOUR_OF_DAY, sini.getFecha_siniestro().getHour());
+                    ahora.set(Calendar.MINUTE, sini.getFecha_siniestro().getMinute());
+                    ahora.set(Calendar.SECOND, sini.getFecha_siniestro().getSecond());
+                    FechaHora.setCalendar(ahora);
+                    TextCoordX.setText(String.valueOf(sini.getCoord_X()));
+                    TextCoordY.setText(String.valueOf(sini.getCoord_Y()));
+                    TextDetalles.setText(sini.getDetalles());
+                    if (sini.isEnCurso() == true) {
+                        LabelEnCurso.setText("SI");
+                    } else {
+                        LabelEnCurso.setText("NO");
+                    }
+                    if (sini.getBrigada() == null) {
+                        LabelCuartelKM.setText("NINGUNO");
+                        LabelEspecialidad.setText("NINGUNA");
+                    } else {
+                        LabelCuartelKM.setText(CD.listaCuartCercaDeSiniestro(sini.getCodSiniestro()).firstKey() + "KM");
+                        LabelEspecialidad.setText(sini.getBrigada().getEspecialidad().toString());
+                    }
+                } catch (NullPointerException ex) {
+                    borrarCampos();
+                }
+            }
         }
     }//GEN-LAST:event_ButtonBuscarActionPerformed
 
     private void TextCodSiniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextCodSiniKeyTyped
         // TODO add your handling code here:
-        
+
         int key = evt.getKeyChar();
-        boolean num = key >= 48 && key <= 58 ;
+        boolean num = key >= 48 && key <= 58;
         if (!num) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_TextCodSiniKeyTyped
 
     private void TextCoordXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextCoordXKeyTyped
         // TODO add your handling code here:
-//        int key = evt.getKeyChar();
-//        boolean num = key >= 48 && key <= 58 && key!= 45;
-//        if (!num) {
-//            evt.consume();
-//        }
-        
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+        boolean menos = key == 45;
+        if (!(num || menos)) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_TextCoordXKeyTyped
+
+    private void TextCoordYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextCoordYKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+        boolean menos = key == 45;
+        if (!(num || menos)) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_TextCoordYKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -549,17 +579,17 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarCombo(){
+    private void cargarCombo() {
         ComboEsp.addItem(Especialidad.Incendios);
         ComboEsp.addItem(Especialidad.OperativoPrevencion);
         ComboEsp.addItem(Especialidad.RescateAccTrafico);
         ComboEsp.addItem(Especialidad.RescateMontaña);
         ComboEsp.addItem(Especialidad.SalvamentoDerrumbe);
         ComboEsp.addItem(Especialidad.SocorrerInundaciones);
-        
+
     }
-    
-    private void borrarCampos(){
+
+    private void borrarCampos() {
         TextCoordX.setText("");
         TextCoordY.setText("");
         TextDetalles.setText("");
@@ -568,11 +598,11 @@ public class nuevoSiniestro extends javax.swing.JInternalFrame {
         LabelEspecialidad.setText("NINGUNO");
         FechaHora.setCalendar(null);
     }
-    
+
     private void evitarPegar(JTextField campo) {
         InputMap map2 = campo.getInputMap(JTextField.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
 
     }
-    
+
 }
