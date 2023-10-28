@@ -22,16 +22,17 @@ import javax.swing.table.DefaultTableModel;
  * @author LEANS
  */
 public class gestionBrigada extends javax.swing.JInternalFrame {
+
     private BrigadaData BD = new BrigadaData();
     private CuartelData CD = new CuartelData();
     private BomberoData bomdat = new BomberoData();
-    private DefaultTableModel modelo = new DefaultTableModel(){
-      @Override
-      public boolean isCellEditable(int f, int c){
-          return false;
-      }  
-        
-    }; 
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+
+    };
 
     /**
      * Creates new form gestionBrigada
@@ -41,7 +42,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         iniciarTabla();
         cargarTabla();
         cargarCombo();
-        
+
     }
 
     /**
@@ -216,23 +217,24 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int filas = TableBrigada.getSelectedRow();
         Brigada brig = new Brigada();
-        if(filas!=-1){
-            int codBrigada=(Integer) TableBrigada.getValueAt(filas, 0);
+        if (filas != -1) {
+
+            int codBrigada = (Integer) TableBrigada.getValueAt(filas, 0);
             brig = BD.buscarBrigada(codBrigada);
-            
+
             for (Bombero bombero : BD.listarBomberosPorBrigada(codBrigada)) {
-                Bombero bomb =bomdat.buscarBomberoPorDNI(bombero.getDni());
-                bomb.setBrigada(null);
-                bomdat.modificarBombero(bombero);
+                bomdat.setBrigadaBombero(bombero);
             }
+
             BD.eliminarBrigada(codBrigada);
             limpiarTabla();
             cargarTabla();
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Usted no selecciono ninguna Brigada");
         }
-        
-        
+
+
     }//GEN-LAST:event_ButtonEliminarActionPerformed
 
     private void ButtonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAsignarActionPerformed
@@ -240,18 +242,18 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         int filas = TableBrigada.getSelectedRow();
         Brigada brig = new Brigada();
         Cuartel cuar = new Cuartel();
-        if(filas!=-1){
-            int codBrigada=(Integer) TableBrigada.getValueAt(filas, 0);
+        if (filas != -1) {
+            int codBrigada = (Integer) TableBrigada.getValueAt(filas, 0);
             brig = BD.buscarBrigada(codBrigada);
-            cuar=(Cuartel) ComboCuartel.getSelectedItem();
+            cuar = (Cuartel) ComboCuartel.getSelectedItem();
             brig.setCuartel(cuar);
             BD.modificarBrigada(brig);
             limpiarTabla();
             cargarTabla();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Usted no selecciono ninguna Brigada");
         }
-        
+
     }//GEN-LAST:event_ButtonAsignarActionPerformed
 
 
@@ -268,7 +270,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void iniciarTabla(){
+    public void iniciarTabla() {
         modelo.addColumn("Codigo Brigada");
         modelo.addColumn("Nombre de Brigada");
         modelo.addColumn("Especialidad");
@@ -276,34 +278,33 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         modelo.addColumn("Libre");
         TableBrigada.setModel(modelo);
     }
-    
-    public void cargarTabla(){
+
+    public void cargarTabla() {
         String libre;
         for (Brigada brig : BD.listarBrigadas()) {
-            if(brig.isLibre()==true){
-                libre="SI";
-            }else{
-                libre="NO";
+            if (brig.isLibre() == true) {
+                libre = "SI";
+            } else {
+                libre = "NO";
             }
-            modelo.addRow(new Object[]{brig.getCodBrigada(),brig.getNombre_br(),brig.getEspecialidad(),brig.getCuartel().getNombre_cuartel(),libre});
+            modelo.addRow(new Object[]{brig.getCodBrigada(), brig.getNombre_br(), brig.getEspecialidad(), brig.getCuartel().getNombre_cuartel(), libre});
         }
     }
-    
-    public void cargarCombo(){
+
+    public void cargarCombo() {
         for (Cuartel cuart : CD.listaDeCuarteles()) {
             ComboCuartel.addItem(cuart);
         }
-        
+
     }
-    
-    public void limpiarTabla(){
-        int x = TableBrigada.getRowCount()-1;
-        
+
+    public void limpiarTabla() {
+        int x = TableBrigada.getRowCount() - 1;
+
         for (int i = x; i >= 0; i--) {
             modelo.removeRow(i);
         }
-        
+
     }
-    
 
 }

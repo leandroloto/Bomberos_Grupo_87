@@ -146,4 +146,16 @@ public class BomberoData {
         
       return bomberos;  
     }
+    
+    public void setBrigadaBombero(Bombero bombero){
+        String sql = "UPDATE BOMBERO SET codBrigada = null WHERE codBombero =?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, bombero.getCodBombero());
+            int exito = ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la base de Datos"+ ex.getMessage());
+        }
+    }
 }
