@@ -11,8 +11,10 @@ import bomberos_grupo_87.AccesoADatos.SiniestroData;
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
 import bomberos_grupo_87.Entidades.Siniestro;
+import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -20,7 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -46,6 +51,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         initComponents();
         iniciarTabla();
         cargarTabla();
+        evitarPegar(TextPuntaje);
     }
 
     /**
@@ -308,7 +314,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                         .addComponent(ButtonFinalizar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(LabelCuartel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -485,7 +491,9 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                     }
 
                 }
-
+                if(fin==false){
+                    JOptionPane.showMessageDialog(null, "NO se encontró una BRIGADA LIBRE");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Porfavor seleccione un Siniestro que no este en Curso");
             }
@@ -578,6 +586,10 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
 
     }
     
-    
+    private void evitarPegar(JTextField campo) {
+        InputMap map2 = campo.getInputMap(JTextField.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+
+    }
 
 }
