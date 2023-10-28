@@ -455,19 +455,22 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                     Cuartel cuart = obj.getValue();
                     for (Brigada brigada : CD.listarBrigadasDelCuartel(cuart.getCodCuartel())) {
                         if (brigada.getEspecialidad().equals(sini.getEspecialidad()) || brigada.isLibre() == true) {
-                            sini.setBrigada(brigada);
-                            sini.setEnCurso(true);
-                            fin = true;
-                            brigada.setLibre(false);
-                            BD.modificarBrigada(brigada);
-                            borrarTabla();
-                            cargarTabla();
-                            SD.modificarSiniestro(sini);
-                            JOptionPane.showMessageDialog(null, "Se asigno la Brigada: " + brigada.getNombre_br() + " del Cuartel: " + cuart.getNombre_cuartel());
-                            LabelCuartel.setText(cuart.getNombre_cuartel());
-                            LabelDist.setText(obj.getKey() + " KM.");
-                            LabelBrig.setText(brigada.getNombre_br());
-                            break;
+                            if (!BD.listarBomberosPorBrigada(brigada.getCodBrigada()).isEmpty()) {
+                                sini.setBrigada(brigada);
+                                sini.setEnCurso(true);
+                                fin = true;
+                                brigada.setLibre(false);
+                                BD.modificarBrigada(brigada);
+                                borrarTabla();
+                                cargarTabla();
+                                SD.modificarSiniestro(sini);
+                                JOptionPane.showMessageDialog(null, "Se asigno la Brigada: " + brigada.getNombre_br() + " del Cuartel: " + cuart.getNombre_cuartel());
+                                LabelCuartel.setText(cuart.getNombre_cuartel());
+                                LabelDist.setText(obj.getKey() + " KM.");
+                                LabelBrig.setText(brigada.getNombre_br());
+                                break;
+                            }
+
                         }
                     }
                     if (fin == true) {
@@ -475,6 +478,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                     } else {
                         for (Brigada brigada : CD.listarBrigadasDelCuartel(cuart.getCodCuartel())) {
                             if (brigada.isLibre() == true) {
+                                if (!BD.listarBomberosPorBrigada(brigada.getCodBrigada()).isEmpty()) {
                                 sini.setBrigada(brigada);
                                 sini.setEnCurso(true);
                                 fin = true;
@@ -486,12 +490,13 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
                                 JOptionPane.showMessageDialog(null, "Se asigno la Brigada provisional: " + brigada.getNombre_br() + " del Cuartel: " + cuart.getNombre_cuartel());
                                 JOptionPane.showMessageDialog(null, "Se notificara a la Brigada con esa especialidad mas cercana para apoyar al estar libre.");
                                 break;
+                                }
                             }
                         }
                     }
 
                 }
-                if(fin==false){
+                if (fin == false) {
                     JOptionPane.showMessageDialog(null, "NO se encontró una BRIGADA LIBRE");
                 }
             } else {
@@ -518,7 +523,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         if (!num) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_TextPuntajeKeyTyped
 
 
@@ -585,7 +590,7 @@ public class gestionSiniestro extends javax.swing.JInternalFrame {
         TextPuntaje.setText("");
 
     }
-    
+
     private void evitarPegar(JTextField campo) {
         InputMap map2 = campo.getInputMap(JTextField.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
