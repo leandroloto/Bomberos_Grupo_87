@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 23:43:37
+-- Tiempo de generación: 28-10-2023 a las 18:46:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -45,10 +45,18 @@ CREATE TABLE `bombero` (
 --
 
 INSERT INTO `bombero` (`codBombero`, `dni`, `nombre_ape`, `fecha_nac`, `grupo_sang`, `celular`, `codBrigada`, `estado`) VALUES
-(1, 32165487, 'Ricardo Lopez', '1990-11-05', 'B+', '01524587', 1, 1),
-(2, 12354687, 'Ana Maria Juarez', '1999-12-15', 'O-', '038445878', 1, 1),
-(4, 9874687, 'Lourdes Maria Juarez', '1999-12-15', 'O-', '038445878', 1, 0),
-(8, 123123, 'ejemplo ejemplo', '1999-01-22', 'A+', '123123', 1, 1);
+(1, 9874687, 'Lourdes Maria Juarez', '1999-12-15', 'O-', '038445878', 1, 1),
+(2, 32526728, 'Mariano Areas', '1985-10-30', 'AB+', '115722999', 3, 1),
+(3, 29125001, 'Gisela Sosa', '2000-09-16', 'A+', '2616664894', 1, 1),
+(4, 77548211, 'Simon Orellano Jara', '2024-02-14', 'o+', '2615877521', 1, 1),
+(5, 47610454, 'Guillermina Sosa', '2006-10-07', 'O-', '2613754331', 4, 1),
+(6, 37459127, 'Ricardo Rojas', '2001-07-25', 'AB+', '117653459', 4, 1),
+(7, 27388911, 'Alberto Zarate', '1973-02-20', 'A-', '115722378', 4, 1),
+(8, 93711264, 'Olivia Thomson', '1991-05-25', 'B+', '115623482', 4, 1),
+(9, 33843555, 'Agustin Ricarte', '1998-09-03', 'A+', '113982733', 4, 1),
+(10, 45711511, 'Roberto Magallanes', '1996-12-06', 'AB-', '114822411', 2, 1),
+(11, 37199722, 'Walter Rizo', '1988-11-17', 'O+', '114226381', 3, 1),
+(12, 34411928, 'Augusto Zapata', '1988-08-08', 'A-', '112943543', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -97,10 +105,10 @@ CREATE TABLE `cuartel` (
 --
 
 INSERT INTO `cuartel` (`codCuartel`, `nombre_cuartel`, `direccion`, `coord_X`, `coord_Y`, `telefono`, `correo`, `estado`) VALUES
-(1, 'Cuartel A', '123 Calle Principal', 37, -122, '123-456-7890', 'cuartela@example.com', 0),
-(2, 'Cuartel B', '456 Calle Secundaria', 40, -74, '987-654-3210', 'cuartelb@example.com', 0),
-(3, 'Cuartel C', '789 Calle Terciaria', 51, -1, '555-123-4567', 'cuartelc@example.com', 0),
-(4, 'Cuartel BSAS', '9 de Julio 233', 321, -22, '011-42775851', 'bomberosargentina@bomberosar.c', 0);
+(1, 'Cuartel A', '123 Calle Principal', 37, -122, '123-456-7890', 'cuartela@example.com', 1),
+(2, 'Cuartel B', '456 Calle Secundaria', 40, -74, '987-654-3210', 'cuartelb@example.com', 1),
+(3, 'Cuartel C', '789 Calle Terciaria', 51, -1, '555-123-4567', 'cuartelc@example.com', 1),
+(4, 'Cuartel BS.AS.', '9 de Julio 233', 321, -22, '011-42775851', 'bomberosargentina@bomberosar.c', 1);
 
 -- --------------------------------------------------------
 
@@ -117,18 +125,10 @@ CREATE TABLE `siniestro` (
   `detalles` text NOT NULL,
   `fecha_resol` timestamp NULL DEFAULT NULL,
   `puntuacion` int(11) NOT NULL,
-  `codBrigada` int(11) NOT NULL,
+  `codBrigada` int(11) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   `enCurso` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `siniestro`
---
-
-INSERT INTO `siniestro` (`codSiniestro`, `tipo`, `fecha_siniestro`, `coord_X`, `coord_Y`, `detalles`, `fecha_resol`, `puntuacion`, `codBrigada`, `estado`, `enCurso`) VALUES
-(1, 'Incendio', '2023-10-05 20:48:11', 23, 22, 'Se inicio un incendio', NULL, 0, 1, 1, 1),
-(2, 'Incendios', '2023-10-05 19:17:10', -10, 2540, 'Incendio en una casa, Cordoba 233', NULL, 0, 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -147,6 +147,7 @@ ALTER TABLE `bombero`
 --
 ALTER TABLE `brigada`
   ADD PRIMARY KEY (`codBrigada`),
+  ADD UNIQUE KEY `nombre_br` (`nombre_br`),
   ADD KEY `codCuartel` (`codCuartel`);
 
 --
@@ -170,7 +171,7 @@ ALTER TABLE `siniestro`
 -- AUTO_INCREMENT de la tabla `bombero`
 --
 ALTER TABLE `bombero`
-  MODIFY `codBombero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `codBombero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `brigada`
