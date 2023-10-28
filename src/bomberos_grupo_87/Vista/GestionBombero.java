@@ -23,7 +23,6 @@ import javax.swing.JOptionPane;
 public class GestionBombero extends javax.swing.JInternalFrame {
 
     BomberoData bd = new BomberoData();
-    
 
     /**
      * Creates new form GestionBombero
@@ -353,21 +352,22 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                 } else if (jtDni.getText().isEmpty() || jtNomAp.getText().isEmpty() || jtGrupSang.getText().isEmpty() || jtCel.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Los campos deben estar completos");
                 } else {
-                    bv.setDni(Integer.valueOf(jtDni.getText()));
-                    bv.setNombre_ape(jtNomAp.getText());
-                    bv.setGrupo_sang(jtGrupSang.getText());
-                    bv.setCelular(jtCel.getText());
-                    bv.setFecha_nac(jdFechNa.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
                     BrigadaData brD = new BrigadaData();
                     Brigada br = (Brigada) jcbBrigada.getSelectedItem();
                     if (brD.listarBomberosPorBrigada(br.getCodBrigada()).size() >= 5) {
                         JOptionPane.showMessageDialog(null, "La brigada esta llena, seleccione otra Brigada");
+
                     } else {
                         bv.setBrigada((Brigada) jcbBrigada.getSelectedItem());
+                        bv.setDni(Integer.valueOf(jtDni.getText()));
+                        bv.setNombre_ape(jtNomAp.getText());
+                        bv.setGrupo_sang(jtGrupSang.getText());
+                        bv.setCelular(jtCel.getText());
+                        bv.setFecha_nac(jdFechNa.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                        bd.modificarBombero(bv);
+                        limpiarCampos();
                     }
-
-                    bd.modificarBombero(bv);
-                    limpiarCampos();
                 }
             } catch (NumberFormatException nf) {
                 JOptionPane.showMessageDialog(null, "DNI INCORRECTO");
