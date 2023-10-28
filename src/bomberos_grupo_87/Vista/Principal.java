@@ -213,6 +213,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         menuSalir.setText("SALIR");
+        menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(menuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -355,6 +360,11 @@ public class Principal extends javax.swing.JFrame {
         escritorio.add(sini);
         sini.moveToFront();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_menuSalirMouseClicked
 
     /**
      * @param args the command line arguments
