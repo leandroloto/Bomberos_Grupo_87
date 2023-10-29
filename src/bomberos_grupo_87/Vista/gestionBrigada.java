@@ -8,9 +8,11 @@ package bomberos_grupo_87.Vista;
 import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.AccesoADatos.CuartelData;
+import bomberos_grupo_87.AccesoADatos.SiniestroData;
 import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
 import bomberos_grupo_87.Entidades.Cuartel;
+import bomberos_grupo_87.Entidades.Siniestro;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -25,6 +27,7 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
 
     private BrigadaData BD = new BrigadaData();
     private CuartelData CD = new CuartelData();
+    private SiniestroData SD = new SiniestroData();
     private BomberoData bomdat = new BomberoData();
     private DefaultTableModel modelo = new DefaultTableModel() {
         @Override
@@ -217,18 +220,25 @@ public class gestionBrigada extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int filas = TableBrigada.getSelectedRow();
         Brigada brig = new Brigada();
+        Siniestro sini = new Siniestro();
         if (filas != -1) {
 
             int codBrigada = (Integer) TableBrigada.getValueAt(filas, 0);
             brig = BD.buscarBrigada(codBrigada);
-
-            for (Bombero bombero : BD.listarBomberosPorBrigada(codBrigada)) {
+            
+            if(brig.isLibre()==true){
+                for (Bombero bombero : BD.listarBomberosPorBrigada(codBrigada)) {
                 bomdat.setBrigadaBombero(bombero);
             }
-
+            
             BD.eliminarBrigada(codBrigada);
             limpiarTabla();
             cargarTabla();
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pueden eliminar una Brigada OCUPADA.");
+            }
+            
+            
 
         } else {
             JOptionPane.showMessageDialog(null, "Usted no selecciono ninguna Brigada");

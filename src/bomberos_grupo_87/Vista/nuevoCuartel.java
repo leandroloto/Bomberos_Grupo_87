@@ -32,6 +32,11 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         initComponents();
         evitarPegar(JTFCodCuartel);
         evitarPegar(jTFnombreNuevoCuartel);
+        evitarPegar(jTFDireccion);
+        evitarPegar(jTFTel);
+        evitarPegar(jTFCoordX);
+        evitarPegar(jTFCoordY);
+        evitarPegar(jTFCorreo);
         
     }
 
@@ -123,12 +128,29 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                 jTFCoordXActionPerformed(evt);
             }
         });
+        jTFCoordX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCoordXKeyTyped(evt);
+            }
+        });
 
         jLCoordY.setBackground(new java.awt.Color(255, 255, 0));
         jLCoordY.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jLCoordY.setForeground(new java.awt.Color(255, 0, 0));
         jLCoordY.setText("Coordenadas Y:");
         jLCoordY.setOpaque(true);
+
+        jTFCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCorreoKeyTyped(evt);
+            }
+        });
+
+        jTFTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFTelKeyTyped(evt);
+            }
+        });
 
         jLTel.setBackground(new java.awt.Color(255, 255, 0));
         jLTel.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -141,6 +163,12 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
         jLestado.setForeground(new java.awt.Color(255, 0, 0));
         jLestado.setText("Estado:");
         jLestado.setOpaque(true);
+
+        jTFCoordY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCoordYKeyTyped(evt);
+            }
+        });
 
         jLCorreo.setBackground(new java.awt.Color(255, 255, 0));
         jLCorreo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -227,33 +255,28 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jTFDireccion))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(jLnuevoCuartel))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLcodigoCuartel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JTFCodCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLcodigoCuartel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JTFCodCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLCoordX, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                .addComponent(jLCoordX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(7, 7, 7)
                                 .addComponent(jTFCoordX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))
+                                .addGap(112, 112, 112))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addComponent(jLestado)
                                         .addGap(31, 31, 31)
                                         .addComponent(jCheckBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jbNuevoCuartel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jbNuevoCuartel))
+                                .addGap(53, 53, 53)
+                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -261,14 +284,8 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jTFCoordY, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLnombreCuartel)
-                        .addGap(23, 23, 23)
-                        .addComponent(jTFnombreNuevoCuartel))
+                                .addGap(157, 157, 157)
+                                .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLTel)
                         .addGap(32, 32, 32)
@@ -276,7 +293,13 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLCorreo)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFCorreo)))
+                        .addComponent(jTFCorreo))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jLnombreCuartel)
+                        .addGap(23, 23, 23)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLnuevoCuartel)
+                            .addComponent(jTFnombreNuevoCuartel))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -313,12 +336,12 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxEstado)
                     .addComponent(jLestado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbNuevoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78))
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -443,15 +466,60 @@ public class nuevoCuartel extends javax.swing.JInternalFrame {
 
     private void jTFnombreNuevoCuartelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFnombreNuevoCuartelKeyTyped
         // TODO add your handling code here:
-        /*int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean min = key >= 65 && key <= 90;
         boolean mayu = key >= 97 && key <= 122;
-        //boolean espacio = key == 32;
+        boolean espacio = key == 32;
 
-        if (!(min || mayu)) {
+        if (!(min || mayu || espacio)) {
             evt.consume();
-        }*/
+        }
     }//GEN-LAST:event_jTFnombreNuevoCuartelKeyTyped
+
+    private void jTFCoordXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCoordXKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+        boolean menos = key == 45;
+        if (!(num || menos)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCoordXKeyTyped
+
+    private void jTFCoordYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCoordYKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+        boolean menos = key == 45;
+        if (!(num || menos)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCoordYKeyTyped
+
+    private void jTFTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTFTelKeyTyped
+
+    private void jTFCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCorreoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean min = key >= 65 && key <= 90;
+        boolean mayu = key >= 97 && key <= 122;
+        boolean num = key >= 48 && key <= 58;
+        boolean arr = key == 64;
+        boolean punt = key == 46;
+        if (!(min || mayu || num|| arr || punt)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCorreoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

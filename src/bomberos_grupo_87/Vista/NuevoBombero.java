@@ -7,12 +7,17 @@ package bomberos_grupo_87.Vista;
 
 import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.Entidades.Bombero;
+import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -25,6 +30,10 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
      */
     public NuevoBombero() {
         initComponents();
+        evitarPegar(jtNombre_ap);
+        evitarPegar(jtCelular);
+        evitarPegar(jtDni);
+        iniciarCombo();
     }
 
     /**
@@ -36,7 +45,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/foto4.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cascobom.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -50,13 +59,13 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jtCelular = new javax.swing.JTextField();
-        jtGrup_sang = new javax.swing.JTextField();
         jdFecha_nac = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtDni = new javax.swing.JTextField();
         jtNombre_ap = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        ComboSangre = new javax.swing.JComboBox<>();
 
         setClosable(true);
 
@@ -73,6 +82,8 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
 
         jcbActivo.setBackground(new java.awt.Color(204, 204, 0));
         jcbActivo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        jcbActivo.setForeground(new java.awt.Color(255, 255, 255));
+        jcbActivo.setSelected(true);
         jcbActivo.setText("      Activo");
 
         jLabel8.setBackground(new java.awt.Color(204, 204, 0));
@@ -95,6 +106,12 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         jLabel4.setText("Fecha de Nacimiento :");
         jLabel4.setOpaque(true);
 
+        jtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCelularKeyTyped(evt);
+            }
+        });
+
         jLabel3.setBackground(new java.awt.Color(204, 204, 0));
         jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel3.setText("DNI :");
@@ -105,7 +122,18 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre y Apellido :");
         jLabel2.setOpaque(true);
 
+        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniKeyTyped(evt);
+            }
+        });
+
         jtNombre_ap.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jtNombre_ap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombre_apKeyTyped(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 0));
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
@@ -119,13 +147,13 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtCelular, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtGrup_sang, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jdFecha_nac, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtDni, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtNombre_ap, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ComboSangre, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -140,7 +168,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
                         .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addComponent(jdFecha_nac, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,10 +176,10 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
                         .addGap(83, 83, 83)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtGrup_sang)
-                            .addComponent(jtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(jcbActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboSangre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,7 +197,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtNombre_ap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +212,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jtGrup_sang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -221,7 +249,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Ingrese el Nombre y Apellido");
             }else if(jtDni.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Ingrese el numero de DNI");
-            }else if(jtCelular.getText().isEmpty() || jtGrup_sang.getText().isEmpty()){
+            }else if(jtCelular.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Todos los Campos deben estar Completos");
             }else if (jcbActivo.isSelected() == false){
                 JOptionPane.showMessageDialog(null, "El Bombero debe estar Activo");
@@ -229,7 +257,7 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
             String nombre = jtNombre_ap.getText();
             int dni = Integer.valueOf(jtDni.getText());
             String celular= jtCelular.getText();
-            String GpS = jtGrup_sang.getText();
+            String GpS = ComboSangre.getSelectedItem()+"";
             LocalDate fn = jdFecha_nac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             boolean estado = jcbActivo.isSelected();
             
@@ -247,8 +275,45 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void jtNombre_apKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombre_apKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean min = key >= 65 && key <= 90;
+        boolean mayu = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(min || mayu || espacio)) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jtNombre_apKeyTyped
+
+    private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jtDniKeyTyped
+
+    private void jtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCelularKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtCelularKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboSangre;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -262,15 +327,31 @@ public class NuevoBombero extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser jdFecha_nac;
     private javax.swing.JTextField jtCelular;
     private javax.swing.JTextField jtDni;
-    private javax.swing.JTextField jtGrup_sang;
     private javax.swing.JTextField jtNombre_ap;
     // End of variables declaration//GEN-END:variables
 public void limpiarCampos(){
     jtNombre_ap.setText("");
     jtDni.setText("");
     jtCelular.setText("");
-    jtGrup_sang.setText("");
     jcbActivo.setSelected(false);
     jdFecha_nac.repaint();
 }
+
+private void evitarPegar(JTextField campo) {
+        InputMap map2 = campo.getInputMap(JTextField.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+
+    }
+
+    private void iniciarCombo(){
+        ComboSangre.addItem("A+");
+        ComboSangre.addItem("A-");
+        ComboSangre.addItem("B+");
+        ComboSangre.addItem("B-");
+        ComboSangre.addItem("AB+");
+        ComboSangre.addItem("AB-");
+        ComboSangre.addItem("O+");
+        ComboSangre.addItem("O-");
+    }
+
 }

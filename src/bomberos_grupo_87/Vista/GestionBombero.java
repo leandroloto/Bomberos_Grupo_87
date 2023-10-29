@@ -9,12 +9,17 @@ import bomberos_grupo_87.AccesoADatos.BomberoData;
 import bomberos_grupo_87.AccesoADatos.BrigadaData;
 import bomberos_grupo_87.Entidades.Bombero;
 import bomberos_grupo_87.Entidades.Brigada;
+import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.ZoneId;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -32,6 +37,12 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         cargarCombo();
         jtCodBombero.setEditable(false);
         jcbActivo.setEnabled(false);
+        iniciarCombo();
+        evitarPegar(jtCel);
+        evitarPegar(jtCodBombero);
+        evitarPegar(jtDni);
+        evitarPegar(jtNomAp);
+        
     }
 
     /**
@@ -43,7 +54,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/foto4.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/cascobom.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -65,13 +76,13 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jtCodBombero = new javax.swing.JTextField();
         jtNomAp = new javax.swing.JTextField();
-        jtGrupSang = new javax.swing.JTextField();
         jtCel = new javax.swing.JTextField();
         jcbActivo = new javax.swing.JCheckBox();
         jdFechNa = new com.toedter.calendar.JDateChooser();
         jcbBrigada = new javax.swing.JComboBox<>();
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
+        ComboSangre = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(204, 204, 0));
         setClosable(true);
@@ -88,6 +99,12 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jLabel2.setText("DNI :");
         jLabel2.setOpaque(true);
+
+        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniKeyTyped(evt);
+            }
+        });
 
         jbBuscar.setBackground(new java.awt.Color(102, 102, 102));
         jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -138,6 +155,18 @@ public class GestionBombero extends javax.swing.JInternalFrame {
 
         jtCodBombero.setBackground(new java.awt.Color(102, 102, 102));
 
+        jtNomAp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNomApKeyTyped(evt);
+            }
+        });
+
+        jtCel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCelKeyTyped(evt);
+            }
+        });
+
         jcbActivo.setBackground(new java.awt.Color(204, 204, 0));
         jcbActivo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         jcbActivo.setText("ACTIVO");
@@ -175,13 +204,13 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtCodBombero, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtNomAp, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtGrupSang, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtCel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jcbActivo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jdFechNa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jcbBrigada, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(ComboSangre, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -221,11 +250,11 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jtNomAp, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                            .addComponent(jtGrupSang, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                                             .addComponent(jtCel, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                                             .addComponent(jcbActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jdFechNa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jcbBrigada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jcbBrigada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(ComboSangre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,7 +293,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtGrupSang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +306,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jcbActivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEliminar)
                     .addComponent(jbGuardar))
@@ -307,7 +336,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
             jtCodBombero.setText(bv.getCodBombero() + "");
             jtNomAp.setText(bv.getNombre_ape());
             jdFechNa.setDate(Date.valueOf(bv.getFecha_nac()));
-            jtGrupSang.setText(bv.getGrupo_sang());
+            ComboSangre.setSelectedItem(bv.getGrupo_sang());
             jtCel.setText(bv.getCelular());
             jcbActivo.setSelected(bv.isEstado());
 
@@ -349,7 +378,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                 Bombero bv = bd.buscarBomberoPorDNI(dni);
                 if (jtCodBombero.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Busque el bombero a modificar");
-                } else if (jtDni.getText().isEmpty() || jtNomAp.getText().isEmpty() || jtGrupSang.getText().isEmpty() || jtCel.getText().isEmpty()) {
+                } else if (jtDni.getText().isEmpty() || jtNomAp.getText().isEmpty() || jtCel.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Los campos deben estar completos");
                 } else {
 
@@ -362,7 +391,7 @@ public class GestionBombero extends javax.swing.JInternalFrame {
                         bv.setBrigada((Brigada) jcbBrigada.getSelectedItem());
                         bv.setDni(Integer.valueOf(jtDni.getText()));
                         bv.setNombre_ape(jtNomAp.getText());
-                        bv.setGrupo_sang(jtGrupSang.getText());
+                        bv.setGrupo_sang(ComboSangre.getSelectedItem()+"");
                         bv.setCelular(jtCel.getText());
                         bv.setFecha_nac(jdFechNa.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
                         bd.modificarBombero(bv);
@@ -378,8 +407,43 @@ public class GestionBombero extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jtDniKeyTyped
+
+    private void jtNomApKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNomApKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        boolean min = key >= 65 && key <= 90;
+        boolean mayu = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(min || mayu || espacio)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtNomApKeyTyped
+
+    private void jtCelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCelKeyTyped
+        int key = evt.getKeyChar();
+        boolean num = key >= 48 && key <= 58;
+
+        if (!num) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtCelKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboSangre;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -400,7 +464,6 @@ public class GestionBombero extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtCel;
     private javax.swing.JTextField jtCodBombero;
     private javax.swing.JTextField jtDni;
-    private javax.swing.JTextField jtGrupSang;
     private javax.swing.JTextField jtNomAp;
     // End of variables declaration//GEN-END:variables
 public void limpiarCampos() {
@@ -408,7 +471,6 @@ public void limpiarCampos() {
         jtNomAp.setText("");
         jtCodBombero.setText("");
         jtCel.setText("");
-        jtGrupSang.setText("");
         jdFechNa.repaint();
         jcbActivo.setSelected(false);
 
@@ -419,5 +481,22 @@ public void limpiarCampos() {
         for (Brigada brigada : bd.listarBrigadas()) {
             jcbBrigada.addItem(brigada);
         }
+    }
+    
+    private void evitarPegar(JTextField campo) {
+        InputMap map2 = campo.getInputMap(JTextField.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+
+    }
+
+    private void iniciarCombo(){
+        ComboSangre.addItem("A+");
+        ComboSangre.addItem("A-");
+        ComboSangre.addItem("B+");
+        ComboSangre.addItem("B-");
+        ComboSangre.addItem("AB+");
+        ComboSangre.addItem("AB-");
+        ComboSangre.addItem("O+");
+        ComboSangre.addItem("O-");
     }
 }

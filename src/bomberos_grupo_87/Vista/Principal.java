@@ -6,6 +6,9 @@
 package bomberos_grupo_87.Vista;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -32,209 +35,215 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        escritorio = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jmBomberoNuevo = new javax.swing.JMenuItem();
-        jmBomberoConsulta = new javax.swing.JMenuItem();
-        jmBomberoGestion = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        nuevaBrigada = new javax.swing.JMenuItem();
-        consultaBrigada = new javax.swing.JMenuItem();
-        gestionBrigada = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        jmNuevoCuartel = new javax.swing.JMenuItem();
-        jConsultaCuarteles = new javax.swing.JMenuItem();
-        jGestionCuarteles = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        menuSalir = new javax.swing.JMenu();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/FONDO.jpg"));
+        Image image = icon.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }};
+            jMenuBar1 = new javax.swing.JMenuBar();
+            jMenu1 = new javax.swing.JMenu();
+            jMenu6 = new javax.swing.JMenu();
+            jmBomberoNuevo = new javax.swing.JMenuItem();
+            jmBomberoConsulta = new javax.swing.JMenuItem();
+            jmBomberoGestion = new javax.swing.JMenuItem();
+            jMenu7 = new javax.swing.JMenu();
+            nuevaBrigada = new javax.swing.JMenuItem();
+            consultaBrigada = new javax.swing.JMenuItem();
+            gestionBrigada = new javax.swing.JMenuItem();
+            jMenu8 = new javax.swing.JMenu();
+            jmNuevoCuartel = new javax.swing.JMenuItem();
+            jConsultaCuarteles = new javax.swing.JMenuItem();
+            jGestionCuarteles = new javax.swing.JMenuItem();
+            jMenu2 = new javax.swing.JMenu();
+            jMenu4 = new javax.swing.JMenu();
+            jMenuItem7 = new javax.swing.JMenuItem();
+            jMenuItem9 = new javax.swing.JMenuItem();
+            jMenuItem1 = new javax.swing.JMenuItem();
+            menuSalir = new javax.swing.JMenu();
 
-        jMenuItem5.setText("jMenuItem5");
+            jMenuItem5.setText("jMenuItem5");
 
-        jMenuItem6.setText("jMenuItem6");
+            jMenuItem6.setText("jMenuItem6");
 
-        jMenuItem10.setText("jMenuItem10");
+            jMenuItem10.setText("jMenuItem10");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("BOMBEROS DE ARGENTINA GRUPO87");
 
-        escritorio.setBackground(new java.awt.Color(255, 153, 0));
+            escritorio.setBackground(new java.awt.Color(255, 153, 0));
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 954, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
+            javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+            escritorio.setLayout(escritorioLayout);
+            escritorioLayout.setHorizontalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 1001, Short.MAX_VALUE)
+            );
+            escritorioLayout.setVerticalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 576, Short.MAX_VALUE)
+            );
 
-        jMenu1.setText("RECURSOS HUMANOS");
+            jMenu1.setText("RECURSOS HUMANOS");
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bombero (1).png"))); // NOI18N
-        jMenu6.setText("BOMBEROS");
+            jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bombero (1).png"))); // NOI18N
+            jMenu6.setText("BOMBEROS");
 
-        jmBomberoNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        jmBomberoNuevo.setText("NUEVO");
-        jmBomberoNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmBomberoNuevoActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jmBomberoNuevo);
+            jmBomberoNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+            jmBomberoNuevo.setText("NUEVO");
+            jmBomberoNuevo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jmBomberoNuevoActionPerformed(evt);
+                }
+            });
+            jMenu6.add(jmBomberoNuevo);
 
-        jmBomberoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jmBomberoConsulta.setText("CONSULTA");
-        jmBomberoConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmBomberoConsultaActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jmBomberoConsulta);
+            jmBomberoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+            jmBomberoConsulta.setText("CONSULTA");
+            jmBomberoConsulta.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jmBomberoConsultaActionPerformed(evt);
+                }
+            });
+            jMenu6.add(jmBomberoConsulta);
 
-        jmBomberoGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jmBomberoGestion.setText("GESTION");
-        jmBomberoGestion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmBomberoGestionActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jmBomberoGestion);
+            jmBomberoGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+            jmBomberoGestion.setText("GESTION");
+            jmBomberoGestion.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jmBomberoGestionActionPerformed(evt);
+                }
+            });
+            jMenu6.add(jmBomberoGestion);
 
-        jMenu1.add(jMenu6);
+            jMenu1.add(jMenu6);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brigada (1).png"))); // NOI18N
-        jMenu7.setText("BRIGADAS");
+            jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brigada (1).png"))); // NOI18N
+            jMenu7.setText("BRIGADAS");
 
-        nuevaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        nuevaBrigada.setText("NUEVO");
-        nuevaBrigada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevaBrigadaActionPerformed(evt);
-            }
-        });
-        jMenu7.add(nuevaBrigada);
+            nuevaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+            nuevaBrigada.setText("NUEVO");
+            nuevaBrigada.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    nuevaBrigadaActionPerformed(evt);
+                }
+            });
+            jMenu7.add(nuevaBrigada);
 
-        consultaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        consultaBrigada.setText("CONSULTA");
-        consultaBrigada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaBrigadaActionPerformed(evt);
-            }
-        });
-        jMenu7.add(consultaBrigada);
+            consultaBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+            consultaBrigada.setText("CONSULTA");
+            consultaBrigada.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    consultaBrigadaActionPerformed(evt);
+                }
+            });
+            jMenu7.add(consultaBrigada);
 
-        gestionBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        gestionBrigada.setText("GESTION");
-        gestionBrigada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionBrigadaActionPerformed(evt);
-            }
-        });
-        jMenu7.add(gestionBrigada);
+            gestionBrigada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+            gestionBrigada.setText("GESTION");
+            gestionBrigada.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    gestionBrigadaActionPerformed(evt);
+                }
+            });
+            jMenu7.add(gestionBrigada);
 
-        jMenu1.add(jMenu7);
+            jMenu1.add(jMenu7);
 
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuartel (1).png"))); // NOI18N
-        jMenu8.setText("CUARTELES");
-        jMenu8.setToolTipText("");
+            jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cuartel (1).png"))); // NOI18N
+            jMenu8.setText("CUARTELES");
+            jMenu8.setToolTipText("");
 
-        jmNuevoCuartel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        jmNuevoCuartel.setText("NUEVO");
-        jmNuevoCuartel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmNuevoCuartelActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jmNuevoCuartel);
+            jmNuevoCuartel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+            jmNuevoCuartel.setText("NUEVO");
+            jmNuevoCuartel.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jmNuevoCuartelActionPerformed(evt);
+                }
+            });
+            jMenu8.add(jmNuevoCuartel);
 
-        jConsultaCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jConsultaCuarteles.setText("CONSULTA");
-        jConsultaCuarteles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jConsultaCuartelesActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jConsultaCuarteles);
+            jConsultaCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+            jConsultaCuarteles.setText("CONSULTA");
+            jConsultaCuarteles.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jConsultaCuartelesActionPerformed(evt);
+                }
+            });
+            jMenu8.add(jConsultaCuarteles);
 
-        jGestionCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jGestionCuarteles.setText("GESTION");
-        jGestionCuarteles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jGestionCuartelesActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jGestionCuarteles);
+            jGestionCuarteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+            jGestionCuarteles.setText("GESTION");
+            jGestionCuarteles.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jGestionCuartelesActionPerformed(evt);
+                }
+            });
+            jMenu8.add(jGestionCuarteles);
 
-        jMenu1.add(jMenu8);
+            jMenu1.add(jMenu8);
 
-        jMenuBar1.add(jMenu1);
+            jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("ADMIN SINIESTROS");
+            jMenu2.setText("ADMIN SINIESTROS");
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/siniestro.png"))); // NOI18N
-        jMenu4.setText("SINIESTROS");
+            jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/siniestro.png"))); // NOI18N
+            jMenu4.setText("SINIESTROS");
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
-        jMenuItem7.setText("NUEVO");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
+            jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nuevo (1).png"))); // NOI18N
+            jMenuItem7.setText("NUEVO");
+            jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem7ActionPerformed(evt);
+                }
+            });
+            jMenu4.add(jMenuItem7);
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
-        jMenuItem9.setText("CONSULTAS");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem9);
+            jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta (1).png"))); // NOI18N
+            jMenuItem9.setText("CONSULTAS");
+            jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem9ActionPerformed(evt);
+                }
+            });
+            jMenu4.add(jMenuItem9);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
-        jMenuItem1.setText("GESTION");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem1);
+            jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gestion (1).png"))); // NOI18N
+            jMenuItem1.setText("GESTION");
+            jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem1ActionPerformed(evt);
+                }
+            });
+            jMenu4.add(jMenuItem1);
 
-        jMenu2.add(jMenu4);
+            jMenu2.add(jMenu4);
 
-        jMenuBar1.add(jMenu2);
+            jMenuBar1.add(jMenu2);
 
-        menuSalir.setText("SALIR");
-        menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuSalirMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(menuSalir);
+            menuSalir.setText("SALIR");
+            menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    menuSalirMouseClicked(evt);
+                }
+            });
+            jMenuBar1.add(menuSalir);
 
-        setJMenuBar(jMenuBar1);
+            setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorio)
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void jmNuevoCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNuevoCuartelActionPerformed
         // TODO add your handling code here:

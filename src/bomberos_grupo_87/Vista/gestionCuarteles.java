@@ -17,8 +17,8 @@ import javax.swing.ImageIcon;
  * @author psg_7
  */
 public class gestionCuarteles extends javax.swing.JInternalFrame {
-        CuartelData cd = new CuartelData();
 
+    CuartelData cd = new CuartelData();
 
     /**
      * Creates new form gestionCuarteles
@@ -27,7 +27,6 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         initComponents();
         cargarCombo();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,18 +187,24 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
         // TODO add your handling code here  
         CuartelData ctd = new CuartelData();
         Cuartel ct = new Cuartel();
-       
-        try{
-        ct=(Cuartel)cuartelSeleccionado.getSelectedItem();
-                }catch(Exception ex){
+        
+
+        try {
+            ct = (Cuartel) cuartelSeleccionado.getSelectedItem();
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "¿Está seguro que desea eliminar el cuartel seleccionado de la lista de cuarteles?");
         }
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el cuartel seleccionado de la lista de cuarteles?");
-     
-        if (confirmar == JOptionPane.OK_OPTION){
+
+        if (confirmar == JOptionPane.OK_OPTION) {
+            if(ctd.listarBrigadasDelCuartel(ct.getCodCuartel()).isEmpty()){
+                ctd.eliminarCuartel(ct.getCodCuartel());
+            }else{
+                JOptionPane.showMessageDialog(null, "No se puede eliminar el Cuartel: "+ct.getNombre_cuartel()+" con Brigadas Activas");
+            }
             
-        ctd.eliminarCuartel(ct.getCodCuartel());
-    
+            
+
         }
         cargarCombo();
         limpiarCampos();
@@ -229,16 +234,15 @@ public class gestionCuarteles extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarCombo() {
-        
+
         for (Cuartel cuart : cd.listaDeCuarteles()) {
             cuartelSeleccionado.addItem(cuart);
         }
     }
-        public void limpiarCampos() {
+
+    public void limpiarCampos() {
         cuartelSeleccionado.setActionCommand("");
         jTFmotivosEliminacion.setText("");
     }
-    
-        
-}
 
+}
